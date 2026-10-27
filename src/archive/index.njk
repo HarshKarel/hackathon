@@ -1,0 +1,16 @@
+---
+layout: base.njk
+title: Archive of ended hackathons
+description: Search every ended hackathon on hackathon.so. Event pages stay published after an event ends, as a permanent record.
+scripts: ["/assets/js/archive.js"]
+---
+<h1>Archive</h1>
+<p class="muted">{{ site.ended.length }} ended hackathons. Pages stay up after an event ends, so links never break. Newest first.</p>
+<input class="archive-search" id="archive-q" type="search" aria-label="Search the archive" placeholder="Search ended hackathons by name, place, niche or source">
+<p class="muted small" id="archive-count" aria-live="polite">{{ site.ended.length }} shown</p>
+<ul class="list" id="archive-list">
+{%- for e in site.ended %}
+  <li data-search="{{ [e.title, e.organiser, e.city, e.country, e.locationText, e.niches | join(' '), e.platformNames | join(' '), e.startDate | date] | join(' ') | lower }}"><a href="/hackathons/{{ e.slug }}/">{{ e.title }}</a><span class="muted small">{{ e.startDate | range(e.endDate, e.timezone) }}</span><span class="sub">{{ e | place }} · {{ e.niches | join(', ') }} · via {{ e.platformNames | join(', ') }}</span></li>
+{%- endfor %}
+</ul>
+<p class="empty" id="archive-empty" hidden>No ended hackathons match.</p>

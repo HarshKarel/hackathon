@@ -1,0 +1,20 @@
+---
+pagination:
+  data: site.redirects
+  size: 1
+  alias: r
+  addAllPagesToCollections: false
+permalink: "/hackathons/{{ r.from }}/"
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Moved</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ site.url }}/hackathons/{{ r.to }}/">
+<meta http-equiv="refresh" content="0; url=/hackathons/{{ r.to }}/">
+</head>
+<body><p>This event now lives at <a href="/hackathons/{{ r.to }}/">/hackathons/{{ r.to }}/</a>.</p></body>
+</html>

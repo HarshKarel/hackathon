@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- set pageTitle = (title + " | " + site.name) if title else (site.name + ": every hackathon, worldwide") %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ (description or 'A worldwide hackathon directory. One permanent page per event with dates, deadlines, prizes and eligibility, linking out to the platform where you apply.') | metaDescription }}">
+{%- set canonical = (canonicalPath or page.url) | absUrl(site.url) %}
+<link rel="canonical" href="{{ canonical }}">
+{%- if noindex %}
+<meta name="robots" content="noindex, follow">
+{%- endif %}
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ title or site.name }}">
+<meta property="og:description" content="{{ (description or 'A worldwide hackathon directory.') | metaDescription }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#fafaf8">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/calendar" title="All hackathons (ICS)" href="/calendars/all.ics">
+<link rel="stylesheet" href="/assets/css/site.css">
+{%- if jsonld %}
+<script type="application/ld+json">{{ jsonld | json | safe }}</script>
+{%- endif %}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="/">hackathon<span>.so</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/"{% if page.url == "/" %} aria-current="page"{% endif %}>Open now</a>
+      <a href="/niche/"{% if page.url.startsWith("/niche/") %} aria-current="page"{% endif %}>Niches</a>
+      <a href="/country/"{% if page.url.startsWith("/country/") %} aria-current="page"{% endif %}>Countries</a>
+      <a href="/month/"{% if page.url.startsWith("/month/") %} aria-current="page"{% endif %}>Months</a>
+      <a href="/series/"{% if page.url.startsWith("/series/") %} aria-current="page"{% endif %}>Series</a>
+      <a href="/archive/"{% if page.url.startsWith("/archive/") %} aria-current="page"{% endif %}>Archive</a>
+      <a href="/subscribe/"{% if page.url.startsWith("/subscribe/") %} aria-current="page"{% endif %}>Subscribe</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+{{ content | safe }}
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>{{ site.name }} lists facts from public sources and links out to apply. Descriptions are written fresh for this site. <a href="/sources/">Sources</a> · <a href="/subscribe/">Calendar feeds</a> · <a href="/llms.txt">llms.txt</a> · <a href="/sitemap.xml">Sitemap</a></p>
+    <p class="muted">Data updated {{ site.health.finishedAt | date }}. Built {{ site.buildDate | date }}.</p>
+  </div>
+</footer>
+{%- if scripts %}{% for s in scripts %}
+<script type="module" src="{{ s }}"></script>
+{%- endfor %}{% endif %}
+</body>
+</html>

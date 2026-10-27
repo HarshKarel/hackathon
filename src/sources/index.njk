@@ -1,0 +1,38 @@
+---
+layout: base.njk
+title: Sources
+description: Every platform hackathon.so reads, what it covers, and when it was last fetched successfully. We list facts only, link out to apply, and respect robots.txt.
+---
+<h1>Sources</h1>
+<p class="muted">hackathon.so reads public feeds from these platforms. The table updates on every pipeline run from its health log.</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Platform</th><th>What it covers</th><th>Last successful fetch</th><th>Last run</th><th>Events on site</th></tr></thead>
+  <tbody>
+  {%- for s in site.sources %}
+    <tr>
+      <td><a href="{{ s.home }}" rel="noopener nofollow">{{ s.name }}</a></td>
+      <td>{{ s.covers }}</td>
+      <td>{% if s.lastSuccessAt %}{{ s.lastSuccessAt | dateTime }}{% else %}<span class="muted">Never</span>{% endif %}</td>
+      <td>
+        {%- if s.ok == true %}<span class="status-ok">OK</span>, {{ s.lastCount }} listings{% if s.errorCount %}, {{ s.errorCount }} item errors{% endif %}
+        {%- elif s.ok == false %}<span class="status-err">Failed</span>{% if s.lastError %}<br><span class="small muted">{{ s.lastError }}</span>{% endif %}
+        {%- else %}<span class="muted">Not run yet</span>{% endif %}
+      </td>
+      <td>{{ s.inStore }}</td>
+    </tr>
+  {%- endfor %}
+  </tbody>
+</table>
+</div>
+<p class="small muted" style="margin-top:8px">Last pipeline run: {{ site.health.startedAt | dateTime }}.{% if site.health.totals %} {{ site.health.totals.recordsNormalised }} listings read, {{ site.health.totals.eventsAfterDedupe }} distinct events after removing duplicates.{% endif %}</p>
+
+<h2>How we use sources</h2>
+<ul>
+  <li><strong>Facts only.</strong> We take dates, deadlines, prizes, eligibility, format, location and links. Prize and eligibility text is shown as the source states it.</li>
+  <li><strong>Our own words.</strong> Event descriptions are written fresh for this site from the facts. We never publish a listing's own description.</li>
+  <li><strong>Apply at the source.</strong> We do not take registrations. Every event page links to the platform that lists it.</li>
+  <li><strong>Polite crawling.</strong> Our bot identifies itself, checks robots.txt before every request, and spaces requests to each site.</li>
+  <li><strong>One page per event, forever.</strong> When the same event appears on several platforms we merge the listings into one page that keeps every source. Pages stay up after an event ends.</li>
+  <li><strong>Curated additions.</strong> A few well known events with no public feed are added by hand from their official sites.</li>
+</ul>

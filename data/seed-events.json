@@ -1,0 +1,77 @@
+{
+  "format": "hackathon.so seed v1 (see docs/SEED_FORMAT.md)",
+  "events": [
+    {
+      "title": "NASA International Space Apps Challenge 2026",
+      "organiser": "NASA",
+      "series": "NASA Space Apps Challenge",
+      "sources": [
+        { "platform": "seed", "sourceId": "nasa-space-apps-2026", "url": "https://www.spaceappschallenge.org/2026/" }
+      ],
+      "applyUrl": "https://www.spaceappschallenge.org/2026/",
+      "startDate": "2026-11-14",
+      "endDate": "2026-11-15",
+      "registrationDeadline": null,
+      "deadlineKind": null,
+      "timezone": null,
+      "mode": "hybrid",
+      "city": null,
+      "country": null,
+      "prizeText": null,
+      "niches": ["Data Science", "Climate", "Open"],
+      "eligibilityText": "Open to all ages; participants under 18 register with parental or guardian consent",
+      "eligibility": "open",
+      "teamSizeText": "Up to 6 participants per team",
+      "lastCheckedAt": "2026-10-27T00:00:00.000Z",
+      "notes": "Dates and team size from the official 2026 site and participant FAQ as quoted in search results on 2026-10-27. The site itself could not be loaded from the build sandbox (TLS and 503 errors). Eligibility wording is from third-party listings. Verify against spaceappschallenge.org before launch."
+    },
+    {
+      "title": "NASA International Space Apps Challenge 2025",
+      "organiser": "NASA",
+      "series": "NASA Space Apps Challenge",
+      "sources": [
+        { "platform": "seed", "sourceId": "nasa-space-apps-2025", "url": "https://www.spaceappschallenge.org/2025/" }
+      ],
+      "applyUrl": "https://www.spaceappschallenge.org/2025/",
+      "startDate": "2025-10-04",
+      "endDate": "2025-10-05",
+      "registrationDeadline": null,
+      "deadlineKind": null,
+      "timezone": null,
+      "mode": "hybrid",
+      "city": null,
+      "country": null,
+      "prizeText": null,
+      "niches": ["Data Science", "Climate", "Open"],
+      "eligibilityText": null,
+      "eligibility": null,
+      "teamSizeText": null,
+      "lastCheckedAt": "2026-10-27T00:00:00.000Z",
+      "notes": "Dates from the official participant FAQ as quoted in search results on 2026-10-27. Verify before launch."
+    },
+    {
+      "title": "Smart India Hackathon 2025",
+      "organiser": "Ministry of Education's Innovation Cell and AICTE",
+      "series": "Smart India Hackathon",
+      "sources": [
+        { "platform": "seed", "sourceId": "smart-india-hackathon-2025", "url": "https://sih.gov.in/" }
+      ],
+      "applyUrl": "https://sih.gov.in/",
+      "startDate": "2025-12-08",
+      "endDate": "2025-12-12",
+      "registrationDeadline": null,
+      "deadlineKind": null,
+      "timezone": "Asia/Kolkata",
+      "mode": "in-person",
+      "city": null,
+      "country": "IN",
+      "prizeText": "₹1,50,000 per winning team for each problem statement (software edition)",
+      "niches": ["Student", "Social Impact", "Hardware"],
+      "eligibilityText": "Teams of six students",
+      "eligibility": "students",
+      "teamSizeText": "6 students per team",
+      "lastCheckedAt": "2026-10-27T00:00:00.000Z",
+      "notes": "Grand finale: software edition 8 to 9 Dec 2025, hardware edition 8 to 12 Dec 2025 (IIT Kharagpur), at nodal centres across India. Facts from news reports (newsonair.gov.in, careers360, RUAS) found by search on 2026-10-27; sih.gov.in returned 403 to the build sandbox. SIH 2026 is not seeded yet: national finale dates were only 'proposed for December 2026' at time of writing. Add it once sih.gov.in states dates."
+    }
+  ]
+}

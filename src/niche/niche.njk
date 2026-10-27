@@ -1,0 +1,22 @@
+---
+layout: base.njk
+pagination:
+  data: site.niches
+  size: 1
+  alias: niche
+  addAllPagesToCollections: false
+permalink: "/niche/{{ niche.slug }}/"
+eleventyComputed:
+  title: "{{ niche.name | safe }} hackathons"
+  description: "{{ niche.openCount }} open {{ niche.name | safe }} hackathons worldwide, sorted by deadline, plus past events. Each links out to apply on the source platform."
+---
+<p class="crumbs"><a href="/">Home</a> / <a href="/niche/">Niches</a> / {{ niche.name }}</p>
+<div class="intro">
+  <div>
+    <h1>{{ niche.name }} hackathons</h1>
+    <p>{{ niche.openCount }} open now, {{ niche.total }} on record. Sorted by deadline.</p>
+  </div>
+  <a class="btn btn-secondary" href="/calendars/{{ niche.slug }}.ics">Calendar feed (.ics)</a>
+</div>
+{% set open = niche.open %}{% set ended = niche.ended %}{% set emptyText = "No open " + niche.name + " hackathons right now." %}
+{% include "browse-lists.njk" %}

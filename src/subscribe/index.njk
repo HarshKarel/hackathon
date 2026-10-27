@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: Subscribe to hackathon calendars
+description: Subscribe to free calendar feeds of hackathon dates and deadlines, for all events or one niche. Works with Google Calendar, Apple Calendar and Outlook.
+---
+<h1>Subscribe to calendar feeds</h1>
+<p class="muted">Each feed holds event dates and stated deadlines for open events and those that ended in the last 90 days. Feeds refresh when the site updates; most calendar apps check every few hours.</p>
+
+<h2>How to subscribe</h2>
+<ul>
+  <li><strong>Google Calendar:</strong> Other calendars, then "From URL", and paste a feed address.</li>
+  <li><strong>Apple Calendar:</strong> File, then "New Calendar Subscription", and paste a feed address. On iPhone, tap a webcal link below.</li>
+  <li><strong>Outlook:</strong> Add calendar, then "Subscribe from web", and paste a feed address.</li>
+</ul>
+
+<h2>Feeds</h2>
+<ul class="list feed-list">
+{%- for f in site.feeds %}
+  <li><span><strong>{{ f.name }}</strong>{% if f.niche %} <span class="muted small">({{ f.count }} open)</span>{% endif %}</span>
+  <span class="sub"><code>{{ site.url }}/calendars/{{ f.slug }}.ics</code> · <a href="webcal://{{ site.url | replace('https://', '') }}/calendars/{{ f.slug }}.ics">webcal</a> · <a href="/calendars/{{ f.slug }}.ics">download</a></span></li>
+{%- endfor %}
+</ul>
+<p class="small muted" style="margin-top:10px">Want one event only? Every event page has an "Add to calendar" button for its deadline.</p>

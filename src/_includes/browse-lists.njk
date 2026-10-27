@@ -1,0 +1,15 @@
+{#- Expects: open (array), ended (array), emptyText -#}
+<h2>Open now <span class="muted small">({{ open.length }})</span></h2>
+{%- if open.length %}
+<div class="grid">{% for e in open %}{% card e %}{% endfor %}</div>
+{%- else %}
+<p class="empty">{{ emptyText or "Nothing open right now." }}</p>
+{%- endif %}
+{%- if ended.length %}
+<h2>Ended <span class="muted small">({{ ended.length }})</span></h2>
+<ul class="list">
+{%- for e in ended %}
+  <li><a href="/hackathons/{{ e.slug }}/">{{ e.title }}</a><span class="muted small">{{ e.startDate | range(e.endDate, e.timezone) }}</span><span class="sub">{{ e | place }} · {{ e.niches | join(', ') }} · via {{ e.platformNames | join(', ') }}</span></li>
+{%- endfor %}
+</ul>
+{%- endif %}

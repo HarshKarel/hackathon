@@ -1,0 +1,12 @@
+---
+layout: base.njk
+title: Hackathons by country
+description: Browse in-person and hybrid hackathons by country. Online events are open worldwide and listed on the home page.
+---
+<h1>Browse by country</h1>
+<p class="muted">In-person and hybrid events by country. Online events have no country and are open worldwide: find them with the Format filter on the <a href="/?mode=online">home page</a>.</p>
+<ul class="index-grid">
+{%- for c in site.countries %}
+  <li><a href="/country/{{ c.slug }}/">{{ c.name }} <span class="n">{{ c.openCount }} open · {{ c.events.length }} total</span></a></li>
+{%- endfor %}
+</ul>

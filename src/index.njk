@@ -1,0 +1,110 @@
+---
+layout: base.njk
+description: Search open hackathons worldwide by deadline, niche, country, format and platform. One permanent page per event, with dates, deadlines, prizes and eligibility, and a link to apply on the source platform.
+scripts: ["/assets/js/home.js"]
+jsonld:
+  "@context": "https://schema.org"
+  "@type": "WebSite"
+  name: "hackathon.so"
+  url: "https://hackathon.so/"
+---
+<div class="intro">
+  <div>
+    <h1>Hackathons open now, worldwide</h1>
+    <p>{{ site.counts.open }} upcoming and live events from {{ site.platformOptions.length }} sources, sorted by deadline. Every event keeps its page after it ends.</p>
+  </div>
+</div>
+
+<form class="filters" id="filters" role="search" onsubmit="return false">
+  <input class="search" id="q" name="q" type="search" aria-label="Search hackathons" placeholder="Search by name, organiser, city or country" autocomplete="off">
+  <details class="filter-details" id="filter-details">
+  <summary>Filters</summary>
+  <div class="filter-row">
+    <label>Status
+      <select name="status" id="f-status">
+        <option value="open">Open now</option>
+        <option value="upcoming">Upcoming</option>
+        <option value="live">Live</option>
+        <option value="ended">Ended</option>
+        <option value="all">All</option>
+      </select>
+    </label>
+    <label>Format
+      <select name="mode" id="f-mode">
+        <option value="">Any format</option>
+        <option value="online">Online</option>
+        <option value="in-person">In person</option>
+        <option value="hybrid">Hybrid</option>
+      </select>
+    </label>
+    <label>Niche
+      <select name="niche" id="f-niche">
+        <option value="">Any niche</option>
+        {%- for n in site.niches %}
+        <option value="{{ n.name }}">{{ n.name }}</option>
+        {%- endfor %}
+      </select>
+    </label>
+    <label>Country
+      <select name="country" id="f-country">
+        <option value="">Any country</option>
+        {%- for c in site.countryOptions %}
+        <option value="{{ c.code }}">{{ c.name }}</option>
+        {%- endfor %}
+      </select>
+    </label>
+    <label>Deadline
+      <select name="deadline" id="f-deadline">
+        <option value="">Any deadline</option>
+        <option value="7">Within 7 days</option>
+        <option value="30">Within 30 days</option>
+        <option value="90">Within 90 days</option>
+        <option value="open">Deadline still open</option>
+        <option value="none">No deadline stated</option>
+      </select>
+    </label>
+    <label>Source
+      <select name="platform" id="f-platform">
+        <option value="">Any source</option>
+        {%- for p in site.platformOptions %}
+        <option value="{{ p.key }}">{{ p.name }}</option>
+        {%- endfor %}
+      </select>
+    </label>
+  </div>
+  </details>
+  <div class="filter-foot">
+    <span id="result-count" aria-live="polite">{{ site.open.length }} hackathons</span>
+    <button type="button" class="linkbtn" id="reset">Clear filters</button>
+  </div>
+</form>
+
+<h2 class="small muted" style="margin-top:0">Open events per niche</h2>
+<ul class="chips" id="niche-chips">
+{%- for n in site.niches %}
+  <li><button type="button" data-niche="{{ n.name }}" aria-pressed="false">{{ n.name }} <span class="n">{{ n.openCount }}</span></button></li>
+{%- endfor %}
+</ul>
+
+<section aria-labelledby="closing-soon" id="closing-soon-section">
+  <div class="rail-head">
+    <h2 id="closing-soon" style="margin-top:4px">Closing soon</h2>
+    <span class="muted small">Deadlines in the next 7 days: {{ site.closingSoon.length }}</span>
+  </div>
+  {%- if site.closingSoon.length %}
+  <div class="rail">
+    {%- for e in site.closingSoon %}{% card e %}{% endfor %}
+  </div>
+  {%- else %}
+  <p class="empty">No stated deadlines in the next 7 days.</p>
+  {%- endif %}
+</section>
+
+<section aria-labelledby="all-open">
+  <h2 id="all-open">All open hackathons, by deadline</h2>
+  <div class="grid" id="results">
+    {%- for e in site.open %}{% card e %}{% endfor %}
+  </div>
+  <p class="empty" id="no-results" hidden>No hackathons match these filters.</p>
+  <p class="more muted small">Looking for past events? Browse the <a href="/archive/">archive of ended hackathons</a>.</p>
+</section>

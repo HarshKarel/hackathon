@@ -1,0 +1,12 @@
+---
+layout: base.njk
+title: Hackathons by niche
+description: Browse hackathons worldwide by niche, from AI and ML to Web3, Climate and Social Impact, with counts of open events.
+---
+<h1>Browse by niche</h1>
+<p class="muted">Every event is tagged with one to three niches from a fixed list. Counts show events open now.</p>
+<ul class="index-grid">
+{%- for n in site.niches %}
+  <li><a href="/niche/{{ n.slug }}/">{{ n.name }} <span class="n">{{ n.openCount }} open · {{ n.total }} total</span></a></li>
+{%- endfor %}
+</ul>

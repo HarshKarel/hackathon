@@ -1,0 +1,402 @@
+[
+  {
+    "pass": 2,
+    "reason": "title \"ccuhacks\" + organiser (not stated) + start 2026-06-20 / 2026-06-20",
+    "a": {
+      "title": "ccuhacks",
+      "source": "devfolio:71e67277b968419dbea7c6b4eeaf553a",
+      "organiser": null,
+      "startDate": "2026-06-20T02:30:00.000Z"
+    },
+    "b": {
+      "title": "ccuhacks v1",
+      "source": "hackclub:0NoIzj",
+      "organiser": null,
+      "startDate": "2026-06-20T09:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"innohacks\" + organiser (not stated) + start 2026-10-10 / 2026-10-10",
+    "a": {
+      "title": "Innohacks 4.0",
+      "source": "devfolio:aec2f88c6f674e8ca9c87b9074f937ad",
+      "organiser": null,
+      "startDate": "2026-10-10T04:30:00.000Z"
+    },
+    "b": {
+      "title": "Innohacks 4.0",
+      "source": "mlh:019fdc56-e7fb-514b-e822-7a742ab7291e",
+      "organiser": null,
+      "startDate": "2026-10-10T14:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"infinity hacks\" + organiser \"hacker rank\" + start 2026-08-15 / 2026-08-14",
+    "a": {
+      "title": "Infinity Hacks 2026",
+      "source": "devfolio:dbac16089b4140d0b4b1f5c5141cd6fc",
+      "organiser": null,
+      "startDate": "2026-08-15T01:30:00.000Z"
+    },
+    "b": {
+      "title": "Infinity Hacks",
+      "source": "devpost:30664",
+      "organiser": "hacker rank",
+      "startDate": "2026-08-14T04:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"hack peel\" + organiser \"Absolute Robotics #4308\" + start 2026-12-12 / 2026-12-12",
+    "a": {
+      "title": "hack::peel 2026",
+      "source": "devpost:27509",
+      "organiser": "Absolute Robotics #4308",
+      "startDate": "2026-12-12T15:00:00.000Z"
+    },
+    "b": {
+      "title": "Hack Peel",
+      "source": "hackclub:0VqIzx",
+      "organiser": null,
+      "startDate": "2026-12-12T09:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"hackrpi\" + organiser \"HackRPI\" + start 2026-11-07 / 2026-11-07",
+    "a": {
+      "title": "HackRPI 2026",
+      "source": "devpost:28217",
+      "organiser": "HackRPI",
+      "startDate": "2026-11-07T16:00:00.000Z"
+    },
+    "b": {
+      "title": "HackRPI 2026",
+      "source": "mlh:019f1457-ed4b-5f05-061e-3c03a008f817",
+      "organiser": null,
+      "startDate": "2026-11-07T14:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"hoya hacks\" + organiser \"Hoya Hacks\" + start 2027-01-23 / 2027-01-22",
+    "a": {
+      "title": "Hoya Hacks 2027",
+      "source": "devpost:28304",
+      "organiser": "Hoya Hacks",
+      "startDate": "2027-01-23T01:00:00.000Z"
+    },
+    "b": {
+      "title": "Hoya Hacks",
+      "source": "mlh:019eb85f-06b5-26a0-ef38-176d6b74e7c4",
+      "organiser": null,
+      "startDate": "2027-01-22T22:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"kent hack enough\" + organiser \"HacKSU\" + start 2027-03-06 / 2027-03-06",
+    "a": {
+      "title": "Kent Hack Enough 2027",
+      "source": "devpost:30263",
+      "organiser": "HacKSU",
+      "startDate": "2027-03-06T05:00:00.000Z"
+    },
+    "b": {
+      "title": "Kent Hack Enough",
+      "source": "mlh:019eb8ce-674f-0ec8-bfd2-8b4fb1f550c5",
+      "organiser": null,
+      "startDate": "2027-03-06T15:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"biohacks\" + organiser \"BioEng4Youth\" + start 2026-11-07 / 2026-11-07",
+    "a": {
+      "title": "BioHacks",
+      "source": "devpost:30296",
+      "organiser": "BioEng4Youth",
+      "startDate": "2026-11-07T13:00:00.000Z"
+    },
+    "b": {
+      "title": "BioHacks",
+      "source": "mlh:019fc80d-c744-370d-6102-88c12930a4c4",
+      "organiser": null,
+      "startDate": "2026-11-07T13:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"hackcamp\" + organiser \"nwPlus\" + start 2026-11-07 / 2026-11-07",
+    "a": {
+      "title": "HackCamp 2026",
+      "source": "devpost:30357",
+      "organiser": "nwPlus",
+      "startDate": "2026-11-07T20:00:00.000Z"
+    },
+    "b": {
+      "title": "HackCamp",
+      "source": "mlh:01a08c64-1006-f464-272f-e1aa0aa28100",
+      "organiser": null,
+      "startDate": "2026-11-07T14:30:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"bit jam\" + organiser \"Hack Club\" + start 2026-08-22 / 2026-08-22",
+    "a": {
+      "title": "8-Bit Jam",
+      "source": "devpost:30360",
+      "organiser": "Hack Club",
+      "startDate": "2026-08-22T12:45:00.000Z"
+    },
+    "b": {
+      "title": "8-Bit Jam",
+      "source": "hackclub:3GnIQn",
+      "organiser": null,
+      "startDate": "2026-08-22T12:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"cosmo hacks\" + organiser \"Cosmo Hacks\" + start 2026-12-19 / 2026-12-18",
+    "a": {
+      "title": "Cosmo Hacks 2026",
+      "source": "devpost:30455",
+      "organiser": "Cosmo Hacks",
+      "startDate": "2026-12-19T16:00:00.000Z"
+    },
+    "b": {
+      "title": "Cosmo Hacks",
+      "source": "hackclub:rjZIxn",
+      "organiser": null,
+      "startDate": "2026-12-18T21:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"spartahack\" + organiser \"SpartaHack\" + start 2027-02-06 / 2027-02-06",
+    "a": {
+      "title": "SpartaHack 12",
+      "source": "devpost:30608",
+      "organiser": "SpartaHack",
+      "startDate": "2027-02-06T17:00:00.000Z"
+    },
+    "b": {
+      "title": "SpartaHack",
+      "source": "mlh:019f3cb6-fb24-d72c-49b9-6fe0460e3ef8",
+      "organiser": null,
+      "startDate": "2027-02-06T01:11:11.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"sand hacks\" + organiser \"CSES @ UCSD\" + start 2026-11-14 / 2026-11-14",
+    "a": {
+      "title": "SanD Hacks",
+      "source": "devpost:30697",
+      "organiser": "CSES @ UCSD",
+      "startDate": "2026-11-14T17:00:00.000Z"
+    },
+    "b": {
+      "title": "SanD Hacks",
+      "source": "mlh:01a0f9e6-f4a7-a488-8ff2-a1b83adebc0c",
+      "organiser": null,
+      "startDate": "2026-11-14T14:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"communihacks\" + organiser \"CommuniHacks\" + start 2026-11-07 / 2026-11-07",
+    "a": {
+      "title": "CommuniHacks",
+      "source": "devpost:30699",
+      "organiser": "CommuniHacks",
+      "startDate": "2026-11-07T16:30:00.000Z"
+    },
+    "b": {
+      "title": "CommuniHacks",
+      "source": "mlh:01a0b0e3-10a9-a228-13e8-7597860d8d93",
+      "organiser": null,
+      "startDate": "2026-11-07T14:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"hack the change\" + organiser \"Code the Change YYC\" + start 2026-11-07 / 2026-11-07",
+    "a": {
+      "title": "Hack the Change 2026",
+      "source": "devpost:30836",
+      "organiser": "Code the Change YYC",
+      "startDate": "2026-11-07T16:00:00.000Z"
+    },
+    "b": {
+      "title": "Hack the Change",
+      "source": "mlh:01a06251-6fac-f42e-01dc-9109348a0fdc",
+      "organiser": null,
+      "startDate": "2026-11-07T14:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"makeuc\" + organiser \"IEEE@UC\" + start 2026-11-07 / 2026-11-07",
+    "a": {
+      "title": "MakeUC 2026",
+      "source": "devpost:30884",
+      "organiser": "IEEE@UC",
+      "startDate": "2026-11-07T05:00:00.000Z"
+    },
+    "b": {
+      "title": "MakeUC",
+      "source": "mlh:019ff2b7-4055-c0b3-78bf-d33c3219c43b",
+      "organiser": null,
+      "startDate": "2026-11-07T14:30:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"sheridan datathon\" + organiser \"GDG on Campus Sheridan College\" + start 2026-11-07 / 2026-11-07",
+    "a": {
+      "title": "Sheridan Datathon 2026",
+      "source": "devpost:31146",
+      "organiser": "GDG on Campus Sheridan College",
+      "startDate": "2026-11-07T17:00:00.000Z"
+    },
+    "b": {
+      "title": "Sheridan Datathon 2026",
+      "source": "mlh:01a0abeb-120a-8e06-59f6-53c311f93702",
+      "organiser": null,
+      "startDate": "2026-11-07T14:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"onhacks\" + organiser \"ONHack Organization\" + start 2026-11-15 / 2026-11-15",
+    "a": {
+      "title": "ONHacks",
+      "source": "devpost:31190",
+      "organiser": "ONHack Organization",
+      "startDate": "2026-11-15T14:00:00.000Z"
+    },
+    "b": {
+      "title": "ONHacks",
+      "source": "hackclub:3KNIgA",
+      "organiser": null,
+      "startDate": "2026-11-15T09:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"hack western\" + organiser \"Hack Western\" + start 2026-11-21 / 2026-11-20",
+    "a": {
+      "title": "Hack Western 13",
+      "source": "devpost:31536",
+      "organiser": "Hack Western",
+      "startDate": "2026-11-21T02:00:00.000Z"
+    },
+    "b": {
+      "title": "Hack Western 13",
+      "source": "mlh:01a104c6-9b18-a67b-4a70-585e177ae7c2",
+      "organiser": null,
+      "startDate": "2026-11-20T23:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"ocsefhacks\" + organiser \"HackPac\" + start 2026-11-14 / 2026-11-14",
+    "a": {
+      "title": "OCSEFHacks 3",
+      "source": "devpost:31710",
+      "organiser": "HackPac",
+      "startDate": "2026-11-14T18:00:00.000Z"
+    },
+    "b": {
+      "title": "OCSEFhacks",
+      "source": "hackclub:pMkImX",
+      "organiser": null,
+      "startDate": "2026-11-14T08:30:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"blairhacks\" + organiser (not stated) + start 2019-03-01 / 2019-02-28",
+    "a": {
+      "title": "BlairHacks_2",
+      "source": "hackclub:0omIwW",
+      "organiser": null,
+      "startDate": "2019-03-01T00:00:00.000Z"
+    },
+    "b": {
+      "title": "BlairHacks 2",
+      "source": "hackclub:rg2IYB",
+      "organiser": null,
+      "startDate": "2019-02-28T19:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"hackphs\" + organiser (not stated) + start 2026-10-10 / 2026-10-10",
+    "a": {
+      "title": "hackPHS",
+      "source": "hackclub:0qnIzD",
+      "organiser": null,
+      "startDate": "2026-10-10T14:00:00.000Z"
+    },
+    "b": {
+      "title": "hackPHS",
+      "source": "mlh:01a0435f-fb2e-fd0c-e6eb-d7b72faff1c9",
+      "organiser": null,
+      "startDate": "2026-10-10T13:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"hackja\" + organiser (not stated) + start 2019-02-21 / 2019-02-22",
+    "a": {
+      "title": "hackJA 2019",
+      "source": "hackclub:3y7IX9",
+      "organiser": null,
+      "startDate": "2019-02-21T19:00:00.000Z"
+    },
+    "b": {
+      "title": "HackJA",
+      "source": "hackclub:pmyIbm",
+      "organiser": null,
+      "startDate": "2019-02-22T00:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"sierra hacks\" + organiser (not stated) + start 2025-05-17 / 2025-05-17",
+    "a": {
+      "title": "Sierra Hacks 2025",
+      "source": "hackclub:3BlIJW",
+      "organiser": null,
+      "startDate": "2025-05-17T08:00:00.000Z"
+    },
+    "b": {
+      "title": "Sierra Hacks 2025",
+      "source": "hackclub:r8QING",
+      "organiser": null,
+      "startDate": "2025-05-17T08:00:00.000Z"
+    }
+  },
+  {
+    "pass": 2,
+    "reason": "title \"mvhacks\" + organiser (not stated) + start 2018-10-26 / 2018-10-27",
+    "a": {
+      "title": "MVHacks 2018",
+      "source": "hackclub:3KNIQO",
+      "organiser": null,
+      "startDate": "2018-10-26T20:00:00.000Z"
+    },
+    "b": {
+      "title": "MVHacks 2.0",
+      "source": "hackclub:3zvIXd",
+      "organiser": null,
+      "startDate": "2018-10-27T00:00:00.000Z"
+    }
+  }
+]

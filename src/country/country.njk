@@ -1,0 +1,21 @@
+---
+layout: base.njk
+pagination:
+  data: site.countries
+  size: 1
+  alias: country
+  addAllPagesToCollections: false
+permalink: "/country/{{ country.slug }}/"
+eleventyComputed:
+  title: "Hackathons in {{ country.name | safe }}"
+  description: "{{ country.openCount }} open in-person and hybrid hackathons in {{ country.name | safe }}, sorted by deadline, plus past events."
+---
+<p class="crumbs"><a href="/">Home</a> / <a href="/country/">Countries</a> / {{ country.name }}</p>
+<div class="intro">
+  <div>
+    <h1>Hackathons in {{ country.name }}</h1>
+    <p>{{ country.openCount }} open now, {{ country.events.length }} on record. Online events open to {{ country.name }} are on the <a href="/?mode=online">home page</a>.</p>
+  </div>
+</div>
+{% set open = country.open %}{% set ended = country.ended %}{% set emptyText = "No open in-person hackathons in " + country.name + " right now." %}
+{% include "browse-lists.njk" %}

@@ -1,0 +1,26 @@
+---
+layout: base.njk
+pagination:
+  data: site.months
+  size: 1
+  alias: month
+  addAllPagesToCollections: false
+permalink: "/month/{{ month.slug }}/"
+eleventyComputed:
+  title: "Hackathons starting in {{ month.name | safe }}"
+  description: "{{ month.events.length }} hackathons starting in {{ month.name | safe }}, worldwide, with deadlines and links to apply."
+---
+<p class="crumbs"><a href="/">Home</a> / <a href="/month/">Months</a> / {{ month.name }}</p>
+<div class="intro"><div><h1>Hackathons starting in {{ month.name }}</h1><p>{{ month.events.length }} events, listed by start date.</p></div></div>
+{%- if month.open.length %}
+<h2>Upcoming and live <span class="muted small">({{ month.open.length }})</span></h2>
+<div class="grid">{% for e in month.open %}{% card e %}{% endfor %}</div>
+{%- endif %}
+{%- if month.ended.length %}
+<h2>Ended <span class="muted small">({{ month.ended.length }})</span></h2>
+<ul class="list">
+{%- for e in month.ended %}
+  <li><a href="/hackathons/{{ e.slug }}/">{{ e.title }}</a><span class="muted small">{{ e.startDate | range(e.endDate, e.timezone) }}</span><span class="sub">{{ e | place }} · {{ e.niches | join(', ') }} · via {{ e.platformNames | join(', ') }}</span></li>
+{%- endfor %}
+</ul>
+{%- endif %}

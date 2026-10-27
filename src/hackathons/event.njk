@@ -1,0 +1,127 @@
+---
+layout: base.njk
+pagination:
+  data: site.all
+  size: 1
+  alias: e
+  addAllPagesToCollections: false
+permalink: "/hackathons/{{ e.slug }}/"
+ogType: article
+scripts: ["/assets/js/event.js"]
+eleventyComputed:
+  title: "{{ e.title | safe }} ({{ e.startDate | date }})"
+  description: "{{ e.summary | safe }} {{ ((e.deadlineKind | deadlineLabel) + ': ' + (e.registrationDeadline | date) + '.') if e.registrationDeadline }}"
+  noindex: "{{ '' if e.indexable else 'noindex' }}"
+---
+<p class="crumbs"><a href="/">Home</a> / {% if e.nicheLinks[0] %}<a href="/niche/{{ e.nicheLinks[0].slug }}/">{{ e.nicheLinks[0].name }}</a> / {% endif %}{{ e.title }}</p>
+
+<div class="event-head">
+  <div>
+    <h1>{{ e.title }}</h1>
+    <p class="sub">{{ e.startDate | range(e.endDate, e.timezone) }} · {{ e | place }}{% if e.organiser %} · by {{ e.organiser }}{% endif %}</p>
+  </div>
+  <div class="actions">
+    <a class="btn btn-primary" href="{{ e.applyUrl }}" rel="noopener nofollow" target="_blank">
+      {%- if e.status == 'ended' %}View on {{ e.applyName }}{% elif e.applyPlatform == 'hackclub' %}Apply via Hack Club listing{% elif e.applyPlatform == 'seed' %}Apply on the official site{% else %}Apply on {{ e.applyName }}{% endif -%}
+    </a>
+    {%- if e.registrationDeadline %}
+    <a class="btn btn-secondary" href="/hackathons/{{ e.slug }}/deadline.ics" download>Add deadline to calendar (.ics)</a>
+    {%- else %}
+    <a class="btn btn-secondary" href="/hackathons/{{ e.slug }}/event.ics" download>Add event dates to calendar (.ics)</a>
+    {%- endif %}
+  </div>
+</div>
+
+<div class="status-banner {{ e.status }}" id="status-banner" data-status="{{ e.status }}" data-start="{{ e.startDate }}" data-end="{{ e.endDate }}">
+  {%- if e.status == 'upcoming' %}
+  <strong>Upcoming.</strong> Starts {{ e.startDate | dateLong(e.timezone) }}.
+  {%- elif e.status == 'live' %}
+  <strong>Live now.</strong> Runs until {{ e.endDate | dateLong(e.timezone) }}.
+  {%- else %}
+  <strong>Ended.</strong> This event finished on {{ e.endDate | dateLong(e.timezone) }}. This page stays up as a permanent record.
+  {%- endif %}
+  {%- if e.status != 'ended' and e.deadlineState == 'passed' %}
+  The listed {{ 'submission' if e.deadlineKind == 'submission' else 'registration' }} deadline has passed.
+  {%- elif e.status != 'ended' and e.registrationDeadline %}
+  {{ 'Submissions close' if e.deadlineKind == 'submission' else 'Registration closes' }} {{ e.registrationDeadline | dateTime(e.timezone) }}.
+  {%- elif e.status != 'ended' %}
+  No deadline stated by the source.
+  {%- endif %}
+</div>
+
+<div class="event-body">
+  <div>
+    <section class="description" aria-labelledby="about">
+      <h2 id="about" style="margin-top:0">About this hackathon</h2>
+      {%- if e.descriptionStatus == 'placeholder' or e.descriptionStatus == 'review' %}
+      <p class="notice">Placeholder description: assembled automatically from the listed facts. An original write-up is pending{% if e.descriptionStatus == 'review' %} editorial review{% endif %}.</p>
+      {%- endif %}
+      {%- for para in e.description | paras %}
+      <p>{{ para }}</p>
+      {%- endfor %}
+    </section>
+
+    <section aria-labelledby="prizes">
+      <h2 id="prizes">Prizes</h2>
+      {%- if e.prizeText %}
+      <p class="stated">{{ e.prizeText }}</p>
+      <p class="source-note">As stated on {{ e.platformNames | join(' and ') }}. Check the source for the full prize list and rules.</p>
+      {%- else %}
+      <p class="muted">Not stated by the source.</p>
+      {%- endif %}
+    </section>
+
+    <section aria-labelledby="eligibility">
+      <h2 id="eligibility">Who can take part</h2>
+      {%- if e.eligibilityText %}
+      <p class="stated">{{ e.eligibilityText }}</p>
+      <p class="source-note">As stated on {{ e.platformNames | join(' and ') }}.{% if e.eligibilityLabel %} Filed under: {{ e.eligibilityLabel }}.{% endif %}</p>
+      {%- elif e.eligibilityLabel %}
+      <p>{{ e.eligibilityLabel }}.</p>
+      <p class="source-note">The source states no eligibility text; this category comes from the platform's scope ({{ e.platformNames | join(', ') }}).</p>
+      {%- else %}
+      <p class="muted">Not stated by the source. Check the event page before applying.</p>
+      {%- endif %}
+    </section>
+
+    {%- if e.series %}
+    <section aria-labelledby="series">
+      <h2 id="series">Part of a series</h2>
+      <p>{{ e.title }} is one edition of <a href="/series/{{ e.seriesSlug }}/">{{ e.series }}</a>. See every edition on the series page.</p>
+    </section>
+    {%- endif %}
+  </div>
+
+  <aside aria-label="Key facts">
+    <table class="facts">
+      <tbody>
+        <tr><th scope="row">Status</th><td><span class="badge badge-{{ e.status }}">{{ e.status | statusLabel }}</span></td></tr>
+        <tr><th scope="row">Dates</th><td>{{ e.startDate | dateTime(e.timezone) }}<br>to {{ e.endDate | dateTime(e.timezone) }}</td></tr>
+        <tr><th scope="row">{{ e.deadlineKind | deadlineLabel }}</th><td>
+          {%- if e.registrationDeadline %}
+          <time datetime="{{ e.registrationDeadline }}" id="deadline">{{ e.registrationDeadline | dateTime(e.timezone) }}</time>
+          <span class="local-time" id="deadline-local" data-deadline="{{ e.registrationDeadline }}"{% if e.timezone %} data-tz="{{ e.timezone }}"{% endif %}></span>
+          {%- else %}
+          <span class="muted">Not stated by the source</span>
+          {%- endif %}
+        </td></tr>
+        <tr><th scope="row">Format</th><td>{{ e.mode | modeLabel }}</td></tr>
+        <tr><th scope="row">Location</th><td>
+          {%- if e.mode == 'online' %}Online{% else %}
+            {%- if e.city %}{{ e.city }}{% if e.country %}, {% endif %}{% endif %}{% if e.country %}<a href="/country/{{ e.countrySlug }}/">{{ e.country }}</a>{% endif %}
+            {%- if e.locationText and e.locationText != e.city %}{% if e.city or e.country %}<br>{% endif %}<span class="muted small">Listed as: {{ e.locationText }}</span>{% endif %}
+            {%- if not e.city and not e.country and not e.locationText %}<span class="muted">Not stated</span>{% endif %}
+          {%- endif %}
+        </td></tr>
+        <tr><th scope="row">Organiser</th><td>{{ e.organiser or "Not stated" }}</td></tr>
+        {%- if e.series %}<tr><th scope="row">Series</th><td><a href="/series/{{ e.seriesSlug }}/">{{ e.series }}</a></td></tr>{% endif %}
+        <tr><th scope="row">Team size</th><td>{{ e.teamSizeText or "Not stated" }}</td></tr>
+        <tr><th scope="row">Niches</th><td class="tags-inline">{% for n in e.nicheLinks %}<a href="/niche/{{ n.slug }}/">{{ n.name }}</a>{% endfor %}</td></tr>
+        <tr><th scope="row">Listed on</th><td>{% for s in e.sourceLinks %}<a href="{{ s.url }}" rel="noopener nofollow">{{ s.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</td></tr>
+        <tr><th scope="row">Last checked</th><td>{{ e.lastCheckedAt | date }}</td></tr>
+      </tbody>
+    </table>
+    <p class="source-note" style="margin-top:8px">Facts come from the listing{{ 's' if e.sources.length > 1 }} above. hackathon.so does not take applications; use the apply button to register on {{ e.applyName }}.</p>
+  </aside>
+</div>
+<script type="application/ld+json">{{ e.jsonld | json | safe }}</script>

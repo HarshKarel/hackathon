@@ -1,0 +1,14 @@
+---
+layout: base.njk
+title: Hackathon series
+description: Hackathons that run as a series, with every edition on one roll-up page.
+---
+<h1>Series</h1>
+<p class="muted">Events that run as a series. Each series page rolls up every edition we have a page for.</p>
+{%- if site.series.length %}
+<ul class="index-grid">
+{%- for s in site.series %}
+  <li><a href="/series/{{ s.slug }}/">{{ s.name }} <span class="n">{{ s.events.length }} edition{{ 's' if s.events.length != 1 }}</span></a></li>
+{%- endfor %}
+</ul>
+{%- else %}<p class="empty">No series yet.</p>{%- endif %}

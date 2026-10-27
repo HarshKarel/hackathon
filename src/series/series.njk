@@ -1,0 +1,29 @@
+---
+layout: base.njk
+pagination:
+  data: site.series
+  size: 1
+  alias: s
+  addAllPagesToCollections: false
+permalink: "/series/{{ s.slug }}/"
+eleventyComputed:
+  title: "{{ s.name | safe }}: every edition"
+  description: "All {{ s.events.length }} editions of {{ s.name | safe }} on hackathon.so, with dates, deadlines and links to each event page."
+---
+<p class="crumbs"><a href="/">Home</a> / <a href="/series/">Series</a> / {{ s.name }}</p>
+<div class="intro"><div><h1>{{ s.name }}</h1><p>{{ s.events.length }} edition{{ 's' if s.events.length != 1 }} on record, newest first.</p></div></div>
+{%- if s.open.length %}
+<h2>Open now</h2>
+<div class="grid">{% for e in s.open %}{% card e %}{% endfor %}</div>
+{%- endif %}
+<h2>All editions</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Edition</th><th>Dates</th><th>Where</th><th>Status</th></tr></thead>
+  <tbody>
+  {%- for e in s.all %}
+    <tr><td><a href="/hackathons/{{ e.slug }}/">{{ e.title }}</a></td><td>{{ e.startDate | range(e.endDate, e.timezone) }}</td><td>{{ e | place }}</td><td><span class="badge badge-{{ e.status }}">{{ e.status | statusLabel }}</span></td></tr>
+  {%- endfor %}
+  </tbody>
+</table>
+</div>
