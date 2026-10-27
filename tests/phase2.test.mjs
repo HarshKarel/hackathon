@@ -60,9 +60,12 @@ test('kaggle: competitions typed as such, Basic auth, entry deadline as registra
   assert.ok(record.niches.includes('Data Science'));
   assert.equal(kaggle.slugFromRef('titanic'), 'titanic');
   let auth;
-  const http = { getJson: async (url, opts) => { auth = opts.headers.authorization; return url.includes('page=1') ? [c] : []; } };
+  const tutorial = { id: 8, ref: 'titanic', title: 'Titanic', category: 'Getting Started', deadline: '2030-01-01T00:00:00Z' };
+  let noCache;
+  const http = { getJson: async (url, opts) => { auth = opts.headers.authorization; noCache = opts.noCache; return url.includes('page=1') ? [c, tutorial] : []; } };
   const res = await kaggle.default.fetch({ http, env: { KAGGLE_USERNAME: 'u', KAGGLE_KEY: 'k' }, log: () => {} });
-  assert.equal(res.listings.length, 1);
+  assert.deepEqual(res.listings.map((l) => l.title), ['Test Comp'], 'Getting Started tutorials are skipped');
+  assert.equal(noCache, true, 'authenticated responses are never written to the disk cache');
   assert.equal(auth, `Basic ${Buffer.from('u:k').toString('base64')}`);
 });
 
@@ -106,4 +109,15 @@ test('guides: ten drafts with the requested titles, files present, no em dashes'
     assert.ok(!body.includes('\u2014'), `${g.slug} has an em dash`);
     assert.ok(!(g.title + g.description).includes('\u2014'));
   }
+});
+
+test('unstop: the event ends when its last stated round ends', () => {
+  const detail = {
+    start_date: '2026-10-01T00:00:00+05:30',
+    end_date: '2026-10-20T23:59:00+05:30',
+    rounds: [{ details: [{ end_date: '2026-10-20T23:59:00+05:30' }] }, { details: [{ end_date: '2026-11-08T18:00:00+05:30' }, { end_date: null }] }],
+  };
+  assert.equal(unstop.latestEnd({ end_date: '2026-10-20T23:59:00+05:30' }, detail), '2026-11-08T18:00:00+05:30');
+  assert.equal(unstop.latestEnd({ end_date: '2026-10-20T23:59:00+05:30' }, { rounds: [] }), '2026-10-20T23:59:00+05:30');
+  assert.equal(unstop.latestEnd({}, {}), null);
 });

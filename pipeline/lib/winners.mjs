@@ -69,7 +69,11 @@ export async function devpostWinners(http, hackathonUrl, { maxPages = 5 } = {}) 
   const winners = [];
   let sawNonWinner = false;
   for (let page = 1; page <= maxPages && !sawNonWinner; page++) {
-    const { items, lastPage } = parseDevpostGallery(await http.getText(page === 1 ? gallery : `${gallery}?page=${page}`));
+    const html = await http.getText(page === 1 ? gallery : `${gallery}?page=${page}`);
+    // A real gallery (even an empty one) has this element. Anything else
+    // (changed markup, an interstitial) must not be read as "no winners".
+    if (!/id="submission-gallery"/.test(html)) throw new Error(`unrecognised project gallery page at ${gallery}`);
+    const { items, lastPage } = parseDevpostGallery(html);
     for (const it of items) {
       if (!it.winner) { sawNonWinner = true; break; }
       winners.push(it);
@@ -80,13 +84,9 @@ export async function devpostWinners(http, hackathonUrl, { maxPages = 5 } = {}) 
   for (const w of winners) {
     let places = [];
     let team = [];
-    if (w.projectUrl) {
-      try {
-        ({ places, team } = parseDevpostProject(await http.getText(w.projectUrl), base.host));
-      } catch {
-        /* keep the gallery facts if the project page fails */
-      }
-    }
+    // A failed project page fails the whole check (retried next week), so
+    // winners are never stored with a missing place or team.
+    if (w.projectUrl) ({ places, team } = parseDevpostProject(await http.getText(w.projectUrl), base.host));
     // A project can win several prizes: one row per place, as stated. With
     // no prize name on the project page, the gallery badge ("Winner") is the
     // stated place.
@@ -105,21 +105,21 @@ export async function devpostWinners(http, hackathonUrl, { maxPages = 5 } = {}) 
 export async function devfolioWinners(http, hackathonId) {
   const api = 'https://api.devfolio.co/api';
   const prizes = await http.getJson(`${api}/hackathons/${encodeURIComponent(hackathonId)}/prizes`);
+  if (!Array.isArray(prizes)) throw new Error(`unexpected Devfolio prizes response for ${hackathonId}`);
   const out = [];
-  for (const p of Array.isArray(prizes) ? prizes : []) {
+  for (const p of prizes) {
     for (const pr of p.projects || []) {
-      let projectUrl = null;
-      try {
-        const d = await http.getJson(`${api}/projects/${encodeURIComponent(pr.uuid)}`);
-        if (d?.project?.slug) projectUrl = safeUrl(`https://devfolio.co/projects/${d.project.slug}`);
-      } catch {
-        /* name and team are still stated without the link */
-      }
+      // A failed project lookup fails the whole check (retried next week).
+      const d = await http.getJson(`${api}/projects/${encodeURIComponent(pr.uuid)}`);
+      const projectUrl = d?.project?.slug ? safeUrl(`https://devfolio.co/projects/${d.project.slug}`) : null;
+      // Team as stated: the team name, or the members' names when the team
+      // has none.
+      const members = (d?.members || []).map((m) => [m.first_name, m.last_name].filter(Boolean).join(' ').trim()).filter(Boolean);
       out.push({
         place: String(p.name || '').trim() || 'Winner',
         project: String(pr.name || '').trim() || null,
         projectUrl,
-        team: pr.team?.name ? String(pr.team.name).trim() : null,
+        team: pr.team?.name ? String(pr.team.name).trim() : members.length ? members.join(', ') : null,
       });
     }
   }

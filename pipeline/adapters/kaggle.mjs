@@ -62,6 +62,9 @@ export default {
     const listings = [];
     const errors = [];
     for (const c of all) {
+      // "Getting Started" competitions are permanent tutorials (e.g. Titanic)
+      // with far-off deadlines, not time-bound competitions.
+      if (/getting started/i.test(String(c.category || ''))) continue;
       try {
         listings.push(toListing(c));
       } catch (err) {

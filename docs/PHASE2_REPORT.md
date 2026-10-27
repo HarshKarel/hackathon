@@ -139,11 +139,17 @@ errors at either width.
   field names (`ref`, `deadline`, `newEntrantDeadline`, `reward`,
   `maxTeamSize`, `enabledDate`) are **not** defined in that spec. They come
   from the official client's known output and are handled defensively. The
-  first credentialed run should be checked.
+  first credentialed run should be checked. "Getting Started" tutorial
+  competitions (such as Titanic) are skipped because they never really end;
+  the prize is shown exactly as Kaggle states it.
 - **Unstop's start dates.** Unstop's stated competition start is usually
-  the opportunity's start, not the hackathon round. So all 291 Unstop events
-  are currently "live", matching Unstop's own LIVE label. Round dates are not
-  read.
+  the opportunity's start (registration opening), not the hackathon round.
+  So all 291 Unstop events are currently "live", matching Unstop's own LIVE
+  label. The start is kept as stated.
+- **Unstop's end dates.** Unstop's stated end can fall before a later round
+  (for example an in-person final). The end date is now the latest end Unstop
+  states for the event or any of its rounds. This moved the end date of 5
+  events, such as Fetch-A-Thon 3.0 (from 5 Nov to 8 Nov 2026, UTC).
 - **Unstop competitions are our own classification.** Capture the flag, bug
   bounty and quiz listings are typed as competitions by their titles.
 - **Unstop history is not back-filled.** Its "expired" list is not sorted by
@@ -154,8 +160,10 @@ errors at either width.
     Some organisers name prizes after the item (Marina Hacks lists a drone
     model), and that is shown as stated.
   - Devpost: the team is the "Created by" names; some are usernames.
-  - Devfolio: the team is the team name, and some winning teams have none,
-    shown as "Not stated".
+  - Devfolio: the team is the team name. When a team has no name, the
+    members' names are listed as Devfolio states them.
+  - One Devpost winner (Relay, at localhost 2.0) was made by a user in
+    private mode. Devpost shows no name, so the team reads "Not stated".
 - **Em dashes in winners.** Names are copied exactly, including any em
   dashes (there are none today). The site check exempts only the winners
   table.
@@ -174,4 +182,32 @@ errors at either width.
   Oct 2026; interfaces change. The rest is editorial advice in the site's
   voice and should be reviewed for tone and accuracy.
 - **Descriptions are still placeholders** because no `LLM_API_KEY` is set.
-- REVIEW_PLACEHOLDER
+
+## 6. Self-review before handing over
+
+I reviewed the Phase 2 diff for bugs. It raised 8 findings: 7 were fixed and
+1 was a false alarm.
+
+- **"Not published" was too easy to write.** Two cases could wrongly record
+  "not published":
+  - one platform failed while another said "none yet";
+  - a Devpost page loaded but was not a project gallery.
+  Both now count as a failed check: the old entry is kept and the event is
+  checked again next week.
+- **Missing details.** A failed project-page fetch could store a winner with
+  no place or team. Now it fails the whole check, so it is retried next
+  week.
+- **Bad Devfolio replies.** An unexpected Devfolio prizes response now fails
+  the check instead of being read as "no winners".
+- **Unstop end dates** now include later rounds (see above).
+- **Kaggle** skips "Getting Started" tutorials.
+- **Competition pages** say "About this competition" instead of "About this
+  hackathon".
+- **Devfolio teams with no name** now list the members (see above). I
+  re-read Boss Battle's saved responses with this fix, so its two unnamed
+  teams now show the members' names.
+- **False alarm.** The review flagged one sentence in the Devpost guide as
+  unsupported. The help page's raw HTML does state it.
+
+Tests: 75 pass, including regression tests for each fix. Site check: all
+2,624 files pass.

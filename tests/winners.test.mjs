@@ -22,6 +22,8 @@ test('Devpost project: places for this hackathon only, team as listed', () => {
   assert.deepEqual(p.team, ['Ada Example', 'Bo Sample']);
 });
 
+const GALLERY_EMPTY = '<html><div id="submission-gallery"><div class="row"></div></div></html>';
+
 function fakeHttp(pages) {
   const calls = [];
   return {
@@ -77,7 +79,7 @@ test('candidates: ended in the last 60 days, winners empty, Devpost or Devfolio 
 
 test('checkEvent: nothing published is stated explicitly; failures keep the old entry', async () => {
   const e = ev('quiet', '2026-10-20', [dp('quiet')]);
-  const empty = fakeHttp({ 'https://quiet.devpost.com/project-gallery': '<html><div class="row"></div></html>' });
+  const empty = fakeHttp({ 'https://quiet.devpost.com/project-gallery': GALLERY_EMPTY });
   const r = await checkEvent(e, empty, NOW);
   assert.equal(r.entry.winnersStatus, 'not published');
   assert.deepEqual(r.entry.checked, ['devpost']);
@@ -85,4 +87,32 @@ test('checkEvent: nothing published is stated explicitly; failures keep the old 
   const r2 = await checkEvent(e, down, NOW);
   assert.equal(r2.entry, null, 'a failed check never writes "not published"');
   assert.equal(r2.failures.length, 1);
+});
+
+test('checkEvent: one platform failing keeps the old entry even when another says nothing published', async () => {
+  const e = ev('both', '2026-10-20', [dp('both'), { platform: 'devfolio', sourceId: 'dfid', url: 'https://both.devfolio.co/' }]);
+  const http = fakeHttp({ 'https://both.devpost.com/project-gallery': GALLERY_EMPTY });
+  const r = await checkEvent(e, http, NOW);
+  assert.equal(r.entry, null);
+  assert.match(r.failures[0], /^devfolio:/);
+});
+
+test('Devpost winners: an unrecognised gallery page or a failed project page fails the check', async () => {
+  const odd = fakeHttp({ 'https://odd.devpost.com/project-gallery': '<html><p>Please wait</p></html>' });
+  await assert.rejects(devpostWinners(odd, 'https://odd.devpost.com/'), /unrecognised project gallery/);
+  const noProject = fakeHttp({ 'https://testville-hacks.devpost.com/project-gallery': fx('devpost-gallery.html') });
+  await assert.rejects(devpostWinners(noProject, 'https://testville-hacks.devpost.com/'), /HTTP 404/);
+});
+
+test('Devfolio winners: members named when the team has no name; bad responses fail the check', async () => {
+  const api = 'https://api.devfolio.co/api';
+  const http = fakeHttp({
+    [`${api}/hackathons/abc/prizes`]: [{ name: 'Track Winner', projects: [{ name: 'Solo', uuid: 'p2', team: {} }] }],
+    [`${api}/projects/p2`]: { project: { slug: 'solo-1a2b' }, members: [{ first_name: 'Ada', last_name: 'Example' }, { first_name: 'Bo', last_name: '' }] },
+  });
+  const r = await devfolioWinners(http, 'abc');
+  assert.equal(r.winners[0].team, 'Ada Example, Bo');
+  await assert.rejects(devfolioWinners(fakeHttp({ [`${api}/hackathons/x/prizes`]: { error: 'nope' } }), 'x'), /unexpected Devfolio prizes/);
+  const lost = fakeHttp({ [`${api}/hackathons/abc/prizes`]: [{ name: 'Track Winner', projects: [{ name: 'Solo', uuid: 'p2' }] }] });
+  await assert.rejects(devfolioWinners(lost, 'abc'), /HTTP 404/);
 });

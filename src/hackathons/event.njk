@@ -52,7 +52,7 @@ eleventyComputed:
 <div class="event-body">
   <div>
     <section class="description" aria-labelledby="about">
-      <h2 id="about" style="margin-top:0">About this hackathon</h2>
+      <h2 id="about" style="margin-top:0">About this {{ 'competition' if e.type == 'competition' else 'hackathon' }}</h2>
       {%- if e.descriptionStatus == 'placeholder' or e.descriptionStatus == 'review' %}
       <p class="notice">Placeholder description: assembled automatically from the listed facts. An original write-up is pending{% if e.descriptionStatus == 'review' %} editorial review{% endif %}.</p>
       {%- endif %}

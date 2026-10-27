@@ -38,6 +38,16 @@ export function formatUnstopPrizes(prizes) {
 
 const MODE = { online: 'online', offline: 'in-person', hybrid: 'hybrid', india: 'in-person' };
 
+// Unstop's stated end_date can fall before the last round (for example an
+// in-person final after the online round closes). The event ends when its
+// last stated round ends.
+export function latestEnd(it, detail) {
+  const ends = [it.end_date, detail?.end_date, ...(detail?.rounds || []).flatMap((r) => (r.details || []).map((d) => d.end_date))]
+    .filter(Boolean)
+    .filter((v) => !Number.isNaN(Date.parse(v)));
+  return ends.sort((a, b) => Date.parse(b) - Date.parse(a))[0] || null;
+}
+
 export function toListing(it, detail) {
   const url = it.seo_url || `${BASE}/${it.public_url}`;
   const addr = it.address_with_country_logo || {};
@@ -59,7 +69,7 @@ export function toListing(it, detail) {
     title: it.title,
     organiser: it.organisation?.name || null,
     startDate: detail.start_date,
-    endDate: it.end_date || detail.end_date,
+    endDate: latestEnd(it, detail),
     registrationDeadline: regn.end_regn_dt || null,
     deadlineKind: 'registration',
     mode,

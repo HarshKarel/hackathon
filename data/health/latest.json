@@ -1,8 +1,21 @@
 {
-  "runId": "2026-10-27T07-15-58-755Z",
-  "startedAt": "2026-10-27T07:15:58.755Z",
-  "finishedAt": "2026-10-27T07:25:44.254Z",
+  "runId": "2026-10-27T07-49-17-678Z",
+  "startedAt": "2026-10-27T07:49:17.678Z",
+  "finishedAt": "2026-10-27T07:49:18.516Z",
   "sources": {
+    "unstop": {
+      "name": "Unstop",
+      "ok": true,
+      "fetched": 291,
+      "listings": 291,
+      "normalised": 291,
+      "errors": [],
+      "errorCount": 0,
+      "durationMs": 342,
+      "lastSuccessAt": "2026-10-27T07:15:58.755Z",
+      "lastSuccessCount": 291,
+      "fromCache": true
+    },
     "seed": {
       "name": "hackathon.so curated",
       "ok": true,
@@ -14,7 +27,8 @@
       "durationMs": 5,
       "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 3,
-      "fromCache": false
+      "fromCache": false,
+      "skippedThisRun": true
     },
     "kaggle": {
       "name": "Kaggle",
@@ -29,7 +43,8 @@
       "durationMs": 2,
       "lastSuccessAt": null,
       "lastSuccessCount": null,
-      "fromCache": false
+      "fromCache": false,
+      "skippedThisRun": true
     },
     "hackerearth": {
       "name": "HackerEarth",
@@ -42,7 +57,8 @@
       "durationMs": 2383,
       "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 2,
-      "fromCache": false
+      "fromCache": false,
+      "skippedThisRun": true
     },
     "ethglobal": {
       "name": "ETHGlobal",
@@ -55,7 +71,8 @@
       "durationMs": 3476,
       "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 82,
-      "fromCache": false
+      "fromCache": false,
+      "skippedThisRun": true
     },
     "mlh": {
       "name": "MLH",
@@ -68,7 +85,8 @@
       "durationMs": 3485,
       "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 87,
-      "fromCache": false
+      "fromCache": false,
+      "skippedThisRun": true
     },
     "hackclub": {
       "name": "Hack Club",
@@ -81,7 +99,8 @@
       "durationMs": 4836,
       "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 918,
-      "fromCache": false
+      "fromCache": false,
+      "skippedThisRun": true
     },
     "devfolio": {
       "name": "Devfolio",
@@ -94,7 +113,8 @@
       "durationMs": 30262,
       "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 128,
-      "fromCache": false
+      "fromCache": false,
+      "skippedThisRun": true
     },
     "devpost": {
       "name": "Devpost",
@@ -107,34 +127,22 @@
       "durationMs": 320893,
       "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 218,
-      "fromCache": false
-    },
-    "unstop": {
-      "name": "Unstop",
-      "ok": true,
-      "fetched": 291,
-      "listings": 291,
-      "normalised": 291,
-      "errors": [],
-      "errorCount": 0,
-      "durationMs": 583235,
-      "lastSuccessAt": "2026-10-27T07:15:58.755Z",
-      "lastSuccessCount": 291,
-      "fromCache": false
+      "fromCache": false,
+      "skippedThisRun": true
     }
   },
   "totals": {
-    "recordsNormalised": 1729,
-    "eventsAfterDedupe": 1704,
+    "recordsNormalised": 291,
+    "eventsAfterDedupe": 291,
     "pass1Merges": 0,
-    "pass2Merges": 25,
+    "pass2Merges": 0,
     "storeEvents": 869,
-    "added": 291,
-    "updated": 350,
-    "skippedOldEnded": 1063,
+    "added": 0,
+    "updated": 291,
+    "skippedOldEnded": 0,
     "redirects": 0,
     "seriesDetected": 3,
-    "matchedByPass1": 350,
+    "matchedByPass1": 291,
     "matchedByPass2": 0,
     "absorbed": [],
     "upcoming": 202,
@@ -159,14 +167,14 @@
     "inputTokens": 0,
     "outputTokens": 0,
     "rewritesAttempted": 0,
-    "newOrChangedWithoutAi": 293,
+    "newOrChangedWithoutAi": 5,
     "flaggedForReview": 0,
     "apiErrors": 0
   },
   "http": {
-    "requests": 793,
-    "cacheHits": 0,
+    "requests": 0,
+    "cacheHits": 312,
     "robotsBlocked": 0,
-    "usedCache": false
+    "usedCache": true
   }
 }

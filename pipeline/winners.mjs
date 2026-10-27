@@ -65,7 +65,9 @@ export async function checkEvent(e, http, now, prev = {}) {
       failures.push(`${src.platform}: ${err.message}`);
     }
   }
-  if (!tried.length) return { entry: null, failures };
+  // "Not published" is only written when every listed platform was checked
+  // successfully. Any failure keeps the previous entry and retries next week.
+  if (!tried.length || failures.length) return { entry: null, failures };
   return {
     entry: {
       winnersStatus: 'not published',
