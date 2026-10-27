@@ -1,0 +1,103 @@
+{
+  "ranAt": "2026-10-27T08:39:44.827Z",
+  "event": "hellohacks-2026",
+  "passed": 19,
+  "failed": 0,
+  "results": [
+    {
+      "name": "event page shows a \"Claim this listing\" link",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "claim form posts to the configured form endpoint",
+      "ok": true,
+      "detail": "https://formspree.io/f/test1234"
+    },
+    {
+      "name": "claim form uses POST",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "listing URL is filled in from the event link",
+      "ok": true,
+      "detail": "http://localhost:41103/hackathons/hellohacks-2026/"
+    },
+    {
+      "name": "event title is shown above the form",
+      "ok": true,
+      "detail": "Listing: HelloHacks"
+    },
+    {
+      "name": "email subject names the event",
+      "ok": true,
+      "detail": "hackathon.so listing claim: HelloHacks"
+    },
+    {
+      "name": "page is not indexed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "empty form is blocked by the browser (required fields)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "invalid email is blocked",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "one request sent to the form endpoint",
+      "ok": true,
+      "detail": "https://formspree.io/f/test1234"
+    },
+    {
+      "name": "request asks for a JSON reply (no page change)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "payload has name, organisation, email, changes and listing",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "spam trap field is sent empty",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "confirmation shown and form hidden",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "an error from the form service is shown",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "the button is enabled again after an error",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "no script errors on the claim page",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "without JavaScript the form posts directly to the endpoint",
+      "ok": true,
+      "detail": "_subject=hackathon.so+listing+claim&listing=https%3A%2F%2Fhackathon.so%2Fhackathons%2Fhellohacks-2026%2F&name=Ada+Exampl"
+    },
+    {
+      "name": "claim page fits a 390px phone screen",
+      "ok": true,
+      "detail": "390px"
+    }
+  ]
+}

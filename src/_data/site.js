@@ -2,13 +2,15 @@
 // (data/events.json and data/health/latest.json). Status is recomputed at
 // build time so a page built later than the pipeline run is still right.
 import fs from 'node:fs';
-import { NICHES, PATHS, PLATFORMS, QUALITY_FLOOR, SITE } from '../../pipeline/config.mjs';
+import { IDEAS, NICHES, PATHS, PLATFORMS, QUALITY_FLOOR, SITE } from '../../pipeline/config.mjs';
 import { computeStatus, deadlineState } from '../../pipeline/lib/status.mjs';
 import { dayKey, toInstant } from '../../pipeline/lib/dates.mjs';
 import { ELIGIBILITY_LABELS } from '../../pipeline/lib/eligibility.mjs';
 import { nicheSlug } from '../../pipeline/lib/niches.mjs';
 import { slugify } from '../../pipeline/lib/text.mjs';
 import { suggestGuideKeys } from '../_lib/suggest.js';
+import { decorateIdea, matchIdeas } from '../_lib/ideas.js';
+import { allIdeas, DIFFICULTIES, DIFFICULTY_LABELS } from '../../pipeline/lib/ideas.mjs';
 import guidesData from './guides.js';
 
 function readJson(file, fallback) {
@@ -89,6 +91,10 @@ export default function () {
   const winners = readJson(PATHS.winners, { events: {} }).events || {};
   const guides = guidesData();
   const health = readJson(PATHS.healthLatest, { sources: {} });
+  // Idea cards: hand-written seed cards, then generated ones (newest first).
+  const seedIdeas = readJson(PATHS.ideasSeed, { ideas: [] });
+  const generatedIdeas = readJson(PATHS.ideasGenerated, { ideas: [] });
+  const ideas = allIdeas(seedIdeas, generatedIdeas).map(decorateIdea);
 
   const all = store.events.filter((e) => e.published !== false);
   for (const e of all) {
@@ -103,6 +109,9 @@ export default function () {
     e.monthKey = monthOf(e);
     e.eligibilityLabel = e.eligibility ? ELIGIBILITY_LABELS[e.eligibility] : null;
     e.type = e.type || 'hackathon';
+    // Organiser fields (set by hand when a listing is claimed).
+    e.featured = e.featured === true;
+    e.claimedBy = e.claimedBy || '';
     // Winners come from the weekly winners pipeline (data/winners.json).
     const w = winners[e.slug];
     e.winnersStatus = w?.winnersStatus || null;
@@ -137,6 +146,10 @@ export default function () {
     };
   }
   for (const e of all) e.jsonld = eventJsonLd(e);
+  const ideaMatches = matchIdeas(all, ideas, { limit: IDEAS.perEvent });
+  for (const e of all) e.ideaStarters = ideaMatches.get(e.slug) || [];
+  // Feed order: newest cards first, then by title.
+  const ideaFeed = [...ideas].sort((a, b) => b.source.date.localeCompare(a.source.date) || a.title.localeCompare(b.title));
   const byDeadline = deadlineSort(now);
   const open = all.filter((e) => e.status !== 'ended').sort(byDeadline);
   const ended = all.filter((e) => e.status === 'ended').sort((a, b) => toInstant(b.endDate, { endOfDay: true }) - toInstant(a.endDate, { endOfDay: true }));
@@ -238,6 +251,11 @@ export default function () {
       ...niches.map((n) => ({ slug: n.slug, name: `${n.name} hackathons`, niche: n.name, count: n.openCount })),
     ],
     redirects: Object.entries(store.redirects || {}).map(([from, to]) => ({ from, to })),
+    ideas: ideaFeed,
+    ideaNiches: NICHES.map((name) => ({ name, slug: nicheSlug(name), count: ideas.filter((i) => i.niches.includes(name)).length })),
+    ideaDifficulties: DIFFICULTIES.map((key) => ({ key, label: DIFFICULTY_LABELS[key], count: ideas.filter((i) => i.difficulty === key).length })),
+    // Claim form endpoint (for example a Formspree form URL), set at build time.
+    claimFormEndpoint: process.env.CLAIM_FORM_ENDPOINT || '',
     counts: {
       total: all.length,
       open: open.length,
@@ -249,6 +267,10 @@ export default function () {
       winnersNotPublished: all.filter((e) => e.winnersStatus === 'not published').length,
       placeholders: all.filter((e) => e.descriptionStatus === 'placeholder' || e.descriptionStatus === 'review').length,
       indexable: all.filter((e) => e.indexable).length,
+      ideas: ideas.length,
+      seedIdeas: ideas.filter((i) => i.source.kind === 'seed').length,
+      generatedIdeas: ideas.filter((i) => i.source.kind === 'generated').length,
+      eventsWithIdeas: all.filter((e) => e.ideaStarters.length).length,
     },
   };
 }

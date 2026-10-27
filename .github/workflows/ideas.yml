@@ -1,0 +1,56 @@
+# Weekly idea generation. Adds up to 10 idea cards to the thinnest niches
+# through the Gemini batch flow (pipeline/ideas.mjs), then commits the new
+# cards, the rejection log and the run logs back to the branch.
+#
+# Needs, under Settings > Secrets and variables > Actions:
+#   secret   LLM_API_KEY  a Google AI Studio API key (paid tier: the Batch API
+#                         is not available on the free tier)
+#   variable LLM_MODEL    the Gemini model id, for example gemini-3.8-flash
+name: Ideas (weekly)
+
+on:
+  schedule:
+    - cron: '41 5 * * 3' # Wednesdays 05:41 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Never run two data-writing jobs at once.
+concurrency:
+  group: data-store
+  cancel-in-progress: false
+
+jobs:
+  ideas:
+    runs-on: ubuntu-latest
+    # A batch job usually finishes in minutes; the script stops waiting
+    # after 330 minutes and logs the job id.
+    timeout-minutes: 345
+    env:
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      LLM_MODEL: ${{ vars.LLM_MODEL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run ideas
+      - name: Commit new ideas and logs
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in data/ideas-generated.json data/ideas-rejected.jsonl data/health/ideas-runs.jsonl data/health/ideas-latest.json data/health/ai-runs.jsonl; do
+            if [ -e "$f" ]; then git add "$f"; fi
+          done
+          if git diff --cached --quiet; then
+            echo "No idea changes."
+          else
+            git commit -m "Weekly idea generation"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

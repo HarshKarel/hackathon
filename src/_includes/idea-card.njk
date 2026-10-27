@@ -1,0 +1,19 @@
+{#- One idea card, expandable to its full detail. Expects `idea`. -#}
+<details class="idea" id="idea-{{ idea.id }}" data-niches="{{ idea.nicheSlugs }}" data-difficulty="{{ idea.difficulty }}">
+  <summary>
+    <span class="idea-title">{{ idea.title }}</span>
+    <span class="idea-pitch">{{ idea.pitch }}</span>
+    <span class="idea-tags"><span class="tag tag-{{ idea.difficulty }}">{{ idea.difficultyLabel }}</span><span class="tag">{{ idea.teamSizeLabel }}</span>{% for n in idea.nicheLinks %}<span class="tag">{{ n.name }}</span>{% endfor %}</span>
+  </summary>
+  <div class="idea-body">
+    <p>{{ idea.whatItDoes }}</p>
+    <dl class="idea-facts">
+      <dt>Suggested stack</dt><dd>{{ idea.stack | join(', ') }}</dd>
+      <dt>Difficulty</dt><dd>{{ idea.difficultyLabel }} (built in 24 to 48 hours)</dd>
+      <dt>Team size</dt><dd>{{ idea.teamSizeLabel }}</dd>
+      <dt>Niches</dt><dd>{% for n in idea.nicheLinks %}<a href="/niche/{{ n.slug }}/">{{ n.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</dd>
+      <dt>Source</dt><dd>{% if idea.source.kind == 'generated' %}Generated on {{ idea.source.date | date }}{% else %}Seed idea, written by the hackathon.so team{% endif %}</dd>
+    </dl>
+    <p class="small"><a href="/ideas/#idea-{{ idea.id }}">Link to this idea</a></p>
+  </div>
+</details>

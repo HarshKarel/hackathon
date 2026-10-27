@@ -23,11 +23,20 @@ Event status is computed from dates: upcoming, then live, then ended. Deadlines 
 - [Sources](${site.url}/sources/): platforms we read and when each was last fetched
 - [Calendar feeds](${site.url}/subscribe/): ICS feeds for all events and per niche
 - [Guides](${site.url}/guides/): practical guides for each stage of a hackathon${guides.anyFinal ? '' : ' (drafts under editorial review)'}
+- [Project ideas](${site.url}/ideas/): ${site.counts.ideas} project ideas sized for a 24 to 48 hour hackathon, filterable by niche and difficulty
 - [Sitemap](${site.url}/sitemap.xml)
 
 Event pages live at ${site.url}/hackathons/<slug>/ and include Event structured data (JSON-LD). Some listings are competitions (for example Kaggle) rather than hackathons and are labelled as such.
 
 After an event ends, its page shows the winners when they are published on Devpost or Devfolio, copied exactly as the platform states them (place, project, project link, team). If nothing is published yet, the page says so and shows the date the event ended. Winners are checked weekly for 60 days after an event ends.
+
+Event pages also show up to three "idea starters": project idea cards that share a niche with the event. Ended events keep the ideas they showed.
+
+## Project ideas
+
+Each idea card has a title, a one-line pitch, what it does (who it is for, the core feature and the demo moment), 1 to 3 niches, a suggested stack, a difficulty (weekend-easy, weekend-medium, weekend-hard) and a team size fit (solo friendly, pair, team). Seed ideas are written by the hackathon.so team; generated ideas are added weekly by an AI pipeline, checked in code, and labelled with the date they were generated.
+
+${site.ideas.map((i) => `- [${i.title}](${site.url}/ideas/#idea-${i.id}): ${i.pitch} (${i.niches.join(', ')}; ${i.difficultyLabel}; ${i.teamSizeLabel})`).join('\n')}
 
 ## Guides
 
@@ -45,6 +54,7 @@ ${sources}
 
 - ${site.counts.total} events on record: ${site.counts.upcoming} upcoming, ${site.counts.live} live, ${site.counts.ended} ended.
 - Winners published for ${site.counts.withWinners} ended events; ${site.counts.winnersNotPublished} checked with nothing published yet.
+- ${site.counts.ideas} project ideas (${site.counts.seedIdeas} seed, ${site.counts.generatedIdeas} generated).
 - Updated ${site.health.finishedAt ? site.health.finishedAt.slice(0, 10) : site.buildDate}.
 `;
 }

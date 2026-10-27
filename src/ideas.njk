@@ -1,0 +1,43 @@
+---
+layout: base.njk
+permalink: /ideas/
+title: Project ideas for hackathons
+description: Concrete project ideas sized for a 24 to 48 hour hackathon, each with the user, the core feature, the demo moment, a suggested stack, difficulty and team size.
+scripts: ["/assets/js/ideas.js"]
+---
+<p class="crumbs"><a href="/">Home</a> / Ideas</p>
+<h1>Project ideas</h1>
+<p class="lede">{{ site.ideas.length }} ideas sized for a weekend hackathon. Each one names who it is for, what it does and the moment that sells it in a demo. Open a card for the full detail, a suggested stack and the team size it suits.</p>
+
+<form class="filters idea-filters" id="idea-filters" onsubmit="return false" hidden>
+  <div class="filter-row idea-filter-row">
+    <label>Niche
+      <select name="niche" id="f-idea-niche">
+        <option value="">Any niche</option>
+        {%- for n in site.ideaNiches %}
+        <option value="{{ n.slug }}">{{ n.name }} ({{ n.count }})</option>
+        {%- endfor %}
+      </select>
+    </label>
+    <label>Difficulty
+      <select name="difficulty" id="f-idea-difficulty">
+        <option value="">Any difficulty</option>
+        {%- for d in site.ideaDifficulties %}
+        <option value="{{ d.key }}">{{ d.label }} ({{ d.count }})</option>
+        {%- endfor %}
+      </select>
+    </label>
+  </div>
+  <div class="filter-foot">
+    <span id="idea-count" aria-live="polite">{{ site.ideas.length }} ideas</span>
+    <button type="button" class="linkbtn" id="idea-reset">Clear filters</button>
+  </div>
+</form>
+
+<div class="idea-list" id="idea-list">
+{%- for idea in site.ideas %}
+{% include "idea-card.njk" %}
+{%- endfor %}
+</div>
+<p class="empty" id="idea-none" hidden>No ideas match these filters yet.</p>
+<p class="source-note">Seed ideas are written by the hackathon.so team. Generated ideas are added weekly by an AI pipeline, checked in code for length, format and near-duplicates, and labelled with the date they were generated.</p>

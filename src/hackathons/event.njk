@@ -107,6 +107,19 @@ eleventyComputed:
       {%- endif %}
     </section>
 
+    {%- if e.ideaStarters.length %}
+    <section class="idea-starters" aria-labelledby="idea-starters">
+      <h2 id="idea-starters">Idea starters for this {{ 'competition' if e.type == 'competition' else 'hackathon' }}</h2>
+      <p class="muted small">Project ideas that fit this event's niches ({{ e.niches | join(', ') }}). Open one for the full detail.</p>
+      <div class="idea-list">
+      {%- for idea in e.ideaStarters %}
+      {% include "idea-card.njk" %}
+      {%- endfor %}
+      </div>
+      <p class="small"><a href="/ideas/?niche={{ e.nicheLinks[0].slug }}">More {{ e.niches[0] }} ideas</a> · <a href="/ideas/">All project ideas</a></p>
+    </section>
+    {%- endif %}
+
     {%- if e.series %}
     <section aria-labelledby="series">
       <h2 id="series">Part of a series</h2>
@@ -156,6 +169,7 @@ eleventyComputed:
       </ul>
     </section>
     {%- endif %}
+    <p class="claim-link">Run this event? <a href="/claim/?event={{ e.slug }}&amp;title={{ e.title | urlencode }}" rel="nofollow">Claim this listing</a> to ask for a correction or an update.</p>
     <p class="source-note" style="margin-top:8px">Facts come from the listing{{ 's' if e.sources.length > 1 }} above. hackathon.so does not take applications; use the apply button to register on {{ e.applyName }}.</p>
   </aside>
 </div>

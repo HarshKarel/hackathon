@@ -41,6 +41,18 @@ export function makeSlug(record, taken) {
   return slug;
 }
 
+// Organiser fields. Set by hand (never by a source) when an organiser claims
+// a listing; no source update ever changes them.
+//   featured   true to feature the listing (no payments or dashboard yet)
+//   claimedBy  who claimed it, for example "Jane Doe, Example University"
+export const ORGANISER_DEFAULTS = Object.freeze({ featured: false, claimedBy: '' });
+
+export function withOrganiserDefaults(e) {
+  if (typeof e.featured !== 'boolean') e.featured = false;
+  if (typeof e.claimedBy !== 'string') e.claimedBy = '';
+  return e;
+}
+
 const FACT_FIELDS = [
   'type', 'title', 'organiser', 'series', 'applyUrl', 'applyPlatform', 'startDate', 'endDate', 'registrationDeadline', 'deadlineKind',
   'timezone', 'mode', 'city', 'country', 'countryCode', 'locationText', 'prizeText', 'niches', 'eligibilityText', 'eligibility', 'teamSizeText',
@@ -153,6 +165,9 @@ export function integrate(store, merged, { now, endedCutoff }) {
           sources: mergeSources(target.sources, o.sources),
           firstSeenAt: earliest(target.firstSeenAt, o.firstSeenAt),
           publishedAt: earliest(target.publishedAt, o.publishedAt),
+          // Organiser fields survive a merge from either page.
+          featured: target.featured === true || o.featured === true,
+          claimedBy: target.claimedBy || o.claimedBy || '',
         };
         store.events.delete(other);
         store.redirects[other] = keep;
@@ -173,7 +188,7 @@ export function integrate(store, merged, { now, endedCutoff }) {
     }
     const slug = makeSlug(rec, taken);
     taken.add(slug);
-    const created = { ...rec, slug, firstSeenAt: now.toISOString() };
+    const created = { ...rec, slug, firstSeenAt: now.toISOString(), ...ORGANISER_DEFAULTS };
     store.events.set(slug, created);
     for (const s of created.sources) index.set(sourceKey(s), slug);
     result.added.push(slug);

@@ -3,9 +3,15 @@
 // no em dashes, no sentence shared with the source text, and no number or
 // month the facts do not contain. A failed check gets one retry with the
 // reasons; a second failure flags the event for human review.
+//
+// All pending events of a run go to Gemini together through the shared AI
+// flow (lib/aiflow.mjs): one Batch API job for 10 or more events, standard
+// requests below that. Retries for rejected drafts form a second round.
 import crypto from 'node:crypto';
-import { PLATFORMS, REWRITE, SOURCE_PRIORITY } from '../config.mjs';
+import { AI, PLATFORMS, REWRITE, SOURCE_PRIORITY } from '../config.mjs';
 import { factProblems, sharedSentences, longestSharedRun } from './copycheck.mjs';
+import { loadPending, roundSummary, runRequests, savePending } from './aiflow.mjs';
+import { addUsage, batchState, redact, responseText, usageOf } from './gemini.mjs';
 import { isDateOnly } from './dates.mjs';
 import { wordCount } from './text.mjs';
 
@@ -109,37 +115,179 @@ export function checkRewrite(out, sourceText, facts) {
   return problems;
 }
 
-// Returns { description, summary, descriptionStatus, attempts, problems, longestRun }
-export async function rewriteEvent(e, sourceText, llm) {
-  const facts = factsFor(e);
-  let problems = [];
-  let lastOut = null;
-  let attempts = 0;
-  for (let i = 0; i < REWRITE.maxAttempts; i++) {
-    attempts += 1;
-    let out;
-    try {
-      out = parseModelJson(await llm.complete({ system: SYSTEM_PROMPT, user: buildUserPrompt(facts, sourceText, problems) }));
-    } catch (err) {
-      problems = [`AI call failed: ${err.message}`];
-      continue;
+// One Gemini generateContent request for an event.
+export function rewriteRequest(facts, sourceText, previousProblems = []) {
+  return {
+    systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+    contents: [{ role: 'user', parts: [{ text: buildUserPrompt(facts, sourceText, previousProblems) }] }],
+    generationConfig: {
+      responseMimeType: 'application/json',
+      responseJsonSchema: {
+        type: 'object',
+        properties: { summary: { type: 'string' }, description: { type: 'string' } },
+        required: ['summary', 'description'],
+        propertyOrdering: ['summary', 'description'],
+      },
+      thinkingConfig: { thinkingLevel: AI.thinkingLevel },
+      maxOutputTokens: AI.maxOutputTokens,
+    },
+    store: false,
+  };
+}
+
+// Rewrite many events through the shared AI flow.
+//   entries    [{ e, sourceText }]
+//   prefilled  Map(slug -> { text } | { error }) results collected from a
+//              batch job an earlier run left running; used as round 1
+// Returns { outcomes: Map(slug -> outcome), rounds: [...] } where an outcome is
+//   { descriptionStatus: 'ai', description, summary, attempts, longestRun }
+//   { descriptionStatus: 'review', rejected, problems, attempts }   two drafts failed the checks
+//   { descriptionStatus: 'error', problems, attempts }              no usable draft came back at all
+//   { descriptionStatus: 'pending', jobId }                         batch job still running
+export async function rewriteMany(entries, ai, {
+  log = () => {}, now = new Date(), prefilled = new Map(), onSubmitted, onCollected, minBatch, pollMs, maxWaitMs,
+} = {}) {
+  const st = entries.map(({ e, sourceText }) => ({ e, sourceText: sourceText || '', facts: factsFor(e), problems: [], lastOut: null, lastError: null, attempts: 0, done: false }));
+  const rounds = [];
+  for (let round = 1; round <= REWRITE.maxAttempts; round++) {
+    const todo = st.filter((s) => !s.done);
+    if (!todo.length) break;
+    const pre = round === 1 ? todo.filter((s) => prefilled.has(s.e.slug)) : [];
+    const send = round === 1 ? todo.filter((s) => !prefilled.has(s.e.slug)) : todo;
+    const items = send.map((s) => ({ key: s.e.slug, request: rewriteRequest(s.facts, s.sourceText, s.problems) }));
+    const res = await runRequests(ai, items, {
+      label: `rewrite round ${round}`, log, now, minBatch, pollMs, maxWaitMs,
+      onSubmitted: (jobId) => onSubmitted?.(jobId, send.map((s) => ({ slug: s.e.slug, factsHash: s.e.factsHash }))),
+    });
+    if (res.timedOut) for (const s of send) Object.assign(s, { done: true, outcome: 'pending', jobId: res.jobId });
+    const results = new Map(res.results);
+    let usage = res.usage;
+    for (const s of pre) {
+      const r = prefilled.get(s.e.slug);
+      results.set(s.e.slug, r);
+      if (r.usage) usage = addUsage(usage, r.usage);
     }
-    lastOut = out;
-    problems = checkRewrite(out, sourceText, facts);
-    if (!problems.length) {
-      return { ...out, descriptionStatus: 'ai', attempts, problems: [], longestRun: longestSharedRun(out.description, sourceText).words };
+    const counts = { accepted: 0, rejected: 0, failed: 0 };
+    for (const s of [...pre, ...send]) {
+      if (s.done) continue;
+      s.attempts += 1;
+      const r = results.get(s.e.slug);
+      let out = null;
+      if (r && !r.error) {
+        try { out = parseModelJson(r.text); } catch (err) { s.lastError = `unusable output: ${err.message}`; }
+      } else s.lastError = r?.error || 'no result';
+      if (!out) { counts.failed += 1; continue; }
+      s.lastOut = out;
+      const problems = checkRewrite(out, s.sourceText, s.facts);
+      if (!problems.length) {
+        Object.assign(s, { done: true, outcome: 'ai', result: out });
+        counts.accepted += 1;
+      } else {
+        s.problems = problems;
+        counts.rejected += 1;
+      }
+    }
+    if (res.mode !== 'none' || pre.length) {
+      rounds.push({ ...roundSummary(round, { ...res, usage }, counts), ...(pre.length ? { collectedFromEarlierJob: pre.length } : {}) });
+    }
+    if (res.jobId && !res.timedOut) onCollected?.(res.jobId);
+  }
+  const outcomes = new Map();
+  for (const s of st) {
+    if (s.outcome === 'ai') {
+      outcomes.set(s.e.slug, { ...s.result, descriptionStatus: 'ai', attempts: s.attempts, problems: [], longestRun: longestSharedRun(s.result.description, s.sourceText).words });
+    } else if (s.outcome === 'pending') {
+      outcomes.set(s.e.slug, { descriptionStatus: 'pending', jobId: s.jobId, attempts: s.attempts, problems: [] });
+    } else if (s.lastOut) {
+      // A draft came back and failed the checks twice: human review.
+      outcomes.set(s.e.slug, { descriptionStatus: 'review', rejected: s.lastOut, attempts: s.attempts, problems: s.problems });
+    } else {
+      // Nothing usable came back (outage, rate limit, bad key or model):
+      // not a review case. The caller keeps a flagged placeholder and the
+      // event is tried again on the next run.
+      outcomes.set(s.e.slug, { descriptionStatus: 'error', attempts: s.attempts, problems: [s.lastError || 'AI call failed'] });
     }
   }
-  // Every attempt failed at the API (outage, rate limit, bad key or model):
-  // nothing was rejected, so this is not a review case. The caller keeps a
-  // flagged placeholder and tries again on the next run.
-  if (!lastOut) return { description: null, summary: null, descriptionStatus: 'error', attempts, problems };
-  return {
-    description: null,
-    summary: null,
-    rejected: lastOut,
-    descriptionStatus: 'review',
-    attempts,
-    problems,
+  return { outcomes, rounds };
+}
+
+// Batch jobs an earlier run stopped waiting for. Finished jobs are collected
+// (results for events whose facts have not changed since) and removed from
+// data/ai-pending.json; jobs still running keep their events out of this run
+// so nothing is paid for twice.
+export async function collectPendingRewrites(ai, events, { log = () => {}, file } = {}) {
+  const pending = loadPending(file);
+  const prefilled = new Map();
+  const busy = new Set();
+  const keep = [];
+  const collected = [];
+  for (const job of pending.jobs) {
+    if (job.kind !== 'rewrite') { keep.push(job); continue; }
+    let op;
+    try { op = await ai.batchGet(job.jobId); } catch (err) {
+      log(`rewrite: could not check earlier batch job ${job.jobId}: ${err.message}`);
+      keep.push(job);
+      for (const it of job.items) busy.add(it.slug);
+      continue;
+    }
+    const state = batchState(op);
+    if (!op.done && !['SUCCEEDED', 'FAILED', 'CANCELLED', 'EXPIRED'].includes(state)) {
+      keep.push(job);
+      for (const it of job.items) busy.add(it.slug);
+      log(`rewrite: earlier batch job ${job.jobId} is still ${state}; its ${job.items.length} events wait for it`);
+      continue;
+    }
+    let used = 0;
+    if (state === 'SUCCEEDED') {
+      const results = ai.batchResults(op);
+      job.items.forEach((it, i) => {
+        const r = results.find((x) => x.key === it.slug) || results[i];
+        const e = events.get(it.slug);
+        if (!r || !e || e.factsHash !== it.factsHash) return; // facts changed since: rewrite afresh
+        prefilled.set(it.slug, r.error ? { error: `item failed: ${r.error.message || r.error.code}` } : { ...responseText(r.response), usage: usageOf(r.response) });
+        used += 1;
+      });
+    }
+    collected.push({ jobId: job.jobId, state, items: job.items.length, used });
+    log(`rewrite: collected earlier batch job ${job.jobId} (${state}), ${used} results still current`);
+  }
+  savePending({ jobs: keep }, file);
+  return { prefilled, busy, collected };
+}
+
+export function rememberPendingJob(kind, jobId, items, now, file) {
+  const pending = loadPending(file);
+  pending.jobs.push({ kind, jobId, submittedAt: now.toISOString(), items });
+  savePending(pending, file);
+}
+
+export function forgetPendingJob(jobId, file) {
+  const pending = loadPending(file);
+  pending.jobs = pending.jobs.filter((j) => j.jobId !== jobId);
+  savePending(pending, file);
+}
+
+// Write one outcome onto its event. Returns the outcome kind.
+export function applyRewriteOutcome(e, r, now) {
+  if (!r || r.descriptionStatus === 'pending') return 'pending'; // keep what the page shows now
+  if (r.descriptionStatus === 'ai') {
+    Object.assign(e, { description: r.description, summary: r.summary, descriptionStatus: 'ai', rewrittenAt: now.toISOString() });
+    delete e.reviewInfo;
+    delete e.lastAiError;
+    return 'ai';
+  }
+  if (r.descriptionStatus === 'error') {
+    // API trouble, not a bad draft: publish a flagged placeholder and retry
+    // next run (placeholders are always queued for rewriting).
+    Object.assign(e, placeholderFor(e), { descriptionStatus: 'placeholder', lastAiError: redact(r.problems[0] || 'AI call failed') });
+    return 'error';
+  }
+  // Flagged for review. A never-published event stays unpublished; a page
+  // that is already live keeps a flagged placeholder meanwhile.
+  Object.assign(e, placeholderFor(e), { descriptionStatus: 'review' });
+  e.reviewInfo = {
+    slug: e.slug, title: e.title, factsHash: e.factsHash, attempts: r.attempts,
+    problems: r.problems.map((p) => redact(p)), rejectedDraft: r.rejected || null, flaggedAt: now.toISOString(),
   };
+  return 'review';
 }

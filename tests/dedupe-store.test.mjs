@@ -180,3 +180,16 @@ test('store: a run that only sees a lower-priority source cannot overwrite highe
   assert.equal(e.locationText, 'Princeton High School');
   assert.equal(e.teamSizeText, 'Up to 4', 'gaps are still filled');
 });
+
+test('organiser fields: new events get featured false and claimedBy empty; source updates never change them', () => {
+  const store = { events: new Map(), redirects: {} };
+  integrate(store, [item({ sourceId: '77', title: 'Claimable Hacks' })], { now: NOW, endedCutoff: CUTOFF });
+  const [slug] = [...store.events.keys()];
+  assert.equal(store.events.get(slug).featured, false);
+  assert.equal(store.events.get(slug).claimedBy, '');
+  Object.assign(store.events.get(slug), { featured: true, claimedBy: 'Ada Example, Testville Uni' });
+  integrate(store, [item({ sourceId: '77', title: 'Claimable Hacks', prizeText: '$500' })], { now: NOW, endedCutoff: CUTOFF });
+  assert.equal(store.events.get(slug).featured, true);
+  assert.equal(store.events.get(slug).claimedBy, 'Ada Example, Testville Uni');
+  assert.equal(store.events.get(slug).prizeText, '$500');
+});

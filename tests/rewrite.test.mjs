@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { sharedSentences, factProblems, longestSharedRun } from '../pipeline/lib/copycheck.mjs';
-import { checkRewrite, factsFor, factsHash, placeholderFor, rewriteEvent } from '../pipeline/lib/rewrite.mjs';
-import { llmStatus, redact } from '../pipeline/lib/llm.mjs';
+import { checkRewrite, factsFor, factsHash, placeholderFor, rewriteMany } from '../pipeline/lib/rewrite.mjs';
+import { aiStatus, redact } from '../pipeline/lib/gemini.mjs';
+import { fakeGemini } from './fake-gemini.mjs';
 import { rec } from './helpers.mjs';
 
 const SOURCE = 'Join the brightest builders in Lisbon for three days of shipping. Teams compete for a grand prize. Food and swag provided for everyone attending.';
@@ -20,9 +21,18 @@ const GOOD = {
     + 'The listing on ETHGlobal holds the full schedule, the rules and the application form, so anyone planning to attend should read it carefully before the registration window closes.',
 };
 
-function fakeLlm(outputs) {
-  let i = 0;
-  return { stats: { calls: 0 }, async complete() { this.stats.calls += 1; const o = outputs[i++]; if (o instanceof Error) throw o; return typeof o === 'string' ? o : JSON.stringify(o); } };
+// Each call to the fake model returns the next output for that event.
+function scripted(outputs) {
+  const seen = new Map();
+  return fakeGemini({
+    respond: (request) => {
+      const i = seen.get('e') || 0;
+      seen.set('e', i + 1);
+      const o = outputs[i];
+      if (o instanceof Error) return { error: o.message };
+      return typeof o === 'string' ? o : JSON.stringify(o);
+    },
+  });
 }
 
 test('copy check finds a shared full sentence', () => {
@@ -56,35 +66,42 @@ test('fact check rejects numbers and months that are not in the facts', () => {
   assert.match(factProblems('It starts on Friday.', facts)[0], /day of the week/);
 });
 
+const one = (outputs) => rewriteMany([{ e: event, sourceText: SOURCE }], scripted(outputs).ai);
+
 test('good output is accepted first time', async () => {
-  const llm = fakeLlm([GOOD]);
-  const r = await rewriteEvent(event, SOURCE, llm);
+  const { outcomes, rounds } = await one([GOOD]);
+  const r = outcomes.get(event.slug);
   assert.equal(r.descriptionStatus, 'ai');
   assert.equal(r.attempts, 1);
+  assert.equal(rounds.length, 1);
+  assert.equal(rounds[0].mode, 'standard', 'one event is below the batch threshold');
 });
 
 test('copied sentence is retried once with reasons, then accepted', async () => {
   const bad = { ...GOOD, description: `${GOOD.description} Teams compete for a grand prize.` };
-  const r = await rewriteEvent(event, SOURCE, fakeLlm([bad, GOOD]));
-  assert.equal(r.descriptionStatus, 'ai');
-  assert.equal(r.attempts, 2);
+  const f = scripted([bad, GOOD]);
+  const { outcomes, rounds } = await rewriteMany([{ e: event, sourceText: SOURCE }], f.ai);
+  assert.equal(outcomes.get(event.slug).descriptionStatus, 'ai');
+  assert.equal(outcomes.get(event.slug).attempts, 2);
+  assert.deepEqual(rounds.map((r) => [r.accepted, r.rejected]), [[0, 1], [1, 0]]);
+  assert.match(f.calls[1].body.contents[0].parts[0].text, /previous draft was rejected[\s\S]*shares a full sentence/);
 });
 
 test('two failures flag the event for review', async () => {
   const dash = { ...GOOD, summary: 'Lisbon \u2014 Ethereum hackathon' };
-  const r = await rewriteEvent(event, SOURCE, fakeLlm([dash, dash]));
+  const r = (await one([dash, dash])).outcomes.get(event.slug);
   assert.equal(r.descriptionStatus, 'review');
   assert.equal(r.attempts, 2);
   assert.ok(r.problems.some((p) => /em dash/.test(p)));
 });
 
 test('API errors count as a failed attempt', async () => {
-  const r = await rewriteEvent(event, SOURCE, fakeLlm([new Error('overloaded'), GOOD]));
+  const r = (await one([new Error('overloaded'), GOOD])).outcomes.get(event.slug);
   assert.equal(r.descriptionStatus, 'ai');
 });
 
 test('an outage with no draft at all is an error to retry, not a review case', async () => {
-  const r = await rewriteEvent(event, SOURCE, fakeLlm([new Error('rate limited'), new Error('rate limited')]));
+  const r = (await one([new Error('rate limited'), new Error('rate limited')])).outcomes.get(event.slug);
   assert.equal(r.descriptionStatus, 'error');
 });
 
@@ -109,8 +126,9 @@ test('facts hash changes with facts and source text, not with niches', () => {
 });
 
 test('AI is off without LLM_API_KEY or LLM_MODEL, and the key is redacted', () => {
-  assert.equal(llmStatus({}).configured, false);
-  assert.equal(llmStatus({ LLM_API_KEY: 'k' }).configured, false);
-  assert.equal(llmStatus({ LLM_API_KEY: 'k', LLM_MODEL: 'm' }).configured, true);
-  assert.equal(redact('bad key sk-ant-abcdefghijklmnop here', { LLM_API_KEY: 'sk-ant-abcdefghijklmnop' }), 'bad key [redacted] here');
+  assert.equal(aiStatus({}).configured, false);
+  assert.equal(aiStatus({ LLM_API_KEY: 'k' }).configured, false);
+  assert.equal(aiStatus({ LLM_API_KEY: 'k', LLM_MODEL: 'm' }).configured, true);
+  assert.equal(redact('bad key AIzaSyAbcdefghijklmnop1234567 here', { LLM_API_KEY: 'AIzaSyAbcdefghijklmnop1234567' }), 'bad key [redacted] here');
+  assert.equal(redact('leaked AIzaSyZZZZZZZZZZZZZZZZZZZZZZZZ0 in a log', {}), 'leaked [redacted] in a log');
 });

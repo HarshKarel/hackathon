@@ -15,6 +15,7 @@
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 var(--font); }
 a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
@@ -185,3 +186,38 @@ code { font-family: var(--mono); font-size: 13px; background: #f1f2f4; padding: 
   .rail { grid-auto-columns: 82%; }
   .facts th { white-space: normal; width: 40%; }
 }
+
+/* Idea cards */
+.lede { font-size: 16px; color: var(--muted); max-width: 72ch; }
+.idea-filter-row { grid-template-columns: repeat(2, minmax(0, 220px)); }
+@media (max-width: 600px) { .idea-filter-row { grid-template-columns: 1fr 1fr; } }
+.idea-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.idea { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.idea summary { cursor: pointer; list-style: none; padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
+.idea summary::-webkit-details-marker { display: none; }
+.idea summary::after { content: "Show details"; font-size: 12.5px; color: var(--accent); }
+.idea[open] summary::after { content: "Hide details"; }
+.idea-title { font-weight: 650; font-size: 15px; }
+.idea-pitch { font-size: 14px; color: #2b3039; }
+.idea-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+.idea-tags .tag { font-size: 11.5px; padding: 1px 7px; border-radius: 4px; background: #f1f2f4; color: #3c424d; }
+.idea-tags .tag-weekend-easy { background: #e8f5ec; color: #1e5b33; }
+.idea-tags .tag-weekend-medium { background: #fdf3e1; color: #6b4a0f; }
+.idea-tags .tag-weekend-hard { background: #fbe9e9; color: #7a2323; }
+.idea-body { padding: 0 12px 10px; border-top: 1px solid var(--line); }
+.idea-body > p:first-child { margin-top: 10px; font-size: 14.5px; line-height: 1.55; }
+.idea-facts { display: grid; grid-template-columns: max-content 1fr; gap: 3px 12px; margin: 6px 0 8px; font-size: 13.5px; }
+.idea-facts dt { color: var(--muted); }
+.idea-facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 480px) { .idea-facts { grid-template-columns: 1fr; } .idea-facts dd { margin-bottom: 4px; } }
+.idea-starters .idea-list { margin-bottom: 6px; }
+
+/* Claim form */
+.claim-event { font-weight: 600; }
+.claim-form { display: flex; flex-direction: column; gap: 12px; max-width: 560px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.claim-form label { display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; color: var(--muted); }
+.claim-form input, .claim-form textarea { font: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line-strong); border-radius: 6px; background: #fff; color: var(--text); width: 100%; }
+.claim-form .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.claim-form button { align-self: flex-start; }
+.claim-done { max-width: 560px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.claim-link { margin-top: 12px; font-size: 13px; }

@@ -13,9 +13,6 @@ export default {
     title: (data) => meta(data).title,
     description: (data) => meta(data).description,
     permalink: (data) => meta(data).url,
-    // Drafts are built so they can be reviewed, but stay out of search
-    // engines and the sitemap until approved.
-    noindex: (data) => (meta(data).draft ? 'noindex' : ''),
     ogType: () => 'article',
   },
 };

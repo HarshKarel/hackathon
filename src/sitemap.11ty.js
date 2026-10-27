@@ -1,5 +1,6 @@
-// Sitemap: browse pages plus every published event page at or above the
-// quality floor. Pages below the floor are built with noindex and left out.
+// Sitemap: browse pages, the guides and ideas sections, and every published
+// event page at or above the quality floor. Pages below the floor are built
+// with noindex and left out.
 export const data = { permalink: '/sitemap.xml', eleventyExcludeFromCollections: true };
 
 const xmlEsc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
@@ -14,9 +15,11 @@ export function render({ site, guides }) {
     ...site.countries.map((c) => ({ loc: `/country/${c.slug}/` })),
     ...site.months.map((m) => ({ loc: `/month/${m.slug}/` })),
     ...site.series.map((s) => ({ loc: `/series/${s.slug}/` })),
-    // Guides enter the sitemap only once approved (draft: false).
-    ...(guides.anyFinal ? [{ loc: '/guides/' }] : []),
-    ...guides.list.filter((g) => !g.draft).map((g) => ({ loc: g.url })),
+    // Guides and ideas sections. Draft guides are listed too; their pages
+    // show a draft notice until approved.
+    { loc: '/guides/' },
+    ...guides.list.map((g) => ({ loc: g.url })),
+    { loc: '/ideas/', changefreq: 'weekly' },
     ...site.all.filter((e) => e.indexable).map((e) => ({ loc: `/hackathons/${e.slug}/`, lastmod: e.lastCheckedAt.slice(0, 10) })),
   ];
   const body = urls.map((u) => `  <url><loc>${xmlEsc(site.url + u.loc)}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}${u.changefreq ? `<changefreq>${u.changefreq}</changefreq>` : ''}</url>`).join('\n');

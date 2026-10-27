@@ -1,5 +1,5 @@
 // Pipeline settings. Secrets never live here: the AI key and model come
-// from the environment (LLM_API_KEY, LLM_MODEL) and are read in lib/llm.mjs.
+// from the environment (LLM_API_KEY, LLM_MODEL) and are read in lib/gemini.mjs.
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -25,6 +25,19 @@ export const PATHS = {
   winners: path.join(ROOT, 'data', 'winners.json'),
   winnersRuns: path.join(ROOT, 'data', 'health', 'winners-runs.jsonl'),
   winnersLatest: path.join(ROOT, 'data', 'health', 'winners-latest.json'),
+  // Project ideas: the hand-written seed file is never written by a script;
+  // the weekly generator (pipeline/ideas.mjs) writes only ideas-generated.json.
+  ideasSeed: path.join(ROOT, 'data', 'ideas-seed.json'),
+  ideasGenerated: path.join(ROOT, 'data', 'ideas-generated.json'),
+  ideasRejected: path.join(ROOT, 'data', 'ideas-rejected.jsonl'),
+  ideasRuns: path.join(ROOT, 'data', 'health', 'ideas-runs.jsonl'),
+  ideasLatest: path.join(ROOT, 'data', 'health', 'ideas-latest.json'),
+  // Every AI run (batch or standard requests) is logged here, with batch job
+  // ids, item counts, accepted and rejected counts, tokens and cost.
+  aiRuns: path.join(ROOT, 'data', 'health', 'ai-runs.jsonl'),
+  // Rewrite batch jobs still running when a run stopped waiting. The next
+  // rewrite run collects their results instead of paying for them twice.
+  aiPending: path.join(ROOT, 'data', 'ai-pending.json'),
 };
 
 // Winners: events that ended within this many days are checked each week
@@ -66,6 +79,42 @@ export const REWRITE = {
   maxWords: 140,
   maxSummaryChars: 160,
   maxAttempts: 2, // first try plus one retry, then flag for review
+};
+
+// AI settings. The model name comes only from LLM_MODEL and the key only from
+// LLM_API_KEY (a Google AI Studio key); see lib/gemini.mjs.
+export const AI = {
+  // Runs with at least this many pending items go to the Gemini Batch API as
+  // one job; smaller runs use standard requests on the same model.
+  minBatchItems: 10,
+  pollSeconds: 30,
+  // How long one run waits for a batch job. A job still running after this is
+  // recorded in data/ai-pending.json and collected by the next run.
+  maxWaitMinutes: 330,
+  standardConcurrency: 4,
+  // Gemini 3.8 Flash cannot switch thinking off; LOW is its lowest level.
+  thinkingLevel: 'LOW',
+  // Covers thinking and the answer together.
+  maxOutputTokens: 8192,
+  // Cost estimate only (USD per million tokens), as set in the Phase 3 brief.
+  // Thinking tokens are counted as output.
+  pricePerMillion: { input: 0.75, output: 3.75 },
+};
+
+export const IDEAS = {
+  perEvent: 3, // idea starters shown on an event page
+  perWeek: 10, // new cards the weekly generator aims to add
+  maxRegenerations: 2, // a rejected card is regenerated at most this many times
+  pitchJaccard: 0.4, // pitch word overlap that counts as a near-duplicate
+  limits: {
+    titleWords: [2, 8],
+    titleChars: 50,
+    pitchWords: [8, 25],
+    pitchChars: 130,
+    whatWords: [50, 110],
+    stackItems: [2, 5],
+    stackItemChars: 40,
+  },
 };
 
 export const NICHES = [

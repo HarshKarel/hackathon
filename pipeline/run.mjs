@@ -6,6 +6,9 @@
 //   npm run pipeline -- --use-cache  reuse raw responses saved in .cache/http
 //   npm run pipeline -- --only=mlh,devpost
 //   npm run pipeline -- --no-ai      placeholders even if LLM_API_KEY is set
+//
+// AI rewrites use Gemini (LLM_API_KEY, LLM_MODEL): one Batch API job when 10
+// or more events need a rewrite, standard requests below that.
 import fs from 'node:fs';
 import { ENDED_LOOKBACK_DAYS, PATHS, PLATFORMS } from './config.mjs';
 import devpost from './adapters/devpost.mjs';
@@ -20,12 +23,13 @@ import kaggle from './adapters/kaggle.mjs';
 import { dedupe } from './lib/dedupe.mjs';
 import { createHealth } from './lib/health.mjs';
 import { createHttp } from './lib/http.mjs';
-import { createLlm, llmStatus, redact } from './lib/llm.mjs';
+import { aiStatus, createGemini, redact } from './lib/gemini.mjs';
+import { logAiRun } from './lib/aiflow.mjs';
 import { qualityScore } from './lib/quality.mjs';
 import { normaliseListing, sourceKey } from './lib/record.mjs';
-import { checkRewrite, factsFor, factsHash, placeholderFor, rewriteEvent } from './lib/rewrite.mjs';
+import { applyRewriteOutcome, checkRewrite, collectPendingRewrites, factsFor, factsHash, forgetPendingJob, placeholderFor, rememberPendingJob, rewriteMany } from './lib/rewrite.mjs';
 import { computeStatus } from './lib/status.mjs';
-import { integrate, loadStore, saveStore } from './lib/store.mjs';
+import { integrate, loadStore, saveStore, withOrganiserDefaults } from './lib/store.mjs';
 import { deriveSeries } from './lib/series.mjs';
 
 export const ADAPTERS = [seed, devpost, devfolio, unstop, mlh, hackerearth, ethglobal, hackclub, kaggle];
@@ -41,17 +45,6 @@ function parseArgs(argv) {
 }
 
 const log = (...m) => console.log(`[pipeline] ${m.join(' ')}`);
-
-async function pool(items, size, fn) {
-  let i = 0;
-  const workers = Array.from({ length: Math.min(size, items.length) }, async () => {
-    while (i < items.length) {
-      const idx = i++;
-      await fn(items[idx], idx);
-    }
-  });
-  await Promise.all(workers);
-}
 
 function readJson(file, fallback) {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return fallback; }
@@ -136,16 +129,21 @@ export async function run(argv = process.argv.slice(2)) {
   const seriesFound = deriveSeries([...store.events.values()]);
   log(`series: ${seriesFound.length} detected from titles`);
 
-  // Records stored before the type field existed are hackathons.
-  for (const e of store.events.values()) if (!e.type) e.type = 'hackathon';
+  // Records stored before the type or organiser fields existed get defaults.
+  for (const e of store.events.values()) {
+    if (!e.type) e.type = 'hackathon';
+    withOrganiserDefaults(e);
+  }
 
   // 4. Rewrite engine.
   const sourceTextCache = readJson(PATHS.sourceText, {});
   const reviews = readJson(PATHS.reviews, {});
-  const status = llmStatus();
-  const llm = args.noAi ? null : createLlm();
+  const status = aiStatus();
+  const llm = args.noAi ? null : createGemini();
   if (!llm) log(`AI rewrites off: ${args.noAi ? '--no-ai flag' : status.reason}. Using flagged placeholder descriptions.`);
   else log(`AI rewrites on with model ${llm.model}`);
+  // Results of a batch job an earlier run stopped waiting for.
+  const earlier = llm ? await collectPendingRewrites(llm, store.events, { log }) : { prefilled: new Map(), busy: new Set(), collected: [] };
 
   const reviewQueue = [];
   const jobs = [];
@@ -178,7 +176,8 @@ export async function run(argv = process.argv.slice(2)) {
     if (llm) {
       if (e.descriptionStatus === 'review' && !changed) { reviewQueue.push(e.reviewInfo); continue; }
       const needs = changed || !e.description || e.descriptionStatus === 'placeholder' || e.descriptionStatus === 'review';
-      if (needs) jobs.push({ e, sourceText });
+      if (needs && earlier.busy.has(e.slug)) counts.unchanged += 1; // its batch job is still running
+      else if (needs) jobs.push({ e, sourceText });
       else counts.unchanged += 1;
     } else if (e.descriptionStatus === 'review') {
       // Without AI a flagged event stays flagged (and unpublished if it never
@@ -197,27 +196,24 @@ export async function run(argv = process.argv.slice(2)) {
     }
   }
 
-  await pool(jobs, 4, async ({ e, sourceText }) => {
-    const r = await rewriteEvent(e, sourceText, llm);
-    if (r.descriptionStatus === 'ai') {
-      Object.assign(e, { description: r.description, summary: r.summary, descriptionStatus: 'ai', rewrittenAt: now.toISOString() });
-      delete e.reviewInfo;
-    } else if (r.descriptionStatus === 'error') {
-      // API trouble, not a bad draft: publish a flagged placeholder and
-      // retry next run (placeholders are always queued for rewriting).
-      Object.assign(e, placeholderFor(e), { descriptionStatus: 'placeholder', lastAiError: redact(r.problems[0] || 'AI call failed') });
-      aiErrors += 1;
-    } else {
-      // Flagged for review. A never-published event stays unpublished; a
-      // page that is already live keeps a flagged placeholder meanwhile.
-      Object.assign(e, placeholderFor(e), { descriptionStatus: 'review' });
-      e.reviewInfo = {
-        slug: e.slug, title: e.title, factsHash: e.factsHash, attempts: r.attempts,
-        problems: r.problems.map((p) => redact(p)), rejectedDraft: r.rejected || null, flaggedAt: now.toISOString(),
-      };
-      reviewQueue.push(e.reviewInfo);
+  let aiRun = null;
+  if (llm && jobs.length) {
+    const flow = await rewriteMany(jobs, llm, {
+      log,
+      now,
+      prefilled: earlier.prefilled,
+      onSubmitted: (jobId, items) => rememberPendingJob('rewrite', jobId, items, now),
+      onCollected: (jobId) => forgetPendingJob(jobId),
+    });
+    for (const { e } of jobs) {
+      const r = flow.outcomes.get(e.slug);
+      const kind = applyRewriteOutcome(e, r, now);
+      if (kind === 'error') aiErrors += 1;
+      if (kind === 'review') reviewQueue.push(e.reviewInfo);
     }
-  });
+    aiRun = logAiRun({ kind: 'rewrite', runAt: now.toISOString(), model: llm.model, trigger: 'pipeline', collectedEarlierJobs: earlier.collected, rounds: flow.rounds });
+    log(`rewrite: ${aiRun.totals.accepted} accepted, ${aiRun.totals.rejected} rejected drafts, ${aiRun.totals.failed} failed; estimated cost $${aiRun.totals.estimatedCostUsd}`);
+  }
 
   // 5. Status, quality, publish state.
   for (const e of store.events.values()) {
@@ -265,10 +261,11 @@ export async function run(argv = process.argv.slice(2)) {
       configured: Boolean(llm),
       reason: llm ? null : args.noAi ? '--no-ai flag' : status.reason,
       model: llm?.model || null,
-      calls: llm?.stats.calls || 0,
+      batchJobs: llm?.stats.batchJobs || [],
+      standardCalls: llm?.stats.standardCalls || 0,
       failures: llm?.stats.failures || 0,
-      inputTokens: llm?.stats.inputTokens || 0,
-      outputTokens: llm?.stats.outputTokens || 0,
+      rounds: aiRun?.rounds || [],
+      totals: aiRun?.totals || null,
       rewritesAttempted: jobs.length,
       // Without a key: events whose facts are new or changed this run, i.e.
       // the minimum number of AI calls a keyed run would have made.
@@ -278,7 +275,7 @@ export async function run(argv = process.argv.slice(2)) {
     },
     http: { ...http.stats, usedCache: args.useCache },
   });
-  log(`done: ${events.length} events in store, ${run.ai.calls} AI calls, health log at data/health/latest.json`);
+  log(`done: ${events.length} events in store, ${run.ai.batchJobs.length} batch jobs and ${run.ai.standardCalls} standard AI requests, health log at data/health/latest.json`);
   for (const [p, s] of Object.entries(run.sources)) {
     if (s.skipped) continue; // not configured: recorded in the health log only
     log(`  ${(PLATFORMS[p]?.name || p).padEnd(22)} ${s.ok ? 'ok ' : 'ERR'} fetched=${s.fetched} normalised=${s.normalised} errors=${s.errorCount}`);
