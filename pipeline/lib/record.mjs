@@ -1,5 +1,5 @@
 // The one normalised record every listing becomes. See docs/RECORD_FORMAT.md.
-import { NICHES, PLATFORMS } from '../config.mjs';
+import { EVENT_TYPES, NICHES, PLATFORMS } from '../config.mjs';
 import { toInstant, toStoredDate } from './dates.mjs';
 import { countryName, toCountryCode, titleCaseCity } from './geo.mjs';
 import { tagNiches } from './niches.mjs';
@@ -63,6 +63,7 @@ export function normaliseListing(listing, now = new Date()) {
 
   const record = {
     slug: null, // assigned by the store, then never changed
+    type: EVENT_TYPES.includes(listing.type) ? listing.type : 'hackathon',
     title,
     organiser: cleanFact(listing.organiser),
     series: cleanFact(listing.series),

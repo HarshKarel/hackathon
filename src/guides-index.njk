@@ -1,0 +1,21 @@
+---
+layout: base.njk
+permalink: /guides/
+title: Hackathon guides
+description: Practical guides for every stage of a hackathon, from choosing an event and forming a team to pitching, judging and what to do afterwards.
+eleventyComputed:
+  noindex: "{{ '' if guides.anyFinal else 'noindex' }}"
+---
+<h1>Guides</h1>
+<p class="muted">Short, practical guides for each stage of a hackathon. Event pages suggest the ones that fit where you are.</p>
+{%- if not guides.anyFinal %}
+<p class="notice">These guides are drafts awaiting editorial review.</p>
+{%- endif %}
+{%- for stage in guides.stages %}{% if stage.guides.length %}
+<h2>{{ stage.name }}</h2>
+<ul class="guide-list">
+  {%- for g in stage.guides %}
+  <li><a href="{{ g.url }}">{{ g.title }}</a>{% if g.draft %} <span class="badge badge-ended">Draft</span>{% endif %}<span class="sub">{{ g.description }}</span></li>
+  {%- endfor %}
+</ul>
+{%- endif %}{% endfor %}

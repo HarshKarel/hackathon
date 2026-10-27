@@ -22,9 +22,18 @@ if (!fs.existsSync(SITE)) {
 
 const files = walk(SITE).filter((f) => /\.(html|txt|ics|json|xml|js|css)$/.test(f));
 
-// Rule: no em dashes anywhere on the site.
+// Rule: no em dashes anywhere on the site, except inside winners tables
+// (data-verbatim), which copy names exactly as the platform states them.
+let verbatimDashes = 0;
 for (const f of files) {
-  if (fs.readFileSync(f, 'utf8').includes('\u2014')) fail(`em dash in ${path.relative(SITE, f)}`);
+  let body = fs.readFileSync(f, 'utf8');
+  if (f.endsWith('.html')) {
+    body = body.replace(/<table class="winners" data-verbatim>[\s\S]*?<\/table>/g, (m) => {
+      if (m.includes('\u2014')) verbatimDashes += 1;
+      return '';
+    });
+  }
+  if (body.includes('\u2014')) fail(`em dash in ${path.relative(SITE, f)}`);
 }
 
 const store = JSON.parse(fs.readFileSync(PATHS.store, 'utf8'));
@@ -66,6 +75,7 @@ for (const must of ['index.html', 'archive/index.html', 'sources/index.html', 's
   if (!fs.existsSync(path.join(SITE, must))) fail(`missing ${must}`);
 }
 
+if (verbatimDashes) console.log(`note: ${verbatimDashes} winners table(s) contain an em dash copied verbatim from the platform`);
 console.log(`checked ${files.length} files, ${published.length} event pages (${checkedCopy} against source text), ${unpublished.length} unpublished`);
 if (problems.length) {
   console.error(`${problems.length} problem(s):\n- ${problems.slice(0, 50).join('\n- ')}`);

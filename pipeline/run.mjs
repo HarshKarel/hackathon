@@ -15,6 +15,8 @@ import hackerearth from './adapters/hackerearth.mjs';
 import ethglobal from './adapters/ethglobal.mjs';
 import hackclub from './adapters/hackclub.mjs';
 import seed from './adapters/seed.mjs';
+import unstop from './adapters/unstop.mjs';
+import kaggle from './adapters/kaggle.mjs';
 import { dedupe } from './lib/dedupe.mjs';
 import { createHealth } from './lib/health.mjs';
 import { createHttp } from './lib/http.mjs';
@@ -26,7 +28,7 @@ import { computeStatus } from './lib/status.mjs';
 import { integrate, loadStore, saveStore } from './lib/store.mjs';
 import { deriveSeries } from './lib/series.mjs';
 
-export const ADAPTERS = [seed, devpost, devfolio, mlh, hackerearth, ethglobal, hackclub];
+export const ADAPTERS = [seed, devpost, devfolio, unstop, mlh, hackerearth, ethglobal, hackclub, kaggle];
 
 function parseArgs(argv) {
   const args = { useCache: false, only: null, noAi: false };
@@ -64,6 +66,12 @@ export async function fetchAll(adapters, ctx, health) {
     const t0 = Date.now();
     try {
       const res = await adapter.fetch(ctx);
+      if (res.skipped) {
+        // Not configured (e.g. Kaggle without credentials): one health-log
+        // line, no error, nothing printed.
+        health.source(adapter.platform, { ok: null, skipped: true, reason: res.reason, fetched: 0, listings: 0, normalised: 0, errors: [], errorCount: 0, durationMs: Date.now() - t0 });
+        return;
+      }
       let ok = 0;
       const normErrors = [];
       for (const listing of res.listings) {
@@ -127,6 +135,9 @@ export async function run(argv = process.argv.slice(2)) {
   log(`store: ${integ.added.length} new, ${integ.updated.length} updated, ${integ.skippedOld} old ended skipped, ${integ.absorbed.length} absorbed`);
   const seriesFound = deriveSeries([...store.events.values()]);
   log(`series: ${seriesFound.length} detected from titles`);
+
+  // Records stored before the type field existed are hackathons.
+  for (const e of store.events.values()) if (!e.type) e.type = 'hackathon';
 
   // 4. Rewrite engine.
   const sourceTextCache = readJson(PATHS.sourceText, {});
@@ -269,6 +280,7 @@ export async function run(argv = process.argv.slice(2)) {
   });
   log(`done: ${events.length} events in store, ${run.ai.calls} AI calls, health log at data/health/latest.json`);
   for (const [p, s] of Object.entries(run.sources)) {
+    if (s.skipped) continue; // not configured: recorded in the health log only
     log(`  ${(PLATFORMS[p]?.name || p).padEnd(22)} ${s.ok ? 'ok ' : 'ERR'} fetched=${s.fetched} normalised=${s.normalised} errors=${s.errorCount}`);
   }
   return run;

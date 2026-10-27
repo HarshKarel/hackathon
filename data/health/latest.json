@@ -1,7 +1,7 @@
 {
-  "runId": "2026-10-27T06-49-12-383Z",
-  "startedAt": "2026-10-27T06:49:12.383Z",
-  "finishedAt": "2026-10-27T06:54:34.199Z",
+  "runId": "2026-10-27T07-15-58-755Z",
+  "startedAt": "2026-10-27T07:15:58.755Z",
+  "finishedAt": "2026-10-27T07:25:44.254Z",
   "sources": {
     "seed": {
       "name": "hackathon.so curated",
@@ -12,8 +12,23 @@
       "errors": [],
       "errorCount": 0,
       "durationMs": 5,
-      "lastSuccessAt": "2026-10-27T06:49:12.383Z",
+      "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 3,
+      "fromCache": false
+    },
+    "kaggle": {
+      "name": "Kaggle",
+      "ok": null,
+      "skipped": true,
+      "reason": "KAGGLE_USERNAME and KAGGLE_KEY are not set",
+      "fetched": 0,
+      "listings": 0,
+      "normalised": 0,
+      "errors": [],
+      "errorCount": 0,
+      "durationMs": 2,
+      "lastSuccessAt": null,
+      "lastSuccessCount": null,
       "fromCache": false
     },
     "hackerearth": {
@@ -24,22 +39,9 @@
       "normalised": 2,
       "errors": [],
       "errorCount": 0,
-      "durationMs": 2384,
-      "lastSuccessAt": "2026-10-27T06:49:12.383Z",
+      "durationMs": 2383,
+      "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 2,
-      "fromCache": false
-    },
-    "mlh": {
-      "name": "MLH",
-      "ok": true,
-      "fetched": 87,
-      "listings": 87,
-      "normalised": 87,
-      "errors": [],
-      "errorCount": 0,
-      "durationMs": 3202,
-      "lastSuccessAt": "2026-10-27T06:49:12.383Z",
-      "lastSuccessCount": 87,
       "fromCache": false
     },
     "ethglobal": {
@@ -50,9 +52,22 @@
       "normalised": 82,
       "errors": [],
       "errorCount": 0,
-      "durationMs": 3457,
-      "lastSuccessAt": "2026-10-27T06:49:12.383Z",
+      "durationMs": 3476,
+      "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 82,
+      "fromCache": false
+    },
+    "mlh": {
+      "name": "MLH",
+      "ok": true,
+      "fetched": 87,
+      "listings": 87,
+      "normalised": 87,
+      "errors": [],
+      "errorCount": 0,
+      "durationMs": 3485,
+      "lastSuccessAt": "2026-10-27T07:15:58.755Z",
+      "lastSuccessCount": 87,
       "fromCache": false
     },
     "hackclub": {
@@ -63,8 +78,8 @@
       "normalised": 918,
       "errors": [],
       "errorCount": 0,
-      "durationMs": 4808,
-      "lastSuccessAt": "2026-10-27T06:49:12.383Z",
+      "durationMs": 4836,
+      "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 918,
       "fromCache": false
     },
@@ -76,8 +91,8 @@
       "normalised": 128,
       "errors": [],
       "errorCount": 0,
-      "durationMs": 30200,
-      "lastSuccessAt": "2026-10-27T06:49:12.383Z",
+      "durationMs": 30262,
+      "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 128,
       "fromCache": false
     },
@@ -89,36 +104,49 @@
       "normalised": 218,
       "errors": [],
       "errorCount": 0,
-      "durationMs": 320131,
-      "lastSuccessAt": "2026-10-27T06:49:12.383Z",
+      "durationMs": 320893,
+      "lastSuccessAt": "2026-10-27T07:15:58.755Z",
       "lastSuccessCount": 218,
+      "fromCache": false
+    },
+    "unstop": {
+      "name": "Unstop",
+      "ok": true,
+      "fetched": 291,
+      "listings": 291,
+      "normalised": 291,
+      "errors": [],
+      "errorCount": 0,
+      "durationMs": 583235,
+      "lastSuccessAt": "2026-10-27T07:15:58.755Z",
+      "lastSuccessCount": 291,
       "fromCache": false
     }
   },
   "totals": {
-    "recordsNormalised": 1438,
-    "eventsAfterDedupe": 1413,
+    "recordsNormalised": 1729,
+    "eventsAfterDedupe": 1704,
     "pass1Merges": 0,
     "pass2Merges": 25,
-    "storeEvents": 578,
-    "added": 0,
+    "storeEvents": 869,
+    "added": 291,
     "updated": 350,
     "skippedOldEnded": 1063,
     "redirects": 0,
-    "seriesDetected": 1,
+    "seriesDetected": 3,
     "matchedByPass1": 350,
     "matchedByPass2": 0,
     "absorbed": [],
     "upcoming": 202,
-    "live": 52,
+    "live": 343,
     "ended": 324,
-    "indexable": 479,
+    "indexable": 770,
     "unpublished": 0
   },
   "descriptions": {
     "ai": 0,
     "reviewed": 0,
-    "placeholder": 578,
+    "placeholder": 869,
     "review": 0,
     "unchanged": 0
   },
@@ -131,12 +159,12 @@
     "inputTokens": 0,
     "outputTokens": 0,
     "rewritesAttempted": 0,
-    "newOrChangedWithoutAi": 0,
+    "newOrChangedWithoutAi": 293,
     "flaggedForReview": 0,
     "apiErrors": 0
   },
   "http": {
-    "requests": 480,
+    "requests": 793,
     "cacheHits": 0,
     "robotsBlocked": 0,
     "usedCache": false

@@ -7,6 +7,7 @@ merged, and each event keeps one slug forever.
 ```json
 {
   "slug": "ethglobal-mumbai-2026",
+  "type": "hackathon",
   "title": "ETHGlobal Mumbai",
   "organiser": "ETHGlobal",
   "series": "ETHGlobal",
@@ -49,6 +50,7 @@ merged, and each event keeps one slug forever.
 | Field | Meaning |
 | --- | --- |
 | `slug` | Permanent URL key: `/hackathons/<slug>/`. Title plus start year, assigned on first sight, never changed. |
+| `type` | `hackathon` or `competition`. Kaggle listings, and Unstop's capture the flag, bug bounty and quiz listings, are competitions. Records stored before this field existed are hackathons. |
 | `title`, `organiser`, `series` | As the source states them. `series` groups editions for the roll-up page (nullable). When no source states a series, the pipeline sets one for titles that differ only by year or edition marker (`seriesDerived: true`), see `pipeline/lib/series.mjs`. |
 | `sources` | Every listing merged into this event: `platform`, `sourceId`, `url`. |
 | `applyUrl`, `applyPlatform` | Where to apply, from the highest priority source (seed, Devfolio, Devpost, ETHGlobal, HackerEarth, MLH, Hack Club). |
@@ -80,3 +82,45 @@ No words or numbers change.
 
 `data/events.json` also holds `redirects`: when two stored pages turn out to
 be the same event, the newer slug redirects to the older one.
+
+## Winners (`data/winners.json`)
+
+Written only by the weekly winners pipeline (`npm run winners`), keyed by
+event slug. The site attaches it to the event record at build time.
+
+```json
+{
+  "events": {
+    "marina-hacks-6-0-2026": {
+      "winnersStatus": "published",
+      "winners": [
+        { "place": "Best Overall", "project": "Hot Limit", "projectUrl": "https://devpost.com/software/hot-limit", "team": "Mirella Miranda, Cailyn Omuro" }
+      ],
+      "source": "devpost",
+      "sourceUrl": "https://marina-hacks-6-0.devpost.com/project-gallery",
+      "endDate": "2026-10-25",
+      "firstFoundAt": "2026-10-27T07:40:00.000Z",
+      "checkedAt": "2026-10-27T07:40:00.000Z"
+    },
+    "some-quiet-event-2026": {
+      "winnersStatus": "not published",
+      "winners": [],
+      "checked": ["devpost"],
+      "endDate": "2026-10-11",
+      "firstCheckedAt": "2026-10-27T07:40:00.000Z",
+      "checkedAt": "2026-10-27T07:40:00.000Z"
+    }
+  }
+}
+```
+
+| Field | Meaning |
+| --- | --- |
+| `winnersStatus` | `published` when the platform lists winners; `not published` when it was checked and lists none yet. Events not listed here were not checked (no Devpost or Devfolio source, or ended before winners tracking began). |
+| `winners[].place` | The prize or place exactly as stated (Devpost: the prize name on the project page, or "Winner" if none is named; Devfolio: the prize name). |
+| `winners[].project`, `projectUrl` | Project name and link exactly as the platform states them. |
+| `winners[].team` | Devpost: the "Created by" names, joined with commas. Devfolio: the team name. |
+
+A project that won several prizes appears once per place. Only HTML entities
+are decoded and surrounding spaces trimmed; nothing is reworded, and em dashes
+in names are kept as published (the site check exempts the winners table).

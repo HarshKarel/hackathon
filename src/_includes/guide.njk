@@ -1,0 +1,22 @@
+---
+layout: base.njk
+---
+<p class="crumbs"><a href="/">Home</a> / <a href="/guides/">Guides</a> / {{ guide.title }}</p>
+<article class="guide">
+  <h1>{{ guide.title }}</h1>
+  <p class="guide-lede">{{ guide.description }}</p>
+  {%- if guide.draft %}
+  <p class="notice">Draft: this guide is awaiting editorial review and may change.</p>
+  {%- endif %}
+  <div class="guide-body">
+{{ content | safe }}
+  </div>
+</article>
+<nav class="guide-more" aria-label="More guides">
+  <h2>More guides</h2>
+  <ul class="index-grid">
+  {%- for g in guides.list %}{% if g.key != guide.key %}
+    <li><a href="{{ g.url }}">{{ g.title }}</a></li>
+  {%- endif %}{% endfor %}
+  </ul>
+</nav>

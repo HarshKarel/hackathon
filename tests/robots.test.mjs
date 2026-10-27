@@ -25,3 +25,11 @@ test('longest match wins, Allow wins ties', () => {
   assert.equal(isAllowed(g, 'bot', '/a/b/c'), true);
   assert.equal(isAllowed(g, 'bot', '/a/c'), false);
 });
+
+test('rate limits are shared across subdomains of one site', async () => {
+  const { rateKey } = await import('../pipeline/lib/http.mjs');
+  assert.equal(rateKey('marina-hacks-6-0.devpost.com'), 'devpost.com');
+  assert.equal(rateKey('devpost.com'), 'devpost.com');
+  assert.equal(rateKey('api.devfolio.co'), 'devfolio.co');
+  assert.equal(rateKey('www.mlh.com'), 'mlh.com');
+});

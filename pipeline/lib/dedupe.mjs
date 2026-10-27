@@ -42,7 +42,7 @@ const priority = (r) => {
 };
 
 const FACT_FIELDS = [
-  'title', 'organiser', 'series', 'startDate', 'endDate', 'registrationDeadline', 'deadlineKind',
+  'type', 'title', 'organiser', 'series', 'startDate', 'endDate', 'registrationDeadline', 'deadlineKind',
   'timezone', 'mode', 'city', 'country', 'countryCode', 'locationText', 'prizeText', 'eligibilityText', 'eligibility', 'teamSizeText',
 ];
 

@@ -29,7 +29,9 @@ export default function (eleventyConfig) {
 
   return {
     dir: { input: 'src', output: '_site', includes: '_includes', data: '_data' },
-    templateFormats: ['njk', '11ty.js'],
+    templateFormats: ['njk', '11ty.js', 'md'],
     htmlTemplateEngine: 'njk',
+    // Guides are plain Markdown; nothing in them is a template.
+    markdownTemplateEngine: false,
   };
 }

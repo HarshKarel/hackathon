@@ -20,7 +20,16 @@ export const PATHS = {
   cache: path.join(ROOT, '.cache'),
   httpCache: path.join(ROOT, '.cache', 'http'),
   sourceText: path.join(ROOT, '.cache', 'source-text.json'),
+  // Winners are written by a separate weekly pipeline (pipeline/winners.mjs)
+  // into their own file, so the two pipelines never write the same file.
+  winners: path.join(ROOT, 'data', 'winners.json'),
+  winnersRuns: path.join(ROOT, 'data', 'health', 'winners-runs.jsonl'),
+  winnersLatest: path.join(ROOT, 'data', 'health', 'winners-latest.json'),
 };
+
+// Winners: events that ended within this many days are checked each week
+// until winners are found.
+export const WINNERS_WINDOW_DAYS = 60;
 
 export const SITE = {
   name: 'hackathon.so',
@@ -30,9 +39,12 @@ export const SITE = {
 export const HTTP = {
   userAgent: 'Mozilla/5.0 (compatible; hackathon.so-bot/0.1; +https://hackathon.so/sources/)',
   robotsToken: 'hackathon.so-bot',
+  // Some sources (Unstop) only answer a regular browser user agent. robots.txt
+  // is still checked for our own bot token before every request.
+  browserUserAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
   timeoutMs: 30_000,
   retries: 2,
-  // Minimum gap between two requests to the same host.
+  // Minimum gap between two requests to the same site (see rateKey in lib/http.mjs).
   perHostIntervalMs: 1_000,
 };
 
@@ -68,9 +80,15 @@ export const PLATFORMS = {
   hackerearth: { name: 'HackerEarth', home: 'https://www.hackerearth.com/challenges/hackathon/', covers: 'Online hackathons hosted on HackerEarth, often run by companies. Programming contests in the same feed are skipped.' },
   ethglobal: { name: 'ETHGlobal', home: 'https://ethglobal.com/events', covers: 'ETHGlobal hackathons, in person and online, focused on Ethereum. Meetups, summits and other non-hackathon events are skipped.' },
   hackclub: { name: 'Hack Club', home: 'https://hackathons.hackclub.com', covers: 'The Hack Club directory of high school hackathons around the world.' },
+  unstop: { name: 'Unstop', home: 'https://unstop.com/hackathons', covers: 'Hackathons listed on Unstop, mostly run by Indian colleges and companies. We read events with registration open or recently closed. Capture the flag, bug bounty and quiz events from the same listing are typed as competitions.' },
+  kaggle: { name: 'Kaggle', home: 'https://www.kaggle.com/competitions', covers: 'Active Kaggle competitions, read through the official Kaggle API and typed as competitions rather than hackathons. Runs only when Kaggle API credentials are configured.' },
   seed: { name: 'hackathon.so curated', home: 'https://hackathon.so/sources/', covers: 'A hand-maintained list of well known events that do not publish a feed, such as NASA Space Apps and Smart India Hackathon.' },
 };
 
 // When two sources describe the same event, facts are taken from the first
 // source in this order that states them.
-export const SOURCE_PRIORITY = ['seed', 'devfolio', 'devpost', 'ethglobal', 'hackerearth', 'mlh', 'hackclub'];
+export const SOURCE_PRIORITY = ['seed', 'devfolio', 'devpost', 'unstop', 'ethglobal', 'hackerearth', 'kaggle', 'mlh', 'hackclub'];
+
+// Record types. Kaggle and some Unstop listings are competitions rather
+// than hackathons; both live in the same record format and on the same site.
+export const EVENT_TYPES = ['hackathon', 'competition'];

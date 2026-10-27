@@ -1,0 +1,12 @@
+[
+  { "key": "choose", "slug": "choose-the-right-hackathon", "order": 1, "stage": "Before", "title": "How to choose the right hackathon", "description": "Match an event to your goals, your eligibility and your calendar before you sign up.", "draft": true },
+  { "key": "problem", "slug": "pick-a-problem-statement", "order": 2, "stage": "Before", "title": "How to pick a problem statement", "description": "Find a problem that is real, small enough to finish and easy to demo.", "draft": true },
+  { "key": "team", "slug": "form-a-team-that-works", "order": 3, "stage": "Before", "title": "How to form a team that works", "description": "Choose teammates, split roles and agree on how you will work before the clock starts.", "draft": true },
+  { "key": "plan", "slug": "plan-48-hours", "order": 4, "stage": "Before", "title": "How to plan 48 hours", "description": "An hour-by-hour plan that protects your demo, your submission and your sleep.", "draft": true },
+  { "key": "demo", "slug": "build-a-demo-that-lands", "order": 5, "stage": "During", "title": "How to build a demo that lands", "description": "Build one path that works every time, then make it easy for judges to see.", "draft": true },
+  { "key": "pitch", "slug": "pitch-to-judges", "order": 6, "stage": "During", "title": "How to pitch to judges", "description": "Structure a short pitch around the problem, the demo and the judging criteria.", "draft": true },
+  { "key": "judging", "slug": "how-judging-usually-works", "order": 7, "stage": "After", "title": "How judging usually works", "description": "Who judges, what they score and how winners are announced on common platforms.", "draft": true },
+  { "key": "devpost", "slug": "apply-on-devpost", "order": 8, "stage": "Applying", "title": "How to apply on Devpost, step by step", "description": "Register, build your submission and submit on Devpost without missing a step.", "draft": true },
+  { "key": "devfolio", "slug": "apply-on-devfolio", "order": 9, "stage": "Applying", "title": "How to apply on Devfolio, step by step", "description": "Apply, form a team, RSVP and submit on Devfolio, for each hackathon mode.", "draft": true },
+  { "key": "after", "slug": "after-a-hackathon-ends", "order": 10, "stage": "After", "title": "What to do after a hackathon ends, win or lose", "description": "Wrap up your project, follow up on results and turn the weekend into something lasting.", "draft": true }
+]

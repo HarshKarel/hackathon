@@ -42,7 +42,7 @@ export function makeSlug(record, taken) {
 }
 
 const FACT_FIELDS = [
-  'title', 'organiser', 'series', 'applyUrl', 'applyPlatform', 'startDate', 'endDate', 'registrationDeadline', 'deadlineKind',
+  'type', 'title', 'organiser', 'series', 'applyUrl', 'applyPlatform', 'startDate', 'endDate', 'registrationDeadline', 'deadlineKind',
   'timezone', 'mode', 'city', 'country', 'countryCode', 'locationText', 'prizeText', 'niches', 'eligibilityText', 'eligibility', 'teamSizeText',
 ];
 

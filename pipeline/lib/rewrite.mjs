@@ -16,6 +16,9 @@ const FACT_KEYS = [
 
 export function factsFor(e) {
   const f = {};
+  // Only non-default types are part of the facts, so adding the field did
+  // not change the hash (and trigger a rewrite) for every existing hackathon.
+  if (e.type && e.type !== 'hackathon') f.type = e.type;
   for (const k of FACT_KEYS) if (e[k] != null && !(Array.isArray(e[k]) && !e[k].length)) f[k] = e[k];
   const rank = (p) => (SOURCE_PRIORITY.indexOf(p) + 100) % 100;
   const platforms = [...new Set(e.sources.map((s) => s.platform))].sort((a, b) => rank(a) - rank(b));
@@ -43,7 +46,8 @@ export function placeholderFor(e) {
   const where = e.mode === 'online' ? '' : e.city && e.country ? ` in ${e.city}, ${e.country}` : e.country ? ` in ${e.country}` : '';
   const by = e.organiser ? `, organised by ${e.organiser}` : '';
   const parts = [];
-  parts.push(`${e.title} is ${MODE_WORDS[e.mode]} hackathon${where}${by}.`);
+  const noun = e.type === 'competition' ? 'competition' : 'hackathon';
+  parts.push(`${e.title} is ${MODE_WORDS[e.mode]} ${noun}${where}${by}.`);
   const sameDay = (e.endDate || e.startDate).slice(0, 10) === e.startDate.slice(0, 10);
   parts.push(sameDay ? `It takes place on ${fmtDay(e.startDate)}.` : `It runs from ${fmtDay(e.startDate)} to ${fmtDay(e.endDate)}.`);
   if (e.registrationDeadline) parts.push(`The listed ${e.deadlineKind === 'submission' ? 'submission' : 'registration'} deadline is ${fmtWhen(e.registrationDeadline)}.`);
@@ -52,7 +56,7 @@ export function placeholderFor(e) {
   const platforms = [...new Set(e.sources.map((s) => PLATFORMS[s.platform]?.name || s.platform))];
   parts.push(`Full details and registration are on ${platforms.join(' and ')}.`);
   const summaryBits = [
-    e.mode === 'online' ? 'Online hackathon' : e.mode === 'hybrid' ? 'Hybrid hackathon' : `In-person hackathon${e.city ? ` in ${e.city}` : e.country ? ` in ${e.country}` : ''}`,
+    e.mode === 'online' ? `Online ${noun}` : e.mode === 'hybrid' ? `Hybrid ${noun}` : `In-person ${noun}${e.city ? ` in ${e.city}` : e.country ? ` in ${e.country}` : ''}`,
     sameDay ? fmtDay(e.startDate) : `${fmtDay(e.startDate)} to ${fmtDay(e.endDate)}`,
   ];
   return {
@@ -63,7 +67,7 @@ export function placeholderFor(e) {
 
 // ---------- AI rewrite ----------
 
-export const SYSTEM_PROMPT = `You write short, original descriptions of hackathons for hackathon.so, a worldwide hackathon directory.
+export const SYSTEM_PROMPT = `You write short, original descriptions of hackathons and competitions for hackathon.so, a worldwide hackathon directory. If the facts give a "type" of "competition", call the event a competition, not a hackathon.
 You get verified facts and, separately, the listing text the organiser published. Write in your own words.
 Rules:
 1. Use only the facts given. Do not add prizes, dates, sponsors, themes, numbers or claims that are not in the facts.

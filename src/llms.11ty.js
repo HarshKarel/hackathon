@@ -1,7 +1,7 @@
 // /llms.txt: a plain description of the site for language models.
 export const data = { permalink: '/llms.txt', eleventyExcludeFromCollections: true };
 
-export function render({ site }) {
+export function render({ site, guides }) {
   const niches = site.niches.map((n) => `- [${n.name}](${site.url}/niche/${n.slug}/): ${n.openCount} open`).join('\n');
   const sources = site.sources.map((s) => `- ${s.name}: ${s.covers}`).join('\n');
   return `# hackathon.so
@@ -22,9 +22,16 @@ Event status is computed from dates: upcoming, then live, then ended. Deadlines 
 - [Series](${site.url}/series/): roll-ups of recurring events
 - [Sources](${site.url}/sources/): platforms we read and when each was last fetched
 - [Calendar feeds](${site.url}/subscribe/): ICS feeds for all events and per niche
+- [Guides](${site.url}/guides/): practical guides for each stage of a hackathon${guides.anyFinal ? '' : ' (drafts under editorial review)'}
 - [Sitemap](${site.url}/sitemap.xml)
 
-Event pages live at ${site.url}/hackathons/<slug>/ and include Event structured data (JSON-LD).
+Event pages live at ${site.url}/hackathons/<slug>/ and include Event structured data (JSON-LD). Some listings are competitions (for example Kaggle) rather than hackathons and are labelled as such.
+
+After an event ends, its page shows the winners when they are published on Devpost or Devfolio, copied exactly as the platform states them (place, project, project link, team). If nothing is published yet, the page says so and shows the date the event ended. Winners are checked weekly for 60 days after an event ends.
+
+## Guides
+
+${guides.list.map((g) => `- [${g.title}](${site.url}${g.url}): ${g.description}`).join('\n')}
 
 ## Niches
 
@@ -37,6 +44,7 @@ ${sources}
 ## Data
 
 - ${site.counts.total} events on record: ${site.counts.upcoming} upcoming, ${site.counts.live} live, ${site.counts.ended} ended.
+- Winners published for ${site.counts.withWinners} ended events; ${site.counts.winnersNotPublished} checked with nothing published yet.
 - Updated ${site.health.finishedAt ? site.health.finishedAt.slice(0, 10) : site.buildDate}.
 `;
 }

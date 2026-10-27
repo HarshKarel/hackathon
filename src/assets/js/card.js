@@ -17,7 +17,7 @@ export function renderCard(c, now = new Date()) {
   const niches = (c.niches || []).map((n) => `<li>${esc(n)}</li>`).join('');
   const via = (c.platforms || []).map((p) => esc(p)).join(', ');
   return `<article class="card" data-slug="${esc(c.slug)}">
-<div class="card-top"><span class="badge badge-${esc(c.status)}">${STATUS_LABELS[c.status] || ''}</span><span class="card-mode">${esc(MODE_LABELS[c.mode] || '')}</span></div>
+<div class="card-top"><span><span class="badge badge-${esc(c.status)}">${STATUS_LABELS[c.status] || ''}</span>${c.type === 'competition' ? ' <span class="badge badge-type">Competition</span>' : ''}</span><span class="card-mode">${esc(MODE_LABELS[c.mode] || '')}</span></div>
 <h3 class="card-title"><a href="/hackathons/${esc(c.slug)}/">${esc(c.title)}</a></h3>
 <p class="card-deadline">${deadline}</p>
 <p class="card-meta">${esc(fmtRange(c.start, c.end, c.tz))} · ${esc(place)}</p>

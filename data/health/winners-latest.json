@@ -1,0 +1,115 @@
+{
+  "runId": "2026-10-27T07-26-18-960Z",
+  "startedAt": "2026-10-27T07:26:18.960Z",
+  "finishedAt": "2026-10-27T07:29:12.578Z",
+  "windowDays": 60,
+  "candidates": 287,
+  "checked": 287,
+  "newlyPublished": 18,
+  "stillNotPublished": 269,
+  "couldNotCheck": 0,
+  "errors": [],
+  "errorCount": 0,
+  "totals": {
+    "published": 18,
+    "notPublished": 269
+  },
+  "published": [
+    {
+      "slug": "ascendance-foundry-s-hackathon-2026",
+      "source": "devpost",
+      "winners": 2
+    },
+    {
+      "slug": "boss-battle-2026",
+      "source": "devfolio",
+      "winners": 3
+    },
+    {
+      "slug": "citycamp-gainesville-hack-day-2026",
+      "source": "devpost",
+      "winners": 4
+    },
+    {
+      "slug": "emberhacks-day-2026",
+      "source": "devpost",
+      "winners": 3
+    },
+    {
+      "slug": "girls-hoo-hack-2026",
+      "source": "devpost",
+      "winners": 12
+    },
+    {
+      "slug": "hack-like-w-cc-2026",
+      "source": "devpost",
+      "winners": 6
+    },
+    {
+      "slug": "hacktually-hacktoberfest-hackmerced-2026",
+      "source": "devpost",
+      "winners": 5
+    },
+    {
+      "slug": "hellohacks-2026",
+      "source": "devpost",
+      "winners": 7
+    },
+    {
+      "slug": "latinos-x-ai-hackathon-nyc-2026",
+      "source": "devpost",
+      "winners": 4
+    },
+    {
+      "slug": "localhost-2-0-2026",
+      "source": "devpost",
+      "winners": 4
+    },
+    {
+      "slug": "marina-hacks-6-0-2026",
+      "source": "devpost",
+      "winners": 4
+    },
+    {
+      "slug": "metamorph-2-0-2026",
+      "source": "devfolio",
+      "winners": 7
+    },
+    {
+      "slug": "mulehacks2026",
+      "source": "devpost",
+      "winners": 7
+    },
+    {
+      "slug": "scuffathon-2026",
+      "source": "devpost",
+      "winners": 3
+    },
+    {
+      "slug": "recursive-2026",
+      "source": "devfolio",
+      "winners": 5
+    },
+    {
+      "slug": "smu-lit-legal-tech-hackathon-2026",
+      "source": "devpost",
+      "winners": 3
+    },
+    {
+      "slug": "syncs-hack-2026",
+      "source": "devpost",
+      "winners": 9
+    },
+    {
+      "slug": "muba-blockchain-hackathon-2026",
+      "source": "devfolio",
+      "winners": 33
+    }
+  ],
+  "http": {
+    "requests": 644,
+    "cacheHits": 0,
+    "robotsBlocked": 0,
+    "usedCache": false
+  }
+}

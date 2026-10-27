@@ -1,7 +1,8 @@
 // Polite HTTP client used by every adapter.
 // - identifies itself with a bot user agent
 // - checks robots.txt before every request and refuses disallowed paths
-// - spaces requests to the same host (one at a time, minimum interval)
+// - spaces requests to the same site (one at a time, minimum interval;
+//   subdomains such as x.devpost.com share one limit)
 // - retries transient failures with backoff
 // - optional on-disk cache (--use-cache) so development runs do not hit sources
 import crypto from 'node:crypto';
@@ -19,6 +20,13 @@ export class RobotsDisallowedError extends Error {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// Rate limits apply per site, not per host: every Devpost hackathon has its
+// own subdomain (x.devpost.com), and they all hit the same servers. Our
+// sources use simple two-label domains (devpost.com, devfolio.co, unstop.com).
+export function rateKey(host) {
+  return String(host).toLowerCase().split('.').slice(-2).join('.');
+}
+
 export function createHttp({ useCache = false, fetchImpl = globalThis.fetch } = {}) {
   const robotsByOrigin = new Map();
   const hostChains = new Map();
@@ -26,7 +34,8 @@ export function createHttp({ useCache = false, fetchImpl = globalThis.fetch } = 
   const stats = { requests: 0, cacheHits: 0, robotsBlocked: 0 };
 
   // Serialise requests per host and keep the minimum gap between them.
-  function schedule(host, task) {
+  function schedule(hostname, task) {
+    const host = rateKey(hostname);
     const prev = hostChains.get(host) || Promise.resolve();
     const next = prev.catch(() => {}).then(async () => {
       const wait = (hostLast.get(host) || 0) + HTTP.perHostIntervalMs - Date.now();
@@ -90,7 +99,9 @@ export function createHttp({ useCache = false, fetchImpl = globalThis.fetch } = 
     }
   }
 
-  async function request(url, { method = 'GET', body = null, headers = {} } = {}) {
+  // noCache: never read or write the on-disk cache (used for authenticated
+  // requests, so nothing tied to credentials is stored).
+  async function request(url, { method = 'GET', body = null, headers = {}, noCache = false } = {}) {
     const u = new URL(url);
     const groups = await robotsFor(u.origin);
     if (!isAllowed(groups, HTTP.robotsToken, u.pathname + u.search)) {
@@ -98,7 +109,7 @@ export function createHttp({ useCache = false, fetchImpl = globalThis.fetch } = 
       throw new RobotsDisallowedError(url);
     }
     const file = cachePath(method, url, body);
-    if (useCache && fs.existsSync(file)) {
+    if (useCache && !noCache && fs.existsSync(file)) {
       stats.cacheHits += 1;
       const c = JSON.parse(fs.readFileSync(file, 'utf8'));
       return { status: c.status, text: c.body, url: c.url || url };
@@ -114,7 +125,7 @@ export function createHttp({ useCache = false, fetchImpl = globalThis.fetch } = 
           continue;
         }
         if (res.status >= 400) throw Object.assign(new Error(`HTTP ${res.status} for ${url}`), { fatal: true });
-        writeCache(file, { status: res.status, body: text, url: res.url });
+        if (!noCache) writeCache(file, { status: res.status, body: text, url: res.url });
         return { status: res.status, text, url: res.url };
       } catch (err) {
         if (err.fatal) throw err;

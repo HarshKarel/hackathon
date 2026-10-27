@@ -61,6 +61,29 @@ eleventyComputed:
       {%- endfor %}
     </section>
 
+    {%- if e.status == 'ended' and e.winnersStatus == 'published' and e.winners.length %}
+    <section aria-labelledby="winners">
+      <h2 id="winners">Winners</h2>
+      <div class="table-wrap">
+      <table class="winners" data-verbatim>
+        <thead><tr><th scope="col">Place</th><th scope="col">Project</th><th scope="col">Team</th></tr></thead>
+        <tbody>
+        {%- for w in e.winners %}
+          <tr><td>{{ w.place }}</td><td>{% if w.projectUrl %}<a href="{{ w.projectUrl }}" rel="noopener nofollow">{{ w.project }}</a>{% else %}{{ w.project }}{% endif %}</td><td>{{ w.team or "Not stated" }}</td></tr>
+        {%- endfor %}
+        </tbody>
+      </table>
+      </div>
+      <p class="source-note">As published on <a href="{{ e.winnersSourceUrl }}" rel="noopener nofollow">{{ e.winnersSourceName }}</a>. Places, project names and teams are copied exactly as stated there. Checked {{ e.winnersCheckedAt | date }}.</p>
+    </section>
+    {%- elif e.status == 'ended' and e.winnersStatus == 'not published' %}
+    <section aria-labelledby="winners">
+      <h2 id="winners">Winners</h2>
+      <p>Winners not published yet. This event ended on {{ e.endDate | dateLong(e.timezone) }}.</p>
+      <p class="source-note">Last checked on {{ e.winnersChecked | join(' and ') }} on {{ e.winnersCheckedAt | date }}. We check again every week for 60 days after an event ends.</p>
+    </section>
+    {%- endif %}
+
     <section aria-labelledby="prizes">
       <h2 id="prizes">Prizes</h2>
       {%- if e.prizeText %}
@@ -96,6 +119,7 @@ eleventyComputed:
     <table class="facts">
       <tbody>
         <tr><th scope="row">Status</th><td><span class="badge badge-{{ e.status }}">{{ e.status | statusLabel }}</span></td></tr>
+        <tr><th scope="row">Type</th><td>{{ 'Competition' if e.type == 'competition' else 'Hackathon' }}</td></tr>
         <tr><th scope="row">Dates</th><td>{{ e.startDate | dateTime(e.timezone) }}<br>to {{ e.endDate | dateTime(e.timezone) }}</td></tr>
         <tr><th scope="row">{{ e.deadlineKind | deadlineLabel }}</th><td>
           {%- if e.registrationDeadline %}
@@ -121,6 +145,17 @@ eleventyComputed:
         <tr><th scope="row">Last checked</th><td>{{ e.lastCheckedAt | date }}</td></tr>
       </tbody>
     </table>
+    {%- if e.suggested and e.suggested.guides.length %}
+    <section class="suggest" aria-labelledby="suggest-title">
+      <h2 id="suggest-title">{{ e.suggested.block }}</h2>
+      <p class="muted small" style="margin:0 0 4px">{{ 'Guides for getting ready.' if e.suggested.block == 'Prepare' else 'Guides for after the event.' }}</p>
+      <ul>
+      {%- for g in e.suggested.guides %}
+        <li><a href="{{ g.url }}">{{ g.title }}</a><span class="sub">{{ g.description }}</span></li>
+      {%- endfor %}
+      </ul>
+    </section>
+    {%- endif %}
     <p class="source-note" style="margin-top:8px">Facts come from the listing{{ 's' if e.sources.length > 1 }} above. hackathon.so does not take applications; use the apply button to register on {{ e.applyName }}.</p>
   </aside>
 </div>

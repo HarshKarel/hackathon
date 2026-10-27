@@ -39,6 +39,15 @@ test('a title used as a heading in the source is not a copied sentence', () => {
   assert.equal(sharedSentences('Build things with friends over a weekend.', src, { allow: ['Testville Hacks Autumn Edition 2026'] }).length, 1);
 });
 
+test('fragments of stated facts split at abbreviation periods are not copied sentences', () => {
+  const org = 'Dr. Ambedkar Institute of Technology (Dr. AIT), Bangalore';
+  const src = `About the organiser:\n${org}\nEstablished long ago.`;
+  const out = `Colossus is an in-person hackathon, organised by ${org}. It runs for two days.`;
+  assert.deepEqual(sharedSentences(out, src, { allow: [org] }), []);
+  const title = 'P.A.C.E - Where Logic Meets Expression.';
+  assert.deepEqual(sharedSentences(`${title} is an online hackathon.`, `Welcome to ${title} - by a club!`, { allow: [title] }), []);
+});
+
 test('fact check rejects numbers and months that are not in the facts', () => {
   const facts = factsFor(event);
   assert.deepEqual(factProblems(GOOD.description, facts), []);

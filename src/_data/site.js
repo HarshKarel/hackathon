@@ -8,6 +8,8 @@ import { dayKey, toInstant } from '../../pipeline/lib/dates.mjs';
 import { ELIGIBILITY_LABELS } from '../../pipeline/lib/eligibility.mjs';
 import { nicheSlug } from '../../pipeline/lib/niches.mjs';
 import { slugify } from '../../pipeline/lib/text.mjs';
+import { suggestGuideKeys } from '../_lib/suggest.js';
+import guidesData from './guides.js';
 
 function readJson(file, fallback) {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return fallback; }
@@ -84,6 +86,8 @@ function eventJsonLd(e) {
 export default function () {
   const now = new Date();
   const store = readJson(PATHS.store, { events: [], redirects: {} });
+  const winners = readJson(PATHS.winners, { events: {} }).events || {};
+  const guides = guidesData();
   const health = readJson(PATHS.healthLatest, { sources: {} });
 
   const all = store.events.filter((e) => e.published !== false);
@@ -98,8 +102,21 @@ export default function () {
     e.seriesSlug = e.series ? slugify(e.series) : null;
     e.monthKey = monthOf(e);
     e.eligibilityLabel = e.eligibility ? ELIGIBILITY_LABELS[e.eligibility] : null;
+    e.type = e.type || 'hackathon';
+    // Winners come from the weekly winners pipeline (data/winners.json).
+    const w = winners[e.slug];
+    e.winnersStatus = w?.winnersStatus || null;
+    e.winners = w?.winnersStatus === 'published' ? w.winners : [];
+    e.winnersCheckedAt = w?.checkedAt || null;
+    e.winnersSourceName = w?.source ? PLATFORMS[w.source]?.name || w.source : null;
+    e.winnersSourceUrl = w?.sourceUrl || null;
+    e.winnersChecked = (w?.checked || []).map((p) => PLATFORMS[p]?.name || p);
+    // Suggested how-tos: a "Prepare" block before and during, "Reflect" after.
+    const sg = suggestGuideKeys(e, now);
+    e.suggested = { block: sg.block, guides: sg.keys.map((k) => guides.byKey[k]).filter(Boolean) };
     e.compact = {
       slug: e.slug,
+      type: e.type,
       title: e.title,
       organiser: e.organiser,
       status: e.status,
@@ -180,6 +197,8 @@ export default function () {
       key,
       ...p,
       ok: h.ok ?? null,
+      skipped: Boolean(h.skipped),
+      skipReason: h.skipped ? h.reason : null,
       lastSuccessAt: h.lastSuccessAt || null,
       lastCount: h.normalised ?? null,
       lastSuccessCount: h.lastSuccessCount ?? null,
@@ -226,6 +245,8 @@ export default function () {
       live: all.filter((e) => e.status === 'live').length,
       ended: ended.length,
       closingSoon: closingSoon.length,
+      withWinners: all.filter((e) => e.winnersStatus === 'published').length,
+      winnersNotPublished: all.filter((e) => e.winnersStatus === 'not published').length,
       placeholders: all.filter((e) => e.descriptionStatus === 'placeholder' || e.descriptionStatus === 'review').length,
       indexable: all.filter((e) => e.indexable).length,
     },

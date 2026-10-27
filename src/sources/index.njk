@@ -16,6 +16,7 @@ description: Every platform hackathon.so reads, what it covers, and when it was 
       <td>{% if s.lastSuccessAt %}{{ s.lastSuccessAt | dateTime }}{% else %}<span class="muted">Never</span>{% endif %}</td>
       <td>
         {%- if s.ok == true %}<span class="status-ok">OK</span>, {{ s.lastCount }} listings{% if s.errorCount %}, {{ s.errorCount }} item errors{% endif %}
+        {%- elif s.skipped %}<span class="muted">Not run: {{ s.skipReason }}</span>
         {%- elif s.ok == false %}<span class="status-err">Failed</span>{% if s.lastError %}<br><span class="small muted">{{ s.lastError }}</span>{% endif %}
         {%- else %}<span class="muted">Not run yet</span>{% endif %}
       </td>

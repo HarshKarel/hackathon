@@ -24,6 +24,9 @@ export function sharedSentences(output, source, { allow = [] } = {}) {
   const srcAll = ` ${norm(source)} `;
   const shared = [];
   for (const s of sentences(output)) {
+    // A fragment of a stated fact ("Dr." or "P.A.C.E." split at a period)
+    // is the fact itself, not copied prose.
+    if (isFact(s)) continue;
     const words = s.split(' ').length;
     if (srcSet.has(s) || (words >= 5 && srcAll.includes(` ${s} `))) {
       shared.push(s);

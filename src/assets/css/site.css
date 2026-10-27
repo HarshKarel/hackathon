@@ -93,6 +93,7 @@ main.wrap { padding-top: 20px; padding-bottom: 40px; }
 .badge-live { background: var(--accent); color: var(--accent-ink); }
 .badge-upcoming { border: 1px solid var(--accent); color: var(--accent); padding: 0 6px; }
 .badge-ended { background: #eceef1; color: var(--muted); }
+.badge-type { background: #f1f2f4; color: #3c424d; }
 
 .empty { padding: 24px; text-align: center; color: var(--muted); border: 1px dashed var(--line-strong); border-radius: var(--radius); }
 .more { margin-top: 12px; }
@@ -132,6 +133,28 @@ th { color: var(--muted); font-weight: 500; }
 .notice { background: #fff8e6; border: 1px solid #f0dfb0; color: #5c4a14; padding: 8px 11px; border-radius: 6px; font-size: 13px; margin-bottom: 10px; }
 .description p { max-width: 68ch; }
 .tags-inline a { margin-right: 8px; white-space: nowrap; display: inline-block; }
+
+.winners td:first-child { font-weight: 600; }
+.winners td { overflow-wrap: break-word; }
+.winners td:nth-child(2) { min-width: 7em; }
+
+/* Guides */
+.guide { max-width: 72ch; }
+.guide-lede { font-size: 17px; color: var(--muted); }
+.guide-body h2 { margin-top: 26px; }
+.guide-body p, .guide-body li { font-size: 16px; line-height: 1.6; }
+.guide-body table { margin: 10px 0 14px; background: var(--surface); border: 1px solid var(--line); }
+.guide-body blockquote { margin: 12px 0; padding: 10px 14px; border-left: 4px solid var(--accent); background: var(--surface); }
+.guide-more { margin-top: 32px; }
+.guide-list { list-style: none; margin: 0 0 8px; padding: 0; border-top: 1px solid var(--line); }
+.guide-list li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.guide-list .sub { display: block; color: var(--muted); font-size: 14px; }
+.suggest { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; }
+.suggest h2 { margin: 0 0 4px; font-size: 16px; }
+.suggest ul { list-style: none; margin: 0; padding: 0; }
+.suggest li { padding: 8px 0; border-top: 1px solid var(--line); }
+.suggest li:first-child { border-top: 0; }
+.suggest .sub { display: block; color: var(--muted); font-size: 13px; }
 
 /* Archive search */
 .archive-search { width: 100%; font: inherit; padding: 9px 11px; border: 1px solid var(--line-strong); border-radius: 6px; margin-bottom: 12px; background: #fff; }

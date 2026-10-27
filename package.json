@@ -13,6 +13,7 @@
     "build": "eleventy",
     "check": "node scripts/check-site.mjs",
     "serve": "eleventy --serve --port 8080",
+    "winners": "node pipeline/winners.mjs",
     "test": "node --test \"tests/*.test.mjs\""
   },
   "dependencies": {
