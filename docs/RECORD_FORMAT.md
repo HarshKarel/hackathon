@@ -165,7 +165,7 @@ generated cards together.
 | `stack` | Suggested stack, 2 to 5 short items (at most 40 characters each). |
 | `difficulty` | `weekend-easy`, `weekend-medium` or `weekend-hard` (all sized for 24 to 48 hours). |
 | `teamSize` | Team size fit: `solo-friendly`, `pair` or `team`. |
-| `source` | `{ "kind": "seed", "date" }` for hand-written cards; `{ "kind": "generated", "date", "model", "batchJobId", "run" }` for generated cards, where `date` is the generation date. |
+| `source` | `{ "kind": "seed", "date" }` for hand-written cards; `{ "kind": "generated", "date", "generatedAt", "model", "batchJobId", "run" }` for generated cards, where `date` is the generation date and `generatedAt` the exact time. An ended event only shows generated cards made before it ended. |
 
 No field may contain an em dash. A generated card is also rejected when it is
 a near-duplicate of an existing card: it shares a niche with it and its title

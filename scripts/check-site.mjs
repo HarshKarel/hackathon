@@ -59,7 +59,7 @@ for (const e of published) {
     try { JSON.parse(block.replace(/^<script[^>]*>|<\/script>$/g, '')); } catch { fail(`${e.slug}: JSON-LD does not parse`); }
   }
   if (!ld.some((b) => b.includes('"@type":"Event"'))) fail(`${e.slug}: no Event JSON-LD`);
-  if (!html.includes(`href="/claim/?event=${e.slug}&amp;`)) fail(`${e.slug}: no "Claim this listing" link`);
+  if (!html.includes(`href="/claim/?event=${e.slug}"`)) fail(`${e.slug}: no "Claim this listing" link`);
   if (!html.includes('id="idea-starters"')) noIdeas += 1;
   // Rule: never publish the source listing's own text.
   const src = sourceText[e.slug];

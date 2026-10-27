@@ -60,10 +60,21 @@ try {
   // 2. The listing is filled in from the link.
   const listing = await page.inputValue('#claim-listing');
   check('listing URL is filled in from the event link', listing === `${origin}/hackathons/${slug}/`, listing);
-  check('event title is shown above the form', /^Listing: .+/.test(await page.textContent('#claim-event')), await page.textContent('#claim-event'));
+  await page.waitForSelector('#claim-event:not([hidden])');
+  check('event title is shown above the form (read from the event page)', /^Listing: .+/.test(await page.textContent('#claim-event')), await page.textContent('#claim-event'));
   check('email subject names the event', /listing claim: .+/.test(await page.inputValue('#claim-subject')), await page.inputValue('#claim-subject'));
   check('page is not indexed', (await page.locator('meta[name="robots"]').getAttribute('content'))?.includes('noindex'));
   await page.screenshot({ path: path.join(shots, 'claim-form-desktop.png'), fullPage: true });
+
+  // Words in the address never reach the page.
+  await page.goto(`${origin}/claim/?event=${slug}&title=${encodeURIComponent('Call this number now')}`);
+  await page.waitForSelector('#claim-event:not([hidden])');
+  check('a title in the address is ignored', !(await page.textContent('body')).includes('Call this number now'));
+  await page.goto(`${origin}/claim/?event=no-such-event-2026`);
+  await page.waitForTimeout(300);
+  check('an unknown listing shows no title but keeps the URL', await page.isHidden('#claim-event') && /no-such-event-2026/.test(await page.inputValue('#claim-listing')));
+  await page.goto(`${origin}/claim/?event=${slug}`);
+  await page.waitForSelector('#claim-event:not([hidden])');
 
   // 3. Required fields: an empty or invalid form is never sent.
   await page.click('#claim-submit');
@@ -90,7 +101,7 @@ try {
 
   // 5. A refusal from the form service is shown, and the form can be resent.
   reply = { status: 422, body: { error: 'Validation errors', errors: [{ code: 'TYPE_EMAIL', field: 'email', message: 'should be an email' }] } };
-  await page.goto(`${origin}/claim/?event=${slug}&title=Test`);
+  await page.goto(`${origin}/claim/?event=${slug}`);
   await page.fill('input[name="name"]', 'Ada Example');
   await page.fill('input[name="organisation"]', 'Testville University');
   await page.fill('input[name="email"]', 'ada@example.org');

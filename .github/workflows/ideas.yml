@@ -24,12 +24,9 @@ concurrency:
 jobs:
   ideas:
     runs-on: ubuntu-latest
-    # A batch job usually finishes in minutes; the script stops waiting
-    # after 330 minutes and logs the job id.
+    # A batch job usually finishes in minutes. All rounds share one 330 minute
+    # waiting budget, after which the script logs what it has and stops.
     timeout-minutes: 345
-    env:
-      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
-      LLM_MODEL: ${{ vars.LLM_MODEL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -38,7 +35,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      # The key is given to this step only, not to dependency installs or tests.
       - run: npm run ideas
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
       - name: Commit new ideas and logs
         if: always()
         run: |

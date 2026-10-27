@@ -34,16 +34,34 @@ export async function runRequests(ai, items, {
   if (!items.length) return { mode: 'none', jobId: null, state: null, timedOut: false, items: 0, results, usage };
 
   if (items.length >= minBatch) {
-    const display = `hackathon-so-${label}-${now.toISOString().slice(0, 16).replace(/[:T]/g, '-')}`;
-    const jobId = await ai.batchCreate(items, display);
+    const display = `hackathon-so-${label}-${now.toISOString().slice(0, 16).replace(/[:T]/g, '-')}`.replace(/\s+/g, '-');
+    let jobId;
+    try {
+      jobId = await ai.batchCreate(items, display);
+    } catch (err) {
+      // No job exists (for example a free-tier key, or a bad model): every
+      // item fails this round, and the run carries on and saves its work.
+      log(`${label}: could not create the batch job: ${err.message}`);
+      for (const it of items) results.set(it.key, { error: `batch job not created: ${err.message}` });
+      return { mode: 'batch', jobId: null, state: 'NOT_CREATED', timedOut: false, items: items.length, results, usage };
+    }
     log(`${label}: batch job ${jobId} submitted with ${items.length} items`);
     onSubmitted(jobId);
     let lastState = null;
-    const { op, state, timedOut } = await ai.batchWait(jobId, {
-      pollMs,
-      maxWaitMs,
-      onPoll: (s) => { if (s !== lastState) { log(`${label}: batch job ${jobId} is ${s}`); lastState = s; } },
-    });
+    let waited;
+    try {
+      waited = await ai.batchWait(jobId, {
+        pollMs,
+        maxWaitMs,
+        onPoll: (s) => { if (s !== lastState) { log(`${label}: batch job ${jobId} is ${s}`); lastState = s; } },
+      });
+    } catch (err) {
+      // The job exists but its status could not be read (outage): hand it
+      // on like a slow job, so the next run collects it.
+      log(`${label}: could not check batch job ${jobId}: ${err.message}`);
+      waited = { op: null, state: 'UNKNOWN', timedOut: true };
+    }
+    const { op, state, timedOut } = waited;
     if (timedOut) {
       log(`${label}: stopped waiting for batch job ${jobId} (still ${state}); the next run collects it`);
       return { mode: 'batch', jobId, state, timedOut: true, items: items.length, results, usage };

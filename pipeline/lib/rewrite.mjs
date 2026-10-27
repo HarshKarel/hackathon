@@ -137,8 +137,9 @@ export function rewriteRequest(facts, sourceText, previousProblems = []) {
 
 // Rewrite many events through the shared AI flow.
 //   entries    [{ e, sourceText }]
-//   prefilled  Map(slug -> { text } | { error }) results collected from a
-//              batch job an earlier run left running; used as round 1
+//   prefilled  Map(slug -> { text | error, factsHash, usage }) results collected
+//              from a batch job an earlier run left running; used as round 1
+//              only when they were written for the event's current facts
 // Returns { outcomes: Map(slug -> outcome), rounds: [...] } where an outcome is
 //   { descriptionStatus: 'ai', description, summary, attempts, longestRun }
 //   { descriptionStatus: 'review', rejected, problems, attempts }   two drafts failed the checks
@@ -149,14 +150,17 @@ export async function rewriteMany(entries, ai, {
 } = {}) {
   const st = entries.map(({ e, sourceText }) => ({ e, sourceText: sourceText || '', facts: factsFor(e), problems: [], lastOut: null, lastError: null, attempts: 0, done: false }));
   const rounds = [];
+  // One waiting budget for the whole run, shared by both rounds.
+  const deadline = Date.now() + (maxWaitMs ?? AI.maxWaitMinutes * 60_000);
   for (let round = 1; round <= REWRITE.maxAttempts; round++) {
     const todo = st.filter((s) => !s.done);
     if (!todo.length) break;
-    const pre = round === 1 ? todo.filter((s) => prefilled.has(s.e.slug)) : [];
-    const send = round === 1 ? todo.filter((s) => !prefilled.has(s.e.slug)) : todo;
+    const current = (s) => prefilled.has(s.e.slug) && prefilled.get(s.e.slug).factsHash === s.e.factsHash;
+    const pre = round === 1 ? todo.filter(current) : [];
+    const send = round === 1 ? todo.filter((s) => !current(s)) : todo;
     const items = send.map((s) => ({ key: s.e.slug, request: rewriteRequest(s.facts, s.sourceText, s.problems) }));
     const res = await runRequests(ai, items, {
-      label: `rewrite round ${round}`, log, now, minBatch, pollMs, maxWaitMs,
+      label: `rewrite round ${round}`, log, now, minBatch, pollMs, maxWaitMs: Math.max(0, deadline - Date.now()),
       onSubmitted: (jobId) => onSubmitted?.(jobId, send.map((s) => ({ slug: s.e.slug, factsHash: s.e.factsHash }))),
     });
     if (res.timedOut) for (const s of send) Object.assign(s, { done: true, outcome: 'pending', jobId: res.jobId });
@@ -188,7 +192,7 @@ export async function rewriteMany(entries, ai, {
       }
     }
     if (res.mode !== 'none' || pre.length) {
-      rounds.push({ ...roundSummary(round, { ...res, usage }, counts), ...(pre.length ? { collectedFromEarlierJob: pre.length } : {}) });
+      rounds.push({ ...roundSummary(round, { ...res, usage, items: res.items + pre.length }, counts), ...(pre.length ? { collectedFromEarlierJob: pre.length } : {}) });
     }
     if (res.jobId && !res.timedOut) onCollected?.(res.jobId);
   }
@@ -211,48 +215,50 @@ export async function rewriteMany(entries, ai, {
   return { outcomes, rounds };
 }
 
-// Batch jobs an earlier run stopped waiting for. Finished jobs are collected
-// (results for events whose facts have not changed since) and removed from
-// data/ai-pending.json; jobs still running keep their events out of this run
-// so nothing is paid for twice.
-export async function collectPendingRewrites(ai, events, { log = () => {}, file } = {}) {
+// Batch jobs an earlier run stopped waiting for. Finished jobs are collected:
+// each result keeps the facts hash it was written for, and rewriteMany uses
+// it only if the event's facts are still the same. Jobs still running keep
+// their events out of this run so nothing is paid for twice.
+// Nothing is removed from data/ai-pending.json here: the caller forgets the
+// collected jobs (forgetPendingJobs) only after the store is saved, so a
+// crash in between never loses paid results.
+export async function collectPendingRewrites(ai, { log = () => {}, file } = {}) {
   const pending = loadPending(file);
   const prefilled = new Map();
   const busy = new Set();
-  const keep = [];
   const collected = [];
   for (const job of pending.jobs) {
-    if (job.kind !== 'rewrite') { keep.push(job); continue; }
+    if (job.kind !== 'rewrite') continue;
     let op;
     try { op = await ai.batchGet(job.jobId); } catch (err) {
       log(`rewrite: could not check earlier batch job ${job.jobId}: ${err.message}`);
-      keep.push(job);
       for (const it of job.items) busy.add(it.slug);
       continue;
     }
     const state = batchState(op);
     if (!op.done && !['SUCCEEDED', 'FAILED', 'CANCELLED', 'EXPIRED'].includes(state)) {
-      keep.push(job);
       for (const it of job.items) busy.add(it.slug);
       log(`rewrite: earlier batch job ${job.jobId} is still ${state}; its ${job.items.length} events wait for it`);
       continue;
     }
-    let used = 0;
+    let got = 0;
     if (state === 'SUCCEEDED') {
       const results = ai.batchResults(op);
       job.items.forEach((it, i) => {
-        const r = results.find((x) => x.key === it.slug) || results[i];
-        const e = events.get(it.slug);
-        if (!r || !e || e.factsHash !== it.factsHash) return; // facts changed since: rewrite afresh
-        prefilled.set(it.slug, r.error ? { error: `item failed: ${r.error.message || r.error.code}` } : { ...responseText(r.response), usage: usageOf(r.response) });
-        used += 1;
+        // Match by our key; fall back to position only for unkeyed results.
+        const r = results.find((x) => x.key === it.slug) ?? (results[i] && results[i].key == null ? results[i] : null);
+        if (!r) return;
+        prefilled.set(it.slug, {
+          ...(r.error ? { error: `item failed: ${r.error.message || r.error.code}` } : { ...responseText(r.response), usage: usageOf(r.response) }),
+          factsHash: it.factsHash,
+        });
+        got += 1;
       });
     }
-    collected.push({ jobId: job.jobId, state, items: job.items.length, used });
-    log(`rewrite: collected earlier batch job ${job.jobId} (${state}), ${used} results still current`);
+    collected.push({ jobId: job.jobId, state, items: job.items.length, results: got });
+    log(`rewrite: collected earlier batch job ${job.jobId} (${state}) with ${got} results`);
   }
-  savePending({ jobs: keep }, file);
-  return { prefilled, busy, collected };
+  return { prefilled, busy, collected, collectedJobIds: collected.map((c) => c.jobId) };
 }
 
 export function rememberPendingJob(kind, jobId, items, now, file) {
@@ -261,15 +267,23 @@ export function rememberPendingJob(kind, jobId, items, now, file) {
   savePending(pending, file);
 }
 
-export function forgetPendingJob(jobId, file) {
+export function forgetPendingJobs(jobIds, file) {
+  if (!jobIds.length) return;
   const pending = loadPending(file);
-  pending.jobs = pending.jobs.filter((j) => j.jobId !== jobId);
+  pending.jobs = pending.jobs.filter((j) => !jobIds.includes(j.jobId));
   savePending(pending, file);
 }
 
 // Write one outcome onto its event. Returns the outcome kind.
 export function applyRewriteOutcome(e, r, now) {
-  if (!r || r.descriptionStatus === 'pending') return 'pending'; // keep what the page shows now
+  if (!r || r.descriptionStatus === 'pending') {
+    // Waiting on a batch job: the page shows a flagged placeholder built from
+    // the current facts (never an old description written for older facts,
+    // and never an empty page), and the next run collects the job.
+    Object.assign(e, placeholderFor(e), { descriptionStatus: 'placeholder' });
+    delete e.reviewInfo;
+    return 'pending';
+  }
   if (r.descriptionStatus === 'ai') {
     Object.assign(e, { description: r.description, summary: r.summary, descriptionStatus: 'ai', rewrittenAt: now.toISOString() });
     delete e.reviewInfo;

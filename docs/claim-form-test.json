@@ -1,7 +1,7 @@
 {
-  "ranAt": "2026-10-27T08:39:44.827Z",
+  "ranAt": "2026-10-27T08:55:56.426Z",
   "event": "hellohacks-2026",
-  "passed": 19,
+  "passed": 21,
   "failed": 0,
   "results": [
     {
@@ -22,10 +22,10 @@
     {
       "name": "listing URL is filled in from the event link",
       "ok": true,
-      "detail": "http://localhost:41103/hackathons/hellohacks-2026/"
+      "detail": "http://localhost:37221/hackathons/hellohacks-2026/"
     },
     {
-      "name": "event title is shown above the form",
+      "name": "event title is shown above the form (read from the event page)",
       "ok": true,
       "detail": "Listing: HelloHacks"
     },
@@ -36,6 +36,16 @@
     },
     {
       "name": "page is not indexed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "a title in the address is ignored",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "an unknown listing shows no title but keeps the URL",
       "ok": true,
       "detail": ""
     },

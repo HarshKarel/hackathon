@@ -71,7 +71,11 @@ export function createGemini(env = process.env, { fetchImpl = globalThis.fetch, 
   const model = status.model;
   const stats = { standardCalls: 0, failures: 0, usage: { ...ZERO_USAGE }, batchJobs: [] };
 
-  async function call(method, path, body) {
+  // retryable: which HTTP statuses to retry. Creating a batch job is only
+  // retried on 429 (the job was certainly not created); a lost response to a
+  // 5xx or a network error might hide a job that does exist, and a second
+  // one would be billed too.
+  async function call(method, path, body, { retryable = RETRYABLE, retryNetwork = true } = {}) {
     let lastErr;
     for (let attempt = 0; attempt <= retries; attempt++) {
       let res;
@@ -83,7 +87,7 @@ export function createGemini(env = process.env, { fetchImpl = globalThis.fetch, 
         });
       } catch (err) {
         lastErr = new Error(redact(`network error: ${err.message}`, env));
-        if (attempt < retries) { await sleep(1000 * 2 ** attempt); continue; }
+        if (retryNetwork && attempt < retries) { await sleep(1000 * 2 ** attempt); continue; }
         throw lastErr;
       }
       const text = await res.text();
@@ -96,7 +100,7 @@ export function createGemini(env = process.env, { fetchImpl = globalThis.fetch, 
       if (res.status === 400 && /api key/i.test(msg)) hint = ' (check LLM_API_KEY)';
       if (res.status === 401 || res.status === 403) hint = ' (check LLM_API_KEY and that the project has access)';
       lastErr = Object.assign(new Error(redact(`Gemini API ${res.status}: ${msg}${hint}`, env)), { status: res.status });
-      if (!RETRYABLE.has(res.status) || attempt === retries) throw lastErr;
+      if (!retryable.has(res.status) || attempt === retries) throw lastErr;
       await sleep(Math.min(60_000, 2000 * 2 ** attempt) + Math.floor(Math.random() * 500));
     }
     throw lastErr;
@@ -125,7 +129,7 @@ export function createGemini(env = process.env, { fetchImpl = globalThis.fetch, 
           input_config: { requests: { requests: items.map((it) => ({ request: it.request, metadata: { key: it.key } })) } },
         },
       };
-      const op = await call('POST', `models/${encodeURIComponent(model)}:batchGenerateContent`, body);
+      const op = await call('POST', `models/${encodeURIComponent(model)}:batchGenerateContent`, body, { retryable: new Set([429]), retryNetwork: false });
       const name = op?.name || op?.metadata?.name;
       if (!name) throw new Error('batch job created but no job name returned');
       stats.batchJobs.push(name);

@@ -134,10 +134,16 @@ round it records:
 
 The listing pipeline's health log carries the same summary.
 
-**Long batch jobs.** A run waits up to 330 minutes for a batch job.
-- A job still running after that is saved in `data/ai-pending.json`.
+**Long batch jobs.** All rounds of a run share one 330 minute wait.
+- A job still running after that is saved in `data/ai-pending.json`, and
+  its events show a placeholder built from their current facts meanwhile.
 - The next run collects its results instead of paying for them again.
 - Results are used only for events whose facts have not changed since.
+- A job is removed from the file only after the store is saved, so a crash
+  never loses paid results.
+- If the Batch API refuses to create a job, for example on a free-tier key,
+  that round's events keep their placeholders and the run still saves
+  everything else.
 
 **Backfill** (`npm run backfill`, documented in the README):
 - Queues every event still carrying a placeholder description: **869
@@ -152,7 +158,9 @@ The listing pipeline's health log carries the same summary.
 UTC):
 - It plans 10 slots in the thinnest niches. Today that is Web3 ×3, Gaming ×2,
   Design ×2, Hardware ×2 and Fintech ×1, with difficulty and team size varied.
-- The first round is one batch job; regenerations use standard requests.
+- The first round is one batch job. Regenerations use standard requests
+  when fewer than 10 cards are left, and all rounds share one 330 minute
+  wait, so the run always finishes inside the workflow's time limit.
 - Each card is checked in code: format, length limits, no em dashes, and the
   niche, difficulty and team size it was asked for.
 - A near-duplicate is rejected: it shares a niche with an existing card
@@ -229,6 +237,8 @@ rewrites in `data/events.json`.
 - The form asks for name, organisation, email and what they want changed,
   plus the listing URL, which is filled in from the link. It also has a
   spam trap field.
+- The event title above the form is read from our own event page. Words
+  put in the address are never shown.
 - It posts to `CLAIM_FORM_ENDPOINT`, a Formspree form that emails each
   request, so there is no backend of ours.
 - Without the variable, the page says the form is not connected and the
@@ -237,10 +247,12 @@ rewrites in `data/events.json`.
   empty). All 869 events have them, and source updates never change them
   (tested).
 
-**Test result: 19 of 19 checks passed** (`npm run test:claim`, results in
+**Test result: 21 of 21 checks passed** (`npm run test:claim`, results in
 `docs/claim-form-test.json`). The browser test:
 - follows the link from an event page;
 - checks that the listing, event title and email subject are filled in;
+- checks that a title put in the address is ignored, and that an unknown
+  listing keeps its URL;
 - checks that empty fields and a bad email are blocked;
 - sends a valid form once, with every field and a JSON reply, and checks the
   confirmation;
@@ -291,3 +303,38 @@ Screenshots: `docs/screenshots/claim-form-desktop.png`,
   read for tone and accuracy. Stack suggestions name real tools (Twilio,
   OpenAQ, MediaPipe, Figma Plugin API and others) but were not each checked
   for current pricing.
+
+## 9. Bug review before handing over
+
+An independent review of the Phase 3 changes found 12 issues. I checked
+each one against the code, fixed all 12, and added tests for them.
+
+- **Results from a batch job could be dropped or applied too late.**
+  - A result collected from an earlier job could be thrown away, leaving an
+    old description written for older facts.
+  - A result could also be applied after the facts had changed again.
+  - Results now carry the facts they were written for, and are used only
+    if the facts still match.
+  - While a job is pending, the page shows a placeholder built from the
+    current facts, never an empty or stale description.
+- **A failed batch create or status check could crash the whole listing
+  run** before anything was saved.
+  - It now fails just that round, and a job whose status cannot be read is
+    handed to the next run.
+  - Collected jobs are forgotten only after the store is saved.
+  - Creating a job is no longer retried after a lost response, so a hidden
+    duplicate job is never billed.
+- **The generator's rounds could exceed the workflow's time limit.** All
+  rounds of a run now share one wait budget.
+- **Ended events could gain cards made later the same day.** Cards now
+  record the exact time they were generated.
+- **A corrupt ideas file would have been overwritten**, wiping every earlier
+  generated card. The run now stops instead.
+- **Run log item counts** now include collected results.
+- **Collected results are matched to events by key**, not by position.
+- **The API key is passed only to the generator step** of the workflow, not
+  to installs or tests.
+- **The claim page no longer shows text taken from the address.**
+
+Tests: 98 pass. Claim form browser test: 21 of 21. Site check: all 2,628
+files pass.

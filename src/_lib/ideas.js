@@ -11,7 +11,7 @@
 // ended event if it existed when the event ended, so cards added later never
 // replace what the page showed. Seed cards are available to every event.
 import { DIFFICULTY_LABELS, TEAM_SIZE_LABELS } from '../../pipeline/lib/ideas.mjs';
-import { dayKey, toInstant } from '../../pipeline/lib/dates.mjs';
+import { toInstant } from '../../pipeline/lib/dates.mjs';
 import { nicheSlug } from '../../pipeline/lib/niches.mjs';
 
 // FNV-1a: a small, stable string hash for tie-breaking.
@@ -27,7 +27,11 @@ function hash(s) {
 export function availableFor(idea, e) {
   if (idea.source?.kind !== 'generated') return true;
   if (e.status !== 'ended') return true;
-  return idea.source.date <= dayKey(e.endDate);
+  // Compare exact moments: a card generated a few hours after an event ended
+  // on the same day must not reach it. A card with only a date counts as
+  // made at the end of that day.
+  const made = Date.parse(idea.source.generatedAt || `${idea.source.date}T23:59:59Z`);
+  return made <= +toInstant(e.endDate, { endOfDay: true, tz: e.timezone });
 }
 
 export function rankIdeas(e, ideas, { exclude = new Set(), limit = 3 } = {}) {

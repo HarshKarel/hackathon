@@ -169,7 +169,7 @@ eleventyComputed:
       </ul>
     </section>
     {%- endif %}
-    <p class="claim-link">Run this event? <a href="/claim/?event={{ e.slug }}&amp;title={{ e.title | urlencode }}" rel="nofollow">Claim this listing</a> to ask for a correction or an update.</p>
+    <p class="claim-link">Run this event? <a href="/claim/?event={{ e.slug }}" rel="nofollow">Claim this listing</a> to ask for a correction or an update.</p>
     <p class="source-note" style="margin-top:8px">Facts come from the listing{{ 's' if e.sources.length > 1 }} above. hackathon.so does not take applications; use the apply button to register on {{ e.applyName }}.</p>
   </aside>
 </div>

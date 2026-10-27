@@ -27,7 +27,7 @@ import { aiStatus, createGemini, redact } from './lib/gemini.mjs';
 import { logAiRun } from './lib/aiflow.mjs';
 import { qualityScore } from './lib/quality.mjs';
 import { normaliseListing, sourceKey } from './lib/record.mjs';
-import { applyRewriteOutcome, checkRewrite, collectPendingRewrites, factsFor, factsHash, forgetPendingJob, placeholderFor, rememberPendingJob, rewriteMany } from './lib/rewrite.mjs';
+import { applyRewriteOutcome, checkRewrite, collectPendingRewrites, factsFor, factsHash, forgetPendingJobs, placeholderFor, rememberPendingJob, rewriteMany } from './lib/rewrite.mjs';
 import { computeStatus } from './lib/status.mjs';
 import { integrate, loadStore, saveStore, withOrganiserDefaults } from './lib/store.mjs';
 import { deriveSeries } from './lib/series.mjs';
@@ -143,7 +143,9 @@ export async function run(argv = process.argv.slice(2)) {
   if (!llm) log(`AI rewrites off: ${args.noAi ? '--no-ai flag' : status.reason}. Using flagged placeholder descriptions.`);
   else log(`AI rewrites on with model ${llm.model}`);
   // Results of a batch job an earlier run stopped waiting for.
-  const earlier = llm ? await collectPendingRewrites(llm, store.events, { log }) : { prefilled: new Map(), busy: new Set(), collected: [] };
+  const earlier = llm ? await collectPendingRewrites(llm, { log }) : { prefilled: new Map(), busy: new Set(), collected: [], collectedJobIds: [] };
+  // Batch jobs whose results are in hand; forgotten only once the store is saved.
+  const finishedJobs = [...earlier.collectedJobIds];
 
   const reviewQueue = [];
   const jobs = [];
@@ -175,7 +177,9 @@ export async function run(argv = process.argv.slice(2)) {
     }
     if (llm) {
       if (e.descriptionStatus === 'review' && !changed) { reviewQueue.push(e.reviewInfo); continue; }
-      const needs = changed || !e.description || e.descriptionStatus === 'placeholder' || e.descriptionStatus === 'review';
+      // A collected result written for these exact facts is always applied.
+      const collected = earlier.prefilled.has(e.slug) && earlier.prefilled.get(e.slug).factsHash === hash;
+      const needs = changed || collected || !e.description || e.descriptionStatus === 'placeholder' || e.descriptionStatus === 'review';
       if (needs && earlier.busy.has(e.slug)) counts.unchanged += 1; // its batch job is still running
       else if (needs) jobs.push({ e, sourceText });
       else counts.unchanged += 1;
@@ -203,7 +207,7 @@ export async function run(argv = process.argv.slice(2)) {
       now,
       prefilled: earlier.prefilled,
       onSubmitted: (jobId, items) => rememberPendingJob('rewrite', jobId, items, now),
-      onCollected: (jobId) => forgetPendingJob(jobId),
+      onCollected: (jobId) => finishedJobs.push(jobId),
     });
     for (const { e } of jobs) {
       const r = flow.outcomes.get(e.slug);
@@ -228,6 +232,7 @@ export async function run(argv = process.argv.slice(2)) {
   }
 
   saveStore(store, now);
+  forgetPendingJobs(finishedJobs);
   fs.writeFileSync(PATHS.sourceText, JSON.stringify(sourceTextCache));
   fs.writeFileSync(PATHS.reviewQueue, JSON.stringify(reviewQueue.filter(Boolean), null, 2) + '\n');
   fs.mkdirSync(PATHS.healthDir, { recursive: true });

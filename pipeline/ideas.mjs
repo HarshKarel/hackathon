@@ -24,7 +24,16 @@ import { aiStatus, createGemini, redact } from './lib/gemini.mjs';
 import { allIdeas, DIFFICULTIES, duplicateOf, nicheCounts, TEAM_SIZES, thinnestTargets, uniqueIdeaId, validateIdea } from './lib/ideas.mjs';
 
 const log = (...m) => console.log(`[ideas] ${m.join(' ')}`);
-const readJson = (f, fb) => { try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch { return fb; } };
+// A missing file means no cards yet. A file that exists but does not parse
+// stops the run: rewriting it would wipe every card already published.
+function readJson(file, fallback) {
+  let text;
+  try { text = fs.readFileSync(file, 'utf8'); } catch (err) {
+    if (err.code === 'ENOENT') return fallback;
+    throw err;
+  }
+  return JSON.parse(text);
+}
 
 export const IDEA_SYSTEM_PROMPT = `You write project idea cards for hackathon.so, a worldwide hackathon directory. Each card is one project a team of one to four people can genuinely build and demo in a 24 to 48 hour hackathon with free or trial tools.
 Rules:
@@ -128,7 +137,7 @@ export function checkGenerated(card, slot, against) {
   return { problems: dup ? [...problems, dup.reason] : problems, duplicate: dup };
 }
 
-export async function runIdeas(argv = process.argv.slice(2), { ai: injected, env = process.env, now = new Date(), paths = PATHS } = {}) {
+export async function runIdeas(argv = process.argv.slice(2), { ai: injected, env = process.env, now = new Date(), paths = PATHS, maxWaitMs = AI.maxWaitMinutes * 60_000 } = {}) {
   const countArg = argv.find((a) => a.startsWith('--count='));
   const count = countArg ? Number(countArg.slice(8)) : IDEAS.perWeek;
   const seed = readJson(paths.ideasSeed, { ideas: [] });
@@ -148,13 +157,16 @@ export async function runIdeas(argv = process.argv.slice(2), { ai: injected, env
   const rounds = [];
   const taken = new Set(existing.map((c) => c.id));
   const state = slots.map((s) => ({ ...s, done: false, previous: null, attempts: 0 }));
+  // One waiting budget for every round, so the run always ends (and writes
+  // its logs) inside the workflow's time limit.
+  const deadline = Date.now() + maxWaitMs;
 
   for (let attempt = 1; attempt <= IDEAS.maxRegenerations + 1; attempt++) {
     const todo = state.filter((s) => !s.done);
     if (!todo.length) break;
     const pool = [...existing, ...accepted];
     const items = todo.map((s) => ({ key: `slot-${s.slot}-attempt-${attempt}`, request: ideaRequest(s, pool, s.previous) }));
-    const res = await runRequests(ai, items, { label: `ideas round ${attempt}`, log, now });
+    const res = await runRequests(ai, items, { label: `ideas round ${attempt}`, log, now, maxWaitMs: Math.max(0, deadline - Date.now()) });
     const counts = { accepted: 0, rejected: 0, failed: 0 };
     for (const s of todo) {
       s.attempts += 1;
@@ -176,7 +188,7 @@ export async function runIdeas(argv = process.argv.slice(2), { ai: injected, env
       if (card && !problems.length) {
         const id = uniqueIdeaId(card.title, taken);
         taken.add(id);
-        accepted.push({ id, ...card, source: { kind: 'generated', date: today, model: ai.model, batchJobId: res.jobId || null, run: runId } });
+        accepted.push({ id, ...card, source: { kind: 'generated', date: today, generatedAt: now.toISOString(), model: ai.model, batchJobId: res.jobId || null, run: runId } });
         s.done = true;
         counts.accepted += 1;
         continue;

@@ -90,6 +90,11 @@ test('ended events keep their ideas: cards generated after an event ended never 
   const before = rankIdeas(ended, seed).map((i) => i.id);
   const later = [gen('zz-gaming-later', ['Gaming'], '2026-11-04'), gen('aa-gaming-later', ['Gaming'], '2026-11-04')];
   assert.deepEqual(rankIdeas(ended, [...seed, ...later]).map((i) => i.id), before);
+  // Same day, hours later: still excluded.
+  const morning = ev('morning', ['Gaming'], { status: 'ended', endDate: '2026-10-28T03:45:00Z' });
+  const sameDay = [{ ...gen('same-day', ['Gaming'], '2026-10-28'), source: { kind: 'generated', date: '2026-10-28', generatedAt: '2026-10-28T05:41:00Z' } }];
+  assert.ok(!rankIdeas(morning, [...seed, ...sameDay]).some((i) => i.id === 'same-day'));
+  assert.ok(rankIdeas({ ...morning, endDate: '2026-10-28T09:00:00Z' }, [...seed, ...sameDay]).some((i) => i.id === 'same-day'), 'an event that ended after the card was made can show it');
   const upcoming = ev('new', ['Gaming']);
   assert.ok(rankIdeas(upcoming, [...seed, ...later]).some((i) => i.id.endsWith('later')), 'upcoming events do see new cards');
 });
@@ -168,7 +173,7 @@ test('generator: one batch job, near-duplicates and em dashes rejected and regen
   assert.equal(gaming[2].final, true);
   const published = JSON.parse(fs.readFileSync(paths.ideasGenerated, 'utf8')).ideas;
   assert.equal(published.length, 9);
-  assert.ok(published.every((c) => c.source.kind === 'generated' && c.source.date === '2026-10-28' && validateIdea(c).length === 0));
+  assert.ok(published.every((c) => c.source.kind === 'generated' && c.source.date === '2026-10-28' && c.source.generatedAt === '2026-10-28T05:41:00.000Z' && validateIdea(c).length === 0));
   assert.ok(published.some((c) => c.source.batchJobId === 'batches/fake1'));
   assert.equal(fs.readFileSync(paths.ideasRejected, 'utf8').trim().split('\n').length, sum.rejected.length);
   assert.equal(JSON.parse(fs.readFileSync(paths.ideasLatest, 'utf8')).notFilled, 1);
@@ -180,4 +185,13 @@ test('checkGenerated enforces the slot: niche first, difficulty and team size as
   assert.ok(problems.includes('the first niche must be Social Impact'));
   assert.ok(problems.includes('difficulty must be weekend-hard'));
   assert.ok(problems.includes('teamSize must be team'));
+});
+
+test('generator refuses to run over a corrupt ideas file instead of wiping it', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ideas-bad-'));
+  const bad = path.join(dir, 'generated.json');
+  fs.writeFileSync(bad, '{"ideas": [ {"id": "x"');
+  const paths = { ideasSeed: new URL('../data/ideas-seed.json', import.meta.url).pathname, ideasGenerated: bad };
+  await assert.rejects(runIdeas(['--dry-run'], { paths }), /JSON/);
+  assert.equal(fs.readFileSync(bad, 'utf8'), '{"ideas": [ {"id": "x"');
 });

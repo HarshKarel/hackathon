@@ -1,20 +1,35 @@
-// Claim form: fills in the listing from ?event=<slug>&title=<title> and sends
-// the form to the form service (Formspree) without leaving the page. Without
-// JavaScript the form still posts normally.
-const params = new URLSearchParams(location.search);
-const slug = params.get('event') || '';
-const title = (params.get('title') || '').slice(0, 200);
+// Claim form: fills in the listing from ?event=<slug> and sends the form to
+// the form service (Formspree) without leaving the page. Without JavaScript
+// the form still posts normally.
+//
+// The event title shown above the form is read from our own event page for
+// that slug, never from the address, so nobody can put their own words on
+// this page with a crafted link.
+const slug = new URLSearchParams(location.search).get('event') || '';
 const form = document.getElementById('claim-form');
 
+async function titleFor(s) {
+  try {
+    const res = await fetch(`/hackathons/${s}/`);
+    if (!res.ok) return null;
+    const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+    return doc.querySelector('h1')?.textContent.trim().slice(0, 200) || null;
+  } catch {
+    return null;
+  }
+}
+
 if (/^[a-z0-9-]{1,120}$/.test(slug)) {
-  const url = `${location.origin}/hackathons/${slug}/`;
   const listing = document.getElementById('claim-listing');
-  if (listing && !listing.value) listing.value = url;
-  const label = document.getElementById('claim-event');
-  label.textContent = `Listing: ${title || slug}`;
-  label.hidden = false;
-  const subject = document.getElementById('claim-subject');
-  if (subject) subject.value = `hackathon.so listing claim: ${title || slug}`;
+  if (listing && !listing.value) listing.value = `${location.origin}/hackathons/${slug}/`;
+  titleFor(slug).then((title) => {
+    if (!title) return; // unknown listing: the URL field is still filled in
+    const label = document.getElementById('claim-event');
+    label.textContent = `Listing: ${title}`;
+    label.hidden = false;
+    const subject = document.getElementById('claim-subject');
+    if (subject) subject.value = `hackathon.so listing claim: ${title}`;
+  });
 }
 
 if (form) {

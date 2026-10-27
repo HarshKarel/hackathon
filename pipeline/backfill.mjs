@@ -18,7 +18,7 @@ import fs from 'node:fs';
 import { PATHS } from './config.mjs';
 import { logAiRun } from './lib/aiflow.mjs';
 import { aiStatus, createGemini, redact } from './lib/gemini.mjs';
-import { applyRewriteOutcome, collectPendingRewrites, forgetPendingJob, rememberPendingJob, rewriteMany } from './lib/rewrite.mjs';
+import { applyRewriteOutcome, collectPendingRewrites, forgetPendingJobs, rememberPendingJob, rewriteMany } from './lib/rewrite.mjs';
 import { loadStore, saveStore } from './lib/store.mjs';
 
 const log = (...m) => console.log(`[backfill] ${m.join(' ')}`);
@@ -48,14 +48,15 @@ export async function runBackfill(argv = process.argv.slice(2), { ai: injected, 
   if (!ai) throw new Error(`cannot backfill: ${aiStatus(env).reason}`);
   log(`model ${ai.model}`);
 
-  const earlier = await collectPendingRewrites(ai, store.events, { log });
+  const earlier = await collectPendingRewrites(ai, { log });
+  const finishedJobs = [...earlier.collectedJobIds];
   const entries = queue.filter((e) => !earlier.busy.has(e.slug)).map((e) => ({ e, sourceText: sourceText[e.slug] || '' }));
   const flow = await rewriteMany(entries, ai, {
     log,
     now,
     prefilled: earlier.prefilled,
     onSubmitted: (jobId, items) => rememberPendingJob('rewrite', jobId, items, now),
-    onCollected: (jobId) => forgetPendingJob(jobId),
+    onCollected: (jobId) => finishedJobs.push(jobId),
   });
 
   const kinds = { ai: 0, review: 0, error: 0, pending: 0 };
@@ -67,6 +68,7 @@ export async function runBackfill(argv = process.argv.slice(2), { ai: injected, 
     e.published = e.descriptionStatus !== 'review' || Boolean(e.publishedAt);
   }
   saveStore(store, now);
+  forgetPendingJobs(finishedJobs);
   const reviewQueue = [...store.events.values()].filter((e) => e.descriptionStatus === 'review' && e.reviewInfo).map((e) => e.reviewInfo);
   fs.writeFileSync(PATHS.reviewQueue, JSON.stringify(reviewQueue, null, 2) + '\n');
 

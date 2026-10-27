@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { createGemini, costUsd, responseText } from '../pipeline/lib/gemini.mjs';
 import { logAiRun, runRequests } from '../pipeline/lib/aiflow.mjs';
-import { collectPendingRewrites, rewriteMany, rewriteRequest } from '../pipeline/lib/rewrite.mjs';
+import { applyRewriteOutcome, collectPendingRewrites, factsFor, forgetPendingJobs, rewriteMany, rewriteRequest } from '../pipeline/lib/rewrite.mjs';
 import { backfillCandidates } from '../pipeline/backfill.mjs';
 import { fakeGemini, promptOf, TEST_ENV } from './fake-gemini.mjs';
 import { rec } from './helpers.mjs';
@@ -145,19 +145,22 @@ test('rewrite flow: batch for round 1, standard retries, every draft through the
 });
 
 test('a batch job left running by an earlier run is collected, not paid for twice', async () => {
-  const list = events(10);
-  const store = new Map(list.map(({ e }) => [e.slug, { ...e, factsHash: 'h1' }]));
+  const list = events(10).map(({ e, sourceText }) => ({ e: { ...e, factsHash: 'h1' }, sourceText }));
   const f = fakeGemini({ respond: (request) => goodFor(promptOf(request).match(/"title": "([^"]+)"/)[1]), pollsBeforeDone: 0 });
-  const jobId = await f.ai.batchCreate(list.map(({ e }) => ({ key: e.slug, request: rewriteRequest({ title: e.title }, '') })), 'earlier');
+  const jobId = await f.ai.batchCreate(list.map(({ e }) => ({ key: e.slug, request: rewriteRequest(factsFor(e), '') })), 'earlier');
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'pending-'));
   const file = path.join(dir, 'ai-pending.json');
   fs.writeFileSync(file, JSON.stringify({ jobs: [{ kind: 'rewrite', jobId, items: list.map(({ e }, i) => ({ slug: e.slug, factsHash: i === 0 ? 'stale' : 'h1' })) }] }));
-  const got = await collectPendingRewrites(f.ai, store, { file });
-  assert.equal(got.prefilled.size, 9, 'the event whose facts changed is rewritten afresh');
-  assert.equal(fs.existsSync(file), false, 'collected jobs are removed');
+  const got = await collectPendingRewrites(f.ai, { file });
+  assert.equal(got.prefilled.size, 10);
+  assert.deepEqual(got.collectedJobIds, [jobId]);
+  assert.ok(fs.existsSync(file), 'kept until the caller has saved the store');
+  forgetPendingJobs(got.collectedJobIds, file);
+  assert.equal(fs.existsSync(file), false);
   const calls = f.calls.length;
   const { outcomes, rounds } = await rewriteMany(list, f.ai, { prefilled: got.prefilled });
-  assert.equal(rounds[0].collectedFromEarlierJob, 9);
+  assert.equal(rounds[0].collectedFromEarlierJob, 9, 'the result written for older facts is not used');
+  assert.equal(rounds[0].items, 10, 'collected results count as items of the round');
   assert.equal(rounds[0].mode, 'standard', 'only the one stale event is sent');
   assert.equal(f.calls.length - calls, 1);
   assert.equal([...outcomes.values()].filter((o) => o.descriptionStatus === 'ai').length, 10);
@@ -165,9 +168,43 @@ test('a batch job left running by an earlier run is collected, not paid for twic
   const running = fakeGemini({ respond: echo, pollsBeforeDone: 99 });
   const id2 = await running.ai.batchCreate([req(1)], 'running');
   fs.writeFileSync(file, JSON.stringify({ jobs: [{ kind: 'rewrite', jobId: id2, items: [{ slug: 'a', factsHash: 'h' }] }] }));
-  const busy = await collectPendingRewrites(running.ai, new Map(), { file });
+  const busy = await collectPendingRewrites(running.ai, { file });
   assert.ok(busy.busy.has('a'));
-  assert.ok(fs.existsSync(file), 'a running job stays recorded');
+  assert.deepEqual(busy.collectedJobIds, []);
+});
+
+test('a failed batch create fails the round instead of crashing the run; create is not blindly retried', async () => {
+  const f = fakeGemini({ respond: echo });
+  const orig = f.fetchImpl;
+  let creates = 0;
+  const failing = createGemini(TEST_ENV, {
+    sleep: async () => {},
+    fetchImpl: async (url, opts) => {
+      if (url.endsWith(':batchGenerateContent')) { creates += 1; return { ok: false, status: 503, text: async () => JSON.stringify({ error: { code: 503, message: 'unavailable' } }) }; }
+      return orig(url, opts);
+    },
+  });
+  const res = await runRequests(failing, Array.from({ length: 10 }, (_, i) => req(i)));
+  assert.equal(res.state, 'NOT_CREATED');
+  assert.equal(creates, 1, 'a 503 on create might hide a real job, so it is not resent');
+  assert.match(res.results.get('k0').error, /batch job not created: Gemini API 503/);
+  const polling = createGemini(TEST_ENV, {
+    sleep: async () => {},
+    fetchImpl: async (url, opts) => (opts.method === 'GET' ? { ok: false, status: 500, text: async () => '{}' } : orig(url, opts)),
+  });
+  const handed = await runRequests(polling, Array.from({ length: 10 }, (_, i) => req(i)));
+  assert.equal(handed.timedOut, true, 'a job whose status cannot be read is handed to the next run');
+});
+
+test('a pending outcome shows a placeholder built from the current facts, never an empty or stale page', () => {
+  const e = { ...events(1)[0].e, description: 'OLD text for older facts.', summary: 'old', descriptionStatus: 'ai' };
+  assert.equal(applyRewriteOutcome(e, { descriptionStatus: 'pending' }, new Date()), 'pending');
+  assert.equal(e.descriptionStatus, 'placeholder');
+  assert.ok(!e.description.includes('OLD'));
+  const fresh = { ...events(1)[0].e };
+  delete fresh.description;
+  applyRewriteOutcome(fresh, { descriptionStatus: 'pending' }, new Date());
+  assert.ok(fresh.description.length > 0);
 });
 
 test('backfill queues exactly the events still showing a placeholder', () => {

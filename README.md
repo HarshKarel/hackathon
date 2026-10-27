@@ -156,9 +156,14 @@ million output tokens, thinking included; batch jobs are billed at half the
 standard price, so the estimate is an upper bound). The listing pipeline's
 health log carries the same summary.
 
-A run waits up to 330 minutes for a batch job. A job still running after that
-is recorded in `data/ai-pending.json`; the next run collects its results
-(for events whose facts have not changed) instead of paying for them again.
+All rounds of a run share one 330 minute wait for batch jobs. A job still
+running after that is recorded in `data/ai-pending.json`, and its events show
+a flagged placeholder built from their current facts meanwhile. The next run
+collects its results (used only for events whose facts have not changed since)
+instead of paying for them again, and removes the job from the file only after
+the store is saved. If the Batch API refuses to create a job (for example on a
+free-tier key), that round's events count as failed and keep their
+placeholders; the run still saves everything else.
 
 #### One-time backfill
 
