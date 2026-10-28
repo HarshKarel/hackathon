@@ -65,9 +65,11 @@ writes clearly flagged placeholder descriptions made only from the facts.
 Event pages show a notice and placeholders do not count towards the quality
 score.
 
-For the weekly ideas workflow, add `LLM_API_KEY` as a repository **secret**
-and `LLM_MODEL` as a repository **variable** (Settings, Secrets and variables,
-Actions).
+Scheduled jobs are moving to Vercel, where `LLM_API_KEY` and `LLM_MODEL` go
+in the project's environment variables (see `docs/HANDOFF.md`). To run the
+idea generator by hand in GitHub Actions meanwhile, add `LLM_API_KEY` as a
+repository **secret** and `LLM_MODEL` as a repository **variable** (Settings,
+Secrets and variables, Actions).
 
 ## How it works
 
@@ -230,8 +232,10 @@ source (`seed`, or `generated` with the generation date).
   series (`src/_lib/ideas.js`). Ended events keep their ideas: a generated
   card only reaches an ended event if it existed before the event ended.
 
-**Weekly generator** (`npm run ideas`, `.github/workflows/ideas.yml`,
-Wednesdays 05:41 UTC): picks the 10 slots from the niches with the fewest
+**Idea generator** (`npm run ideas`; meant to run weekly, a schedule that
+moves to Vercel Cron, see `docs/HANDOFF.md`; until then it can be run by hand
+from the Actions tab with `.github/workflows/ideas.yml`): picks the 10 slots
+from the niches with the fewest
 cards, sends them as one Gemini batch job, and checks every card in code
 (format, length limits, no em dashes, the niche it was asked for). A card
 whose title shares keywords with an existing card in the same niche (or whose

@@ -1,6 +1,7 @@
 # Weekly winners check. Independent of the listing pipeline: it reads
 # data/events.json and writes only data/winners.json and its own health log
 # (data/health/winners-*.json*), then commits those back to the branch.
+# Stays on this schedule until the Vercel Cron job replaces it (docs/HANDOFF.md).
 name: Winners (weekly)
 
 on:
@@ -21,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm

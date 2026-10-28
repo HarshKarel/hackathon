@@ -70,7 +70,7 @@ data/
   ideas-seed.json    30 hand-written idea cards (edited by hand only)
   ideas-generated.json, ideas-rejected.jsonl   written only by the idea generator
   health/            run logs; ai-runs.jsonl logs every AI run (job ids, counts, cost)
-.github/workflows/   winners.yml (Mondays 04:23 UTC), ideas.yml (Wednesdays 05:41 UTC)
+.github/workflows/   winners.yml (Mondays 04:23 UTC until Vercel takes over), ideas.yml (manual only)
 tests/               node:test files; fake-gemini.mjs stands in for the Gemini API
 ```
 
@@ -78,6 +78,12 @@ tests/               node:test files; fake-gemini.mjs stands in for the Gemini A
 
 - Each pipeline writes only its own files, so they never conflict. Keep it
   that way (both workflows share the `data-store` concurrency group).
+- Scheduling is moving from GitHub Actions to Vercel Cron plus Vercel
+  Workflows (decided; not built yet). The plan and its limits are in
+  `docs/HANDOFF.md` section 4. Do not add new GitHub `schedule` triggers:
+  GitHub ran the first scheduled ideas job almost 6 hours late.
+- Keys for scheduled jobs belong in Vercel environment variables, not in
+  GitHub secrets (GitHub secrets are only for running a workflow by hand).
 - `.cache/` is gitignored on purpose: `.cache/source-text.json` holds the
   sources' own listing text, used only for the copy check. Never commit it or
   show it on the site.
