@@ -1,7 +1,7 @@
 {
  "schema": "hackathon.so winners v1 (see docs/RECORD_FORMAT.md)",
- "updatedAt": "2026-10-27T07:26:18.960Z",
- "count": 287,
+ "updatedAt": "2026-11-02T12:31:03.112Z",
+ "count": 323,
  "events": {
   "2026-ai-for-good-hackathon": {
    "winnersStatus": "not published",
@@ -11,7 +11,81 @@
    ],
    "endDate": "2026-10-25T20:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "2026-international-codethecure-hackathon": {
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "1st Place (Detection & Diagnosis)",
+     "project": "LabDecode",
+     "projectUrl": "https://devpost.com/software/labdecode",
+     "team": "Sarang Menon, Naman Reddy"
+    },
+    {
+     "place": "2nd Place (Detection & Diagnosis)",
+     "project": "tumor-lab",
+     "projectUrl": "https://devpost.com/software/tumor-lab-ah4k8m",
+     "team": "Harold MAUGEZ"
+    },
+    {
+     "place": "3rd Place (Detection & Diagnosis)",
+     "project": "PathLight",
+     "projectUrl": "https://devpost.com/software/pathlight-tleq53",
+     "team": "Aayush Shah"
+    },
+    {
+     "place": "1st Place (Patient Experience & Support)",
+     "project": "Treatment Companion",
+     "projectUrl": "https://devpost.com/software/treatment-companion-ycmfqu",
+     "team": "KIRAN Lahoti"
+    },
+    {
+     "place": "2nd Place (Patient Experience & Support)",
+     "project": "SecondLook",
+     "projectUrl": "https://devpost.com/software/secondlook-d4rt6b",
+     "team": "David Lee, Ajay Sriram Sankar"
+    },
+    {
+     "place": "3rd Place (Patient Experience & Support)",
+     "project": "Explain-My-Report",
+     "projectUrl": "https://devpost.com/software/explain-my-report",
+     "team": "Rehan nawroz"
+    },
+    {
+     "place": "1st Place (Prevention & Education)",
+     "project": "Project Anomaly",
+     "projectUrl": "https://devpost.com/software/team-sol",
+     "team": "Soren Gautam, Rishit Agarwal, rayan reon"
+    },
+    {
+     "place": "2nd Place (Prevention & Education)",
+     "project": "ScreenTalk",
+     "projectUrl": "https://devpost.com/software/screentalk-btpo84",
+     "team": "Aariv Patel"
+    },
+    {
+     "place": "3rd Place (Prevention & Education)",
+     "project": "CancerClarity",
+     "projectUrl": "https://devpost.com/software/cancerclarity",
+     "team": "Tyrique T"
+    }
+   ],
+   "source": "devpost",
+   "sourceUrl": "https://codethecure-hackathon-26.devpost.com/project-gallery",
+   "endDate": "2026-10-28T21:00:00.000Z",
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "305-empowher-edition-october-2026-305hackathons-vercel-app": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-11-01T03:45:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "305-hackfiesta-miami-edition-august-2026-305hackathons-vercel-app": {
    "winnersStatus": "not published",
@@ -24,14 +98,38 @@
    "checkedAt": "2026-10-27T07:26:18.960Z"
   },
   "305-hackshells-edition-september-2026-305hackathons-vercel-app": {
-   "winnersStatus": "not published",
-   "winners": [],
-   "checked": [
-    "devpost"
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "First Place Winner for Session B (Virtual)",
+     "project": "Miami-Dade Single Mom Financial Stability Agent",
+     "projectUrl": "https://devpost.com/software/apply-agent-s74we8",
+     "team": "Kevin Pinard"
+    },
+    {
+     "place": "First Place Winner for Session A (In-Person)",
+     "project": "FIU PawlinaWalk",
+     "projectUrl": "https://devpost.com/software/fiu-pawlinawalk",
+     "team": "William Delaosa, Gianfranco Cisneros"
+    },
+    {
+     "place": "First Place Winner - MLH Prize Best Use of the SnowFlake Challenge",
+     "project": "FIU PawlinaWalk",
+     "projectUrl": "https://devpost.com/software/fiu-pawlinawalk",
+     "team": "William Delaosa, Gianfranco Cisneros"
+    },
+    {
+     "place": "First Place Winner - LLM Gemma Challenge",
+     "project": "TrustShell — Pre-Execution Security Gate",
+     "projectUrl": "https://devpost.com/software/trustshell-pre-execution-security-gate",
+     "team": "Zain Murtaza"
+    }
    ],
+   "source": "devpost",
+   "sourceUrl": "https://305hackshellssep2026.devpost.com/project-gallery",
    "endDate": "2026-10-01T03:45:00.000Z",
-   "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "3rd-web-hack-2026": {
    "winnersStatus": "not published",
@@ -41,7 +139,7 @@
    ],
    "endDate": "2026-09-27T07:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "acm-marketsphere-2026": {
    "winnersStatus": "not published",
@@ -51,7 +149,7 @@
    ],
    "endDate": "2026-09-20T18:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "action-space-2026": {
    "winnersStatus": "not published",
@@ -61,7 +159,7 @@
    ],
    "endDate": "2026-10-25T22:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "agentic-day-online-hackathon-powered-by-mel-2026": {
    "winnersStatus": "not published",
@@ -81,7 +179,7 @@
    ],
    "endDate": "2026-10-18T00:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ai-4-infra-challenge-advanced-track-2026": {
    "winnersStatus": "not published",
@@ -91,7 +189,7 @@
    ],
    "endDate": "2026-09-12T17:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ai-4-infra-challenge-beginner-track-2026": {
    "winnersStatus": "not published",
@@ -101,7 +199,7 @@
    ],
    "endDate": "2026-09-12T02:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ai-at-work-hack-the-everyday-2026": {
    "winnersStatus": "not published",
@@ -111,7 +209,17 @@
    ],
    "endDate": "2026-10-16T21:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "ai-build-india-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-31T09:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ai-builder-competition-hackachusetts-2026": {
    "winnersStatus": "not published",
@@ -121,7 +229,7 @@
    ],
    "endDate": "2026-10-25T00:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ai-hackathon-kenya-2026": {
    "winnersStatus": "not published",
@@ -131,7 +239,7 @@
    ],
    "endDate": "2026-10-17T12:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ai-hackathon-sri-lanka-2026": {
    "winnersStatus": "not published",
@@ -141,17 +249,35 @@
    ],
    "endDate": "2026-10-17T12:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ai-in-healthcare-hackathon-2026": {
-   "winnersStatus": "not published",
-   "winners": [],
-   "checked": [
-    "devpost"
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "Overall First Place - sponsored by the School of Computer Science",
+     "project": "SpyMotion",
+     "projectUrl": "https://devpost.com/software/spymotion",
+     "team": "Lucia Rugeroni, emanuelemarangoni Marangoni, Ivy Zhang, Amir-Zheng, Chuyi Yuan"
+    },
+    {
+     "place": "Overall Runner Up - sponsored by the UKRI Centres for Doctoral Training",
+     "project": "Nova",
+     "projectUrl": "https://devpost.com/software/nova-26dtmq",
+     "team": "Mohammedamrayn, 1stjslee Jun Siong, Ruolin Wang, Adam Sweidan"
+    },
+    {
+     "place": "Most Responsible Use of Data - sponsored by the Leeds Institute for Data Analytics",
+     "project": "Her Health",
+     "projectUrl": "https://devpost.com/software/her-health-3567hu",
+     "team": "Hareem, Jeffrey Chan, Jinesh Dugar, sbushra1123"
+    }
    ],
+   "source": "devpost",
+   "sourceUrl": "https://leeds-ai-hackathon.devpost.com/project-gallery",
    "endDate": "2026-10-25T11:45:00.000Z",
-   "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ai-lodge-hackathon-2026": {
    "winnersStatus": "not published",
@@ -161,7 +287,7 @@
    ],
    "endDate": "2026-10-18T17:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ai-x-fintech-hackathon-money-talks-2-2026": {
    "winnersStatus": "not published",
@@ -171,7 +297,7 @@
    ],
    "endDate": "2026-10-17T20:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ai-yes-international-youth-ai-competition-2026": {
    "winnersStatus": "not published",
@@ -191,7 +317,7 @@
    ],
    "endDate": "2026-10-04T16:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "alpaca-x-conviction-trading-hackathon-2026": {
    "winnersStatus": "not published",
@@ -201,7 +327,17 @@
    ],
    "endDate": "2026-09-20T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "aqx-sports-analytics-data-bowl-4-0-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-11-01T07:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "arkiv-global-tour-stop-2026": {
    "winnersStatus": "not published",
@@ -211,7 +347,7 @@
    ],
    "endDate": "2026-10-20T09:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "arm-executorch-edge-ai-challenge-2026": {
    "winnersStatus": "not published",
@@ -221,7 +357,7 @@
    ],
    "endDate": "2026-10-19T00:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ascendance-foundry-s-hackathon-2026": {
    "winnersStatus": "published",
@@ -245,6 +381,16 @@
    "firstFoundAt": "2026-10-27T07:26:18.960Z",
    "checkedAt": "2026-10-27T07:26:18.960Z"
   },
+  "aws-communication-developer-services-cds-agentic-ai-partner-hackathon-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-28T20:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
   "badger-build-fest-2026": {
    "winnersStatus": "not published",
    "winners": [],
@@ -253,7 +399,7 @@
    ],
    "endDate": "2026-09-27T16:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "battle-of-the-personal-brains-2026": {
    "winnersStatus": "not published",
@@ -263,7 +409,7 @@
    ],
    "endDate": "2026-09-22T03:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "bharat-innovation-challenge-2-0-2026": {
    "winnersStatus": "not published",
@@ -273,7 +419,7 @@
    ],
    "endDate": "2026-10-10T18:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "binary-hacks-4-0-2026": {
    "winnersStatus": "not published",
@@ -283,7 +429,7 @@
    ],
    "endDate": "2026-09-22T12:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "black-code-collective-hacktoberfest-2026": {
    "winnersStatus": "not published",
@@ -293,7 +439,17 @@
    ],
    "endDate": "2026-10-24T04:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "blackstart-data-centers-reforged-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-30T19:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "blank-page-2026": {
    "winnersStatus": "not published",
@@ -303,7 +459,7 @@
    ],
    "endDate": "2026-10-17T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "boss-battle-2026": {
    "winnersStatus": "published",
@@ -351,7 +507,7 @@
    ],
    "endDate": "2026-10-17T17:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "build-for-canada-an-ai-hackathon-for-economic-resilience-2026": {
    "winnersStatus": "not published",
@@ -361,7 +517,7 @@
    ],
    "endDate": "2026-10-03T23:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "build-multiplayer-data-science-agents-pymc-labs-2026": {
    "winnersStatus": "not published",
@@ -371,7 +527,7 @@
    ],
    "endDate": "2026-10-10T16:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "build-north-ship-something-real-2026": {
    "winnersStatus": "not published",
@@ -381,7 +537,7 @@
    ],
    "endDate": "2026-10-26T04:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "build-ship-shape-amazon-developer-hackathon-2026": {
    "winnersStatus": "not published",
@@ -391,7 +547,7 @@
    ],
    "endDate": "2026-10-23T19:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "build-something-ai-cannot-do-alone-cal-2026": {
    "winnersStatus": "not published",
@@ -401,7 +557,7 @@
    ],
    "endDate": "2026-10-17T23:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "build-the-next-big-thing-with-ai-devmarketplace-2026": {
    "winnersStatus": "not published",
@@ -411,7 +567,7 @@
    ],
    "endDate": "2026-10-23T03:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "build-with-ai-basics-2026": {
    "winnersStatus": "not published",
@@ -421,7 +577,7 @@
    ],
    "endDate": "2026-10-26T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "build-with-gemini-creation-code-2026": {
    "winnersStatus": "not published",
@@ -441,7 +597,7 @@
    ],
    "endDate": "2026-09-10T13:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "builders-day-by-hackunion-2026": {
    "winnersStatus": "not published",
@@ -451,7 +607,17 @@
    ],
    "endDate": "2026-09-28T10:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "buksi-site-stem-innovation-and-talent-expo-2026-only-for-bukit-sion-students": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-30T16:45:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "bunniex-hackathon-2026": {
    "winnersStatus": "not published",
@@ -461,7 +627,7 @@
    ],
    "endDate": "2026-09-23T11:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "business-ai-hackathon-2026": {
    "winnersStatus": "not published",
@@ -471,7 +637,7 @@
    ],
    "endDate": "2026-09-25T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "c0mpiled-14-2026": {
    "winnersStatus": "not published",
@@ -481,17 +647,587 @@
    ],
    "endDate": "2026-10-17T23:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "cal-hacks-13-0-2026": {
-   "winnersStatus": "not published",
-   "winners": [],
-   "checked": [
-    "devpost"
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "Cal Hacks First Overall",
+     "project": "Sophi - The Physical Augmentation Walker",
+     "projectUrl": "https://devpost.com/software/sophi",
+     "team": "Cooper Li, Max Zhao, Lang Xiong, Philip Meng"
+    },
+    {
+     "place": "Cal Hacks Second Overall",
+     "project": "Silent Voice",
+     "projectUrl": "https://devpost.com/software/silent-voice-s1f74p",
+     "team": "Frank Guo, Austin Wang, thaimtl Tran, Evan Liu"
+    },
+    {
+     "place": "[Cartesia] Best Use of Cartesia",
+     "project": "Silent Voice",
+     "projectUrl": "https://devpost.com/software/silent-voice-s1f74p",
+     "team": "Frank Guo, Austin Wang, thaimtl Tran, Evan Liu"
+    },
+    {
+     "place": "Cal Hacks Third Overall",
+     "project": "half full",
+     "projectUrl": "https://devpost.com/software/half-full",
+     "team": "Arushi Nirmal, Matilda Verdejo Aitken, Raina Zab, Guadalupe Carrillo Vega"
+    },
+    {
+     "place": "Cal Hacks Best Beginner Hack",
+     "project": "Arigami",
+     "projectUrl": "https://devpost.com/software/arigami-web-accessibility",
+     "team": "Sarrie Thompson, Olena Lebedieva, Janisha Hota, Yassin Abdelal"
+    },
+    {
+     "place": "Cal Hacks Most Creative Hack",
+     "project": "GovTok",
+     "projectUrl": "https://devpost.com/software/govtok",
+     "team": "David Kan, jasnquyen Nguyen"
+    },
+    {
+     "place": "Cal Hacks Most Technically Complex Hack",
+     "project": "BrainSync",
+     "projectUrl": "https://devpost.com/software/brainsync",
+     "team": "David Loghin, Elijah Carter"
+    },
+    {
+     "place": "Cal Hacks Best Hardware Hack",
+     "project": "FortWatch",
+     "projectUrl": "https://devpost.com/software/fortwatch",
+     "team": "Martín Ezequiel Pulitano, Pedro Navajas, Nicolás Pujia, JoaquinGiorgis Giorgis"
+    },
+    {
+     "place": "Cal Hacks Best People-First Social Impact Hack",
+     "project": "Standard Response",
+     "projectUrl": "https://devpost.com/software/standard-response",
+     "team": "Brendan G, Boris Nezlobin, Jerry Yan, David Wu"
+    },
+    {
+     "place": "[Microsoft] Built for the Real World (1st), Customer Impact Award (2nd)",
+     "project": "Standard Response",
+     "projectUrl": "https://devpost.com/software/standard-response",
+     "team": "Brendan G, Boris Nezlobin, Jerry Yan, David Wu"
+    },
+    {
+     "place": "[Convex] Best use of Convex",
+     "project": "Standard Response",
+     "projectUrl": "https://devpost.com/software/standard-response",
+     "team": "Brendan G, Boris Nezlobin, Jerry Yan, David Wu"
+    },
+    {
+     "place": "[Apify] Best Use of Apify",
+     "project": "Standard Response",
+     "projectUrl": "https://devpost.com/software/standard-response",
+     "team": "Brendan G, Boris Nezlobin, Jerry Yan, David Wu"
+    },
+    {
+     "place": "[Moss] Best Use of Moss",
+     "project": "Standard Response",
+     "projectUrl": "https://devpost.com/software/standard-response",
+     "team": "Brendan G, Boris Nezlobin, Jerry Yan, David Wu"
+    },
+    {
+     "place": "[Anthropic] Claude for Public Benefit",
+     "project": "Standard Response",
+     "projectUrl": "https://devpost.com/software/standard-response",
+     "team": "Brendan G, Boris Nezlobin, Jerry Yan, David Wu"
+    },
+    {
+     "place": "Cal Hacks Best Planet-First Social Impact Hack",
+     "project": "Orbit Health",
+     "projectUrl": "https://devpost.com/software/orbit-health",
+     "team": "philiprmocanu-cell Mocanu"
+    },
+    {
+     "place": "Cal Hacks Best Solo Hack",
+     "project": "muselet",
+     "projectUrl": "https://devpost.com/software/museles",
+     "team": "Arda Hoke"
+    },
+    {
+     "place": "Cal Hacks Hacker's Choice",
+     "project": "Rouge - Sees Your Screen and Points the Way",
+     "projectUrl": "https://devpost.com/software/rouge-cm8jig",
+     "team": "riva kaul, Rithik Gobinath, Shanmathi v"
+    },
+    {
+     "place": "[Anthropic] Claude for Public Benefit",
+     "project": "TouchSpace",
+     "projectUrl": "https://devpost.com/software/touchspace",
+     "team": "James Zheng, Ho Lok Cheung, Sunghyuk Yoon"
+    },
+    {
+     "place": "[Anthropic] Claude for Public Benefit",
+     "project": "Drigil",
+     "projectUrl": "https://devpost.com/software/drigil",
+     "team": "Sarath Sundar Harisaravanan, Shraddha Khanapur, Dishy"
+    },
+    {
+     "place": "[MLH] Best Use of Gemini API",
+     "project": "homecookd",
+     "projectUrl": "https://devpost.com/software/homecookd",
+     "team": "Caleb Wang, Shreya Pawar, Serene Zhang, Salik"
+    },
+    {
+     "place": "[MLH] Best Use of Solana",
+     "project": "GurtOS",
+     "projectUrl": "https://devpost.com/software/gurtos",
+     "team": "Ben Zhou"
+    },
+    {
+     "place": "[Fetch.ai] Best Use of Fetch.ai",
+     "project": "GurtOS",
+     "projectUrl": "https://devpost.com/software/gurtos",
+     "team": "Ben Zhou"
+    },
+    {
+     "place": "[Atlassian] Best Agent / Best Security Solution for Agents",
+     "project": "GurtOS",
+     "projectUrl": "https://devpost.com/software/gurtos",
+     "team": "Ben Zhou"
+    },
+    {
+     "place": "[MLH] Best Use of Tiger Data",
+     "project": "Laminar",
+     "projectUrl": "https://devpost.com/software/laminar-ma1h69",
+     "team": "Hema Dassani, Avery, Amogh Shrivastava, Om Shah"
+    },
+    {
+     "place": "[MLH] Best Use of Vultr",
+     "project": "Warden",
+     "projectUrl": "https://devpost.com/software/warden-p3uifn",
+     "team": "Vani Ramesh, Rushil shah"
+    },
+    {
+     "place": "[MLH] Best Use of Snowflake API",
+     "project": "Vigil",
+     "projectUrl": "https://devpost.com/software/vigil-aewt3u",
+     "team": "Srivanth Rudrangi"
+    },
+    {
+     "place": "[MLH] Best Domain Name from GoDaddy Registry",
+     "project": "Dead Internet Theory",
+     "projectUrl": "https://devpost.com/software/dead-internet-theory",
+     "team": "Chace Lai, Kai Luzniak, Jasper Grant"
+    },
+    {
+     "place": "[Hyphenate] The Hyphenated Enterprise: Autonomous Systems for Finance",
+     "project": "ANNEAL",
+     "projectUrl": "https://devpost.com/software/anneal-u3xh1o",
+     "team": "Alex Snook Manchon, Gavin Zhou, Varun Sanjeev, Arnav Singhal"
+    },
+    {
+     "place": "[Hyphenate] The Hyphenated Enterprise: Autonomous Systems for Finance",
+     "project": "Eve: event finances handled",
+     "projectUrl": "https://devpost.com/software/eve-event-finances-handled",
+     "team": "berni q, Evan Yu, Uijin Cho"
+    },
+    {
+     "place": "[Hyphenate] The Hyphenated Enterprise: Autonomous Systems for Finance",
+     "project": "GroundTruth",
+     "projectUrl": "https://devpost.com/software/groundtruth-k3g5v6",
+     "team": "Aamir Abatiyow"
+    },
+    {
+     "place": "[Hyphenate] The Hyphenated Enterprise: Autonomous Systems for Finance",
+     "project": "Mangekyo",
+     "projectUrl": "https://devpost.com/software/mangekyo",
+     "team": "James Weng, Edwin Lin"
+    },
+    {
+     "place": "[Hyphenate] The Hyphenated Enterprise: Autonomous Systems for Finance",
+     "project": "moa",
+     "projectUrl": "https://devpost.com/software/moa",
+     "team": "Matthew Petersen, Belinda Cheng"
+    },
+    {
+     "place": "[Figma] Best Design",
+     "project": "moa",
+     "projectUrl": "https://devpost.com/software/moa",
+     "team": "Matthew Petersen, Belinda Cheng"
+    },
+    {
+     "place": "[Visa] Best use of Reimagining Shopping sponsored by Visa",
+     "project": "Hunter",
+     "projectUrl": "https://devpost.com/software/hunter-8mbuv5",
+     "team": "Aruneem Bhowmick, Micah Tidball, Matthew Moisseyev"
+    },
+    {
+     "place": "[Fetch.ai] Best Use of Fetch.ai",
+     "project": "Fish Market",
+     "projectUrl": "https://devpost.com/software/fish-market-of6te2",
+     "team": "Abhinav Dasari, Anoop Ibrampur, Vidyut Sriram, Vedant Shirvi"
+    },
+    {
+     "place": "[Fetch.ai] Best Use of Fetch.ai",
+     "project": "Yardsale",
+     "projectUrl": "https://devpost.com/software/yardsale",
+     "team": "Rahul Palani, Kevin Lin, Joshua Bumatay"
+    },
+    {
+     "place": "[Fetch.ai] Best Use of Fetch.ai",
+     "project": "Rest Easy",
+     "projectUrl": "https://devpost.com/software/rest-easy",
+     "team": "Blac brd, Adam Kassam, Keanu Czirjak, Adyan Ullah"
+    },
+    {
+     "place": "[Fetch.ai] Best Use of Fetch.ai",
+     "project": "Docket",
+     "projectUrl": "https://devpost.com/software/docket-ezaum8",
+     "team": "Soham Chavan, Anusha Agarwal, Rhianna Ferreira, Kiruthika Marikumaran"
+    },
+    {
+     "place": "[Mana] Best Use of Mana",
+     "project": "Docket",
+     "projectUrl": "https://devpost.com/software/docket-ezaum8",
+     "team": "Soham Chavan, Anusha Agarwal, Rhianna Ferreira, Kiruthika Marikumaran"
+    },
+    {
+     "place": "[Fetch.ai] Best Use of Fetch.ai",
+     "project": "HAVEN: Nobody Gets Left Behind",
+     "projectUrl": "https://devpost.com/software/haven-nobody-gets-left-behind",
+     "team": "Sudarshan Krishnan, Siddhesh Kulkarni"
+    },
+    {
+     "place": "[Convex] Best use of Convex",
+     "project": "HAVEN: Nobody Gets Left Behind",
+     "projectUrl": "https://devpost.com/software/haven-nobody-gets-left-behind",
+     "team": "Sudarshan Krishnan, Siddhesh Kulkarni"
+    },
+    {
+     "place": "[Microsoft] Built for the Real World (1st), Customer Impact Award (2nd)",
+     "project": "AccountableAI",
+     "projectUrl": "https://devpost.com/software/accountableai",
+     "team": "Aaryan Gajula, audrey-pinard, Omar Rizwan, Kanishkha Jaisankar"
+    },
+    {
+     "place": "[Meta] Meta/Facebook: Bringing People Closer Together with AI",
+     "project": "dor",
+     "projectUrl": "https://devpost.com/software/dor",
+     "team": "Adam Zhang, nimisha-rangarajan Rangarajan, rishibagri Bagri, Sumedh Sambharam"
+    },
+    {
+     "place": "[Meta] Meta/Facebook: Bringing People Closer Together with AI",
+     "project": "Re:collection",
+     "projectUrl": "https://devpost.com/software/re-collection",
+     "team": "Shivin Anand, Srinivas I B, Firdavs Boliev"
+    },
+    {
+     "place": "[Meta] Meta/Facebook: Bringing People Closer Together with AI",
+     "project": "HUSH",
+     "projectUrl": "https://devpost.com/software/hush-k0jdb6",
+     "team": "Lea Cheng, Samer Rahman, James Qiu, Lucy Sheng"
+    },
+    {
+     "place": "[Factory] Best Use of the Factory Droid SDK",
+     "project": "Skillsmith",
+     "projectUrl": "https://devpost.com/software/skillsmith",
+     "team": "Vikram Karamsetty, Vedansh Wadhwani, Rohan Pejaver, Nishanth Sathisha"
+    },
+    {
+     "place": "[Armadin] Best Security Hack",
+     "project": "PreVent",
+     "projectUrl": "https://devpost.com/software/prevent-5ymas0",
+     "team": "Christian Ibarbia Ruiz, Israel Ogwu, Sanjavan Ghodasara, Saketh Poori"
+    },
+    {
+     "place": "[Bitdeer AI] Best Use of Bitdeer AI Model Studio",
+     "project": "PreVent",
+     "projectUrl": "https://devpost.com/software/prevent-5ymas0",
+     "team": "Christian Ibarbia Ruiz, Israel Ogwu, Sanjavan Ghodasara, Saketh Poori"
+    },
+    {
+     "place": "[Apify] Best Use of Apify",
+     "project": "CoFounder",
+     "projectUrl": "https://devpost.com/software/cofounder-q1g570",
+     "team": "Princy Maheshwari"
+    },
+    {
+     "place": "[Apify] Best Use of Apify",
+     "project": "Eleven",
+     "projectUrl": "https://devpost.com/software/eleven-j84ur5",
+     "team": "Khadim Drame, Stephen Sookra, Shashank Shaga"
+    },
+    {
+     "place": "[Apify] Best Use of Apify",
+     "project": "Pupil",
+     "projectUrl": "https://devpost.com/software/pupil-utzxy2",
+     "team": "Yiming Su, Anthony Lu, Kenny Wu"
+    },
+    {
+     "place": "[Apify] Best Use of Apify",
+     "project": "NightFall",
+     "projectUrl": "https://devpost.com/software/nightfall",
+     "team": "Jun Kim, Evan Barreau, Nam Do, Ethan Ikenaga"
+    },
+    {
+     "place": "[Apify] Best Actor sponsored by Apify",
+     "project": "Recount",
+     "projectUrl": "https://devpost.com/software/recount-spgda6",
+     "team": "Volodymyr Borysenko"
+    },
+    {
+     "place": "[Creao AI] Best AI-First Disruptor",
+     "project": "Anima Labs",
+     "projectUrl": "https://devpost.com/software/anima-labs",
+     "team": "Jeffrey Tseng, Marc Da Silva, Jeremy Siu, Julius Zhou"
+    },
+    {
+     "place": "[Creao AI] Best One-Person Company",
+     "project": "Tariffic",
+     "projectUrl": "https://devpost.com/software/tariffic",
+     "team": "Parth Gala, Likhith Ramesha, Vaibhav Achar"
+    },
+    {
+     "place": "[CRS] Best Use of CRS API",
+     "project": "Bursar",
+     "projectUrl": "https://devpost.com/software/bursar-hej2yl",
+     "team": "Shresthkumar Karnani, Aditya Nagpal, Kenil Himmatbhai Vaghasiya"
+    },
+    {
+     "place": "[Creao AI] Best Team Empowerment",
+     "project": "Bursar",
+     "projectUrl": "https://devpost.com/software/bursar-hej2yl",
+     "team": "Shresthkumar Karnani, Aditya Nagpal, Kenil Himmatbhai Vaghasiya"
+    },
+    {
+     "place": "[Bitdeer AI] Best Use of Bitdeer AI Model Studio",
+     "project": "Bellhop",
+     "projectUrl": "https://devpost.com/software/bellhop-fkc7sn",
+     "team": "Maximo Zhang, Keenan Park"
+    },
+    {
+     "place": "[Elastic] Best use of the Elastic Agent Builder on a Serverless Instance",
+     "project": "Quota",
+     "projectUrl": "https://devpost.com/software/quota-t3h6i9",
+     "team": "Aaditi Singhal"
+    },
+    {
+     "place": "[Elastic] Best use of the Elastic Agent Builder on a Serverless Instance",
+     "project": "Interlude",
+     "projectUrl": "https://devpost.com/software/interlude-yhdm1t",
+     "team": "David Lam, Caden Wang, Jiwon Choi, Johnathan Wu"
+    },
+    {
+     "place": "[Capital One] Best Use of Nessie",
+     "project": "Niche",
+     "projectUrl": "https://devpost.com/software/niche-z32los",
+     "team": "Arissa Zheng, zaarahmed76 Ahmed"
+    },
+    {
+     "place": "[CRS] Best Use of CRS API",
+     "project": "Agent Credit Exchange: AI agents that shop loans safely",
+     "projectUrl": "https://devpost.com/software/agent-credit-exchange-ai-agents-that-shop-loans-safely",
+     "team": "Karan Singh, Mohammed Saiger, Nick Dara Heidari-Bateni"
+    },
+    {
+     "place": "[CRS] Best Use of CRS API",
+     "project": "DebtPilot",
+     "projectUrl": "https://devpost.com/software/debtpilot-wk8j3d",
+     "team": "Dorian Taponzing Donfack"
+    },
+    {
+     "place": "[CRS] Best Use of CRS API",
+     "project": "InterHoot",
+     "projectUrl": "https://devpost.com/software/interhoot",
+     "team": "Alexander Vladimir Slavny, Shaheen Vadpey, Eric Kwak, Nelson Lok Li, Mr. Slaavs"
+    },
+    {
+     "place": "[CRS] Best Use of CRS API",
+     "project": "Red Ledger",
+     "projectUrl": "https://devpost.com/software/red-ledger",
+     "team": "Aditya Nair, Alex Epstein, raaga sundar, Mateo Otero-Diaz"
+    },
+    {
+     "place": "[SpaceXSI] Make it Legendary with SpaceXSI",
+     "project": "Project Supernova",
+     "projectUrl": "https://devpost.com/software/project-supernova-gqe5xn",
+     "team": "Light Liu, Yuanbo Jiang, Baron Kwong, Vincent Chen"
+    },
+    {
+     "place": "[Coinbase] Best Use of x402 by Coinbase",
+     "project": "skarl.",
+     "projectUrl": "https://devpost.com/software/skarl",
+     "team": "stephen hung, joshua lin, Silas Wu, Matthew Kim"
+    },
+    {
+     "place": "[Coinbase] Best Use of x402 by Coinbase",
+     "project": "StockUp",
+     "projectUrl": "https://devpost.com/software/stockup-y21xrv",
+     "team": "Sarah Min, Natasha Tran, Alana Zhao, Roselyn Chin"
+    },
+    {
+     "place": "[Notability] Best Use of Notability",
+     "project": "Vision OS",
+     "projectUrl": "https://devpost.com/software/vision-os-4ckmq3",
+     "team": "Kevin Dai, Gloria Guo, Kim Khanh Tran, Khoi Anh Le Nguyen"
+    },
+    {
+     "place": "[Notability] Best Use of Notability",
+     "project": "Hear me Out",
+     "projectUrl": "https://devpost.com/software/hear-me-out-548os6",
+     "team": "Diya Balagopal, Prisha Agarwalla, Jose Cruz, Anish Cheraku"
+    },
+    {
+     "place": "[Notability] Best Use of Notability",
+     "project": "DrugPersona",
+     "projectUrl": "https://devpost.com/software/drugpersona",
+     "team": "Sathvik Kumar, Ashton Noah Legaspi, Samarpan Mohanty, Mohit Suresh Chandar"
+    },
+    {
+     "place": "[Notability] Best Use of Notability",
+     "project": "Remy",
+     "projectUrl": "https://devpost.com/software/remy-h9dbx1",
+     "team": "David D, Yash Jagtap, Jay Thapar, Gavin Sonntag"
+    },
+    {
+     "place": "[Bright Data] Best Agent/App Using Public Web Data sponsored by Bright Data",
+     "project": "Remy",
+     "projectUrl": "https://devpost.com/software/remy-h9dbx1",
+     "team": "David D, Yash Jagtap, Jay Thapar, Gavin Sonntag"
+    },
+    {
+     "place": "[Notability] Best Use of Notability",
+     "project": "CuraLink",
+     "projectUrl": "https://devpost.com/software/curalink-ut2lnv",
+     "team": "Samvida Batchu, mithu-sivali Sivalingapandian"
+    },
+    {
+     "place": "[Spacetime] Best Use of Spacetime",
+     "project": "Bandit - The only band you need",
+     "projectUrl": "https://devpost.com/software/bandit-the-only-band-you-need",
+     "team": "Viktor Minchev, Luke Huh, Leo poz, Edward Lai"
+    },
+    {
+     "place": "[Spacetime] Best Use of Spacetime",
+     "project": "Orkio",
+     "projectUrl": "https://devpost.com/software/gehub",
+     "team": "Christina Hu, Catherine Zheng, Blar Huang, Joonie Kang"
+    },
+    {
+     "place": "[Spacetime] Best Use of Spacetime",
+     "project": "Vouch",
+     "projectUrl": "https://devpost.com/software/vouch-7i3bft",
+     "team": "Aadi Jariwala, Shubhay Choubey, Shivam Pansuria"
+    },
+    {
+     "place": "[Spacetime] Best Use of Spacetime",
+     "project": "Luyten",
+     "projectUrl": "https://devpost.com/software/cafoo",
+     "team": "Keshav Jindal, 3nvyx Nguyen, Lucas Hoang"
+    },
+    {
+     "place": "[Spacetime] Best Use of Spacetime",
+     "project": "GeonosisAI",
+     "projectUrl": "https://devpost.com/software/robofactory",
+     "team": "Jaxon Poentis"
+    },
+    {
+     "place": "[Spacetime] Best Use of Spacetime",
+     "project": "skyFall",
+     "projectUrl": "https://devpost.com/software/skyfall-uca4i9",
+     "team": "Kevin Chhim, Christopher Chhim, Hank Li, Steven Kuzhipala"
+    },
+    {
+     "place": "[Spacetime] Best Use of Spacetime",
+     "project": "Pacioli",
+     "projectUrl": "https://devpost.com/software/pacioli",
+     "team": "raha zholo"
+    },
+    {
+     "place": "[Spacetime] Best Use of Spacetime",
+     "project": "Rally",
+     "projectUrl": "https://devpost.com/software/locomotion-5i4gzy",
+     "team": "Vedanth Aggarwal, Jacob Quion"
+    },
+    {
+     "place": "[Spacetime] Best Use of Spacetime",
+     "project": "Ender's Bench",
+     "projectUrl": "https://devpost.com/software/ender-s-bench",
+     "team": "Timothy Ou, Siddhant Shankar, Mason Lewis, Chuka Ezeoke"
+    },
+    {
+     "place": "[Mana] Best Use of Mana",
+     "project": "Grid Pilot",
+     "projectUrl": "https://devpost.com/software/grid-pilot",
+     "team": "Tanvi Patel, DHRUV PATEL"
+    },
+    {
+     "place": "[Mana] Best Use of Mana",
+     "project": "Campanion",
+     "projectUrl": "https://devpost.com/software/campanion-n1h7by",
+     "team": "Michael Zhiyuan Deng, Daphne Wen, Jiyoon Choi, 김민재(자연과학대학 화학생명분자과학부) ‎"
+    },
+    {
+     "place": "[Mana] Best Use of Mana",
+     "project": "RealiSIM",
+     "projectUrl": "https://devpost.com/software/realisim",
+     "team": "Chaitanya Nikhil Vikamsey, julieyiu777 Julie Yiu, Aditya bangde, lakshya saraf"
+    },
+    {
+     "place": "[Bright Data] Best Agent/App Using Public Web Data sponsored by Bright Data",
+     "project": "Show Before",
+     "projectUrl": "https://devpost.com/software/show-before",
+     "team": "Jie Kai Tao, Linwei Zhang"
+    },
+    {
+     "place": "[Bright Data] Best Agent/App Using Public Web Data sponsored by Bright Data",
+     "project": "dibs",
+     "projectUrl": "https://devpost.com/software/dibs-8upsd4",
+     "team": "PAVAN GUDAVALLI, ANTHONY ZHAO, Henry Li"
+    },
+    {
+     "place": "[Atlassian] Best Agent / Best Security Solution for Agents",
+     "project": "Credo",
+     "projectUrl": "https://devpost.com/software/credo-sxpmav",
+     "team": "Jaden Li, Saksham Uboweja"
+    },
+    {
+     "place": "[Atlassian] Best Agent / Best Security Solution for Agents",
+     "project": "Argo",
+     "projectUrl": "https://devpost.com/software/argo-lrxcqa",
+     "team": "Bhagyesh Jethwani, Mathias Buechter, Rohit Karthik"
+    },
+    {
+     "place": "[Moss] Long Horizon Agent",
+     "project": "Unstep",
+     "projectUrl": "https://devpost.com/software/unstep",
+     "team": "Rishit Rai, Deekshith Reddy"
+    },
+    {
+     "place": "[Moss] Long Horizon Agent",
+     "project": "okidoki",
+     "projectUrl": "https://devpost.com/software/okidoki",
+     "team": "Jay Katariya, Jacob Dat Jetli Leung"
+    },
+    {
+     "place": "[Figma] Best Stage Log",
+     "project": "Baseland",
+     "projectUrl": "https://devpost.com/software/baseland",
+     "team": "Aditya Ashok Lagad, Sujay Maladi"
+    },
+    {
+     "place": "[Figma] Best Use Case",
+     "project": "Two Figma",
+     "projectUrl": "https://devpost.com/software/2-figma",
+     "team": "Leila Maleki, Eric Chen, Aum, Nathan Yan"
+    },
+    {
+     "place": "[Figma] Most Creative",
+     "project": "Ghostphone",
+     "projectUrl": "https://devpost.com/software/ghostphone",
+     "team": "Tongyu Jiang"
+    }
    ],
+   "source": "devpost",
+   "sourceUrl": "https://cal-hacks-13-0.devpost.com/project-gallery",
    "endDate": "2026-10-25T16:30:00.000Z",
-   "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "capcut-x-east2046-university-of-cambridge-creator-lab-free-learning-campus-2026": {
    "winnersStatus": "not published",
@@ -501,7 +1237,7 @@
    ],
    "endDate": "2026-10-22T17:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "case-closed-2026": {
    "winnersStatus": "not published",
@@ -511,7 +1247,7 @@
    ],
    "endDate": "2026-10-04T20:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "cast-gny-startup-pitch-competition-2026": {
    "winnersStatus": "not published",
@@ -521,7 +1257,7 @@
    ],
    "endDate": "2026-09-23T03:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "cct-it-club-x-inovexhq-hack-days-2026": {
    "winnersStatus": "not published",
@@ -531,7 +1267,7 @@
    ],
    "endDate": "2026-10-01T11:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "child-safety-in-ai-2026": {
    "winnersStatus": "not published",
@@ -551,7 +1287,7 @@
    ],
    "endDate": "2026-09-26T11:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "citycamp-gainesville-hack-day-2026": {
    "winnersStatus": "published",
@@ -595,7 +1331,7 @@
    ],
    "endDate": "2026-10-25T00:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "code-cubicle-6-0-2026": {
    "winnersStatus": "not published",
@@ -605,7 +1341,7 @@
    ],
    "endDate": "2026-09-21T04:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "code-vidya-hack-days-2026": {
    "winnersStatus": "not published",
@@ -625,7 +1361,7 @@
    ],
    "endDate": "2026-10-24T07:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "codebox-hacks-2026": {
    "winnersStatus": "not published",
@@ -635,7 +1371,7 @@
    ],
    "endDate": "2026-09-06T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "codebox-hacks-makeup-2026": {
    "winnersStatus": "not published",
@@ -645,7 +1381,7 @@
    ],
    "endDate": "2026-09-09T06:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "codefest-2026-by-colorstackbu": {
    "winnersStatus": "not published",
@@ -655,7 +1391,7 @@
    ],
    "endDate": "2026-10-25T22:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "codeml-2026": {
    "winnersStatus": "not published",
@@ -665,7 +1401,17 @@
    ],
    "endDate": "2026-10-04T15:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "codesprint-by-elite-coders-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-30T11:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "codestorm-2026-futureforge": {
    "winnersStatus": "not published",
@@ -675,7 +1421,7 @@
    ],
    "endDate": "2026-10-15T18:29:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "codeutsava-x-0-2026": {
    "winnersStatus": "not published",
@@ -685,7 +1431,7 @@
    ],
    "endDate": "2026-10-04T10:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "cognition-2026": {
    "winnersStatus": "not published",
@@ -695,7 +1441,7 @@
    ],
    "endDate": "2026-10-25T08:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "cognition-gamejam-26-2026": {
    "winnersStatus": "not published",
@@ -705,7 +1451,7 @@
    ],
    "endDate": "2026-09-26T10:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "comma-hack-7-2026": {
    "winnersStatus": "not published",
@@ -715,7 +1461,7 @@
    ],
    "endDate": "2026-09-20T22:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "company-brain-hackathon-2026": {
    "winnersStatus": "not published",
@@ -725,7 +1471,7 @@
    ],
    "endDate": "2026-10-13T05:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "compsphere-12-2026": {
    "winnersStatus": "not published",
@@ -735,7 +1481,7 @@
    ],
    "endDate": "2026-09-30T17:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "cornell-six-sigma-hackathon-2026": {
    "winnersStatus": "not published",
@@ -745,7 +1491,17 @@
    ],
    "endDate": "2026-10-23T19:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "createathon-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-31T21:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "csi-renaissance-26-27-2026": {
    "winnersStatus": "not published",
@@ -755,7 +1511,7 @@
    ],
    "endDate": "2026-10-16T11:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "cswn-ai-build-challenge-2026": {
    "winnersStatus": "not published",
@@ -765,7 +1521,7 @@
    ],
    "endDate": "2026-09-25T22:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "cusehacks-2026": {
    "winnersStatus": "not published",
@@ -775,7 +1531,7 @@
    ],
    "endDate": "2026-09-20T17:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "cyber-hawk-hack-days-2026": {
    "winnersStatus": "not published",
@@ -785,7 +1541,7 @@
    ],
    "endDate": "2026-09-22T13:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "databricks-ai-social-impact-daisi-challenge-singapore-2026": {
    "winnersStatus": "not published",
@@ -795,7 +1551,7 @@
    ],
    "endDate": "2026-10-06T16:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "databricks-hackathon-queens-college-2026": {
    "winnersStatus": "not published",
@@ -805,7 +1561,7 @@
    ],
    "endDate": "2026-09-20T20:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "deal-flow-nyc-s-first-vc-hackathon-betaworks-2026": {
    "winnersStatus": "not published",
@@ -815,7 +1571,7 @@
    ],
    "endDate": "2026-10-24T20:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "decentrahack-2-0-2026": {
    "winnersStatus": "not published",
@@ -825,7 +1581,7 @@
    ],
    "endDate": "2026-09-30T18:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "define-4-0-2026": {
    "winnersStatus": "not published",
@@ -835,7 +1591,7 @@
    ],
    "endDate": "2026-10-10T07:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "demo-student-hackathon-2026": {
    "winnersStatus": "not published",
@@ -845,7 +1601,7 @@
    ],
    "endDate": "2026-09-20T14:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "devhack-2026": {
    "winnersStatus": "not published",
@@ -855,7 +1611,7 @@
    ],
    "endDate": "2026-09-17T18:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "dfa-design-sprint-2026": {
    "winnersStatus": "not published",
@@ -865,7 +1621,7 @@
    ],
    "endDate": "2026-09-19T04:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "dialed-in-builder-challenge-2026": {
    "winnersStatus": "not published",
@@ -875,7 +1631,7 @@
    ],
    "endDate": "2026-09-09T03:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "dominion-2026": {
    "winnersStatus": "not published",
@@ -905,7 +1661,7 @@
    ],
    "endDate": "2026-09-19T12:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "dublin-hacx-2026": {
    "winnersStatus": "not published",
@@ -915,7 +1671,7 @@
    ],
    "endDate": "2026-10-04T05:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "duquantum-2026": {
    "winnersStatus": "not published",
@@ -925,7 +1681,7 @@
    ],
    "endDate": "2026-10-25T15:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "emberhacks-day-2026": {
    "winnersStatus": "published",
@@ -955,6 +1711,16 @@
    "firstFoundAt": "2026-10-27T07:26:18.960Z",
    "checkedAt": "2026-10-27T07:26:18.960Z"
   },
+  "engage-6-0-code-with-ai-hackathon-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-27T12:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
   "ensign-build-2026": {
    "winnersStatus": "not published",
    "winners": [],
@@ -963,7 +1729,7 @@
    ],
    "endDate": "2026-10-10T16:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ethkochi-2026": {
    "winnersStatus": "not published",
@@ -973,7 +1739,7 @@
    ],
    "endDate": "2026-09-06T06:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "eurekadev-2026": {
    "winnersStatus": "not published",
@@ -983,7 +1749,7 @@
    ],
    "endDate": "2026-10-20T22:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "expand-your-agents-horizons-build-with-k2-horizon-2026": {
    "winnersStatus": "not published",
@@ -993,7 +1759,7 @@
    ],
    "endDate": "2026-09-19T22:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "fik-fair-2026": {
    "winnersStatus": "not published",
@@ -1003,7 +1769,7 @@
    ],
    "endDate": "2026-10-05T07:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "five-nights-with-ai-2026": {
    "winnersStatus": "not published",
@@ -1013,7 +1779,7 @@
    ],
    "endDate": "2026-10-24T23:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "frontier-cascadia-2026": {
    "winnersStatus": "not published",
@@ -1023,7 +1789,17 @@
    ],
    "endDate": "2026-09-13T00:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "fuse-society-blueprint-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-31T04:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "fusionix2026": {
    "winnersStatus": "not published",
@@ -1033,7 +1809,7 @@
    ],
    "endDate": "2026-09-12T10:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "future-innovators-hackothon-2026": {
    "winnersStatus": "not published",
@@ -1043,7 +1819,7 @@
    ],
    "endDate": "2026-10-04T22:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "future-legends-2026": {
    "winnersStatus": "not published",
@@ -1053,7 +1829,7 @@
    ],
    "endDate": "2026-09-19T19:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "gear-up-hacks-2026": {
    "winnersStatus": "not published",
@@ -1063,7 +1839,7 @@
    ],
    "endDate": "2026-10-24T22:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "geauxhack-2026": {
    "winnersStatus": "not published",
@@ -1073,7 +1849,7 @@
    ],
    "endDate": "2026-10-25T17:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "gemini-event-hackmatrix-2026": {
    "winnersStatus": "not published",
@@ -1083,7 +1859,7 @@
    ],
    "endDate": "2026-09-05T11:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "gen-agra-2026": {
    "winnersStatus": "not published",
@@ -1093,7 +1869,7 @@
    ],
    "endDate": "2026-09-12T11:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "general-learning-hacks-2026": {
    "winnersStatus": "not published",
@@ -1103,7 +1879,7 @@
    ],
    "endDate": "2026-09-20T02:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "get-hired-hack-columbia-startup-lab-2026": {
    "winnersStatus": "not published",
@@ -1113,7 +1889,7 @@
    ],
    "endDate": "2026-10-10T20:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "girlathon-4-0-2026": {
    "winnersStatus": "not published",
@@ -1123,7 +1899,7 @@
    ],
    "endDate": "2026-09-09T18:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "girls-hoo-hack-2026": {
    "winnersStatus": "published",
@@ -1207,6 +1983,16 @@
    "firstFoundAt": "2026-10-27T07:26:18.960Z",
    "checkedAt": "2026-10-27T07:26:18.960Z"
   },
+  "girls-who-code-hhs-hackathon-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-29T04:45:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
   "glitchathon-2026": {
    "winnersStatus": "not published",
    "winners": [],
@@ -1215,7 +2001,7 @@
    ],
    "endDate": "2026-10-25T11:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "glitchfiesta-2026": {
    "winnersStatus": "not published",
@@ -1225,7 +2011,7 @@
    ],
    "endDate": "2026-09-25T18:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "global-psyops-hackathon-2026": {
    "winnersStatus": "not published",
@@ -1235,7 +2021,7 @@
    ],
    "endDate": "2026-09-07T13:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "gotong-royong-hackathon-2026": {
    "winnersStatus": "not published",
@@ -1245,7 +2031,7 @@
    ],
    "endDate": "2026-09-19T10:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "grand-innovation-challenge-2026": {
    "winnersStatus": "not published",
@@ -1255,7 +2041,7 @@
    ],
    "endDate": "2026-10-03T09:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "graphiques-innovation-challenge-2026": {
    "winnersStatus": "not published",
@@ -1265,7 +2051,7 @@
    ],
    "endDate": "2026-10-12T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack-26-2026": {
    "winnersStatus": "not published",
@@ -1275,7 +2061,7 @@
    ],
    "endDate": "2026-09-06T04:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack-apertus-2026": {
    "winnersStatus": "not published",
@@ -1285,7 +2071,7 @@
    ],
    "endDate": "2026-10-16T10:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack-atlantic-2026": {
    "winnersStatus": "not published",
@@ -1296,7 +2082,7 @@
    ],
    "endDate": "2026-09-27T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack-cmu-2026": {
    "winnersStatus": "not published",
@@ -1306,17 +2092,83 @@
    ],
    "endDate": "2026-09-12T20:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack-for-social-impact-sf-2026": {
-   "winnersStatus": "not published",
-   "winners": [],
-   "checked": [
-    "devpost"
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "Hack for Social Impact Prizes",
+     "project": "Design good forward",
+     "projectUrl": "https://devpost.com/software/design-good-forward",
+     "team": "Rarity Le'mons Bey, Harsimran kaur Khaira"
+    },
+    {
+     "place": "Technology Credits",
+     "project": "Design good forward",
+     "projectUrl": "https://devpost.com/software/design-good-forward",
+     "team": "Rarity Le'mons Bey, Harsimran kaur Khaira"
+    },
+    {
+     "place": "Hack for Social Impact Prizes",
+     "project": "Amoria",
+     "projectUrl": "https://devpost.com/software/amoria-ko2abu",
+     "team": "Jihan Raiyan"
+    },
+    {
+     "place": "Technology Credits",
+     "project": "Amoria",
+     "projectUrl": "https://devpost.com/software/amoria-ko2abu",
+     "team": "Jihan Raiyan"
+    },
+    {
+     "place": "Hack for Social Impact Prizes",
+     "project": "Transforming TPW ✨",
+     "projectUrl": "https://devpost.com/software/transforming-tpw",
+     "team": "Divya Agarwala, Thomas Manandhar-Richardson, Luis Espino, Nicolas G, Alex Berry"
+    },
+    {
+     "place": "Technology Credits",
+     "project": "Transforming TPW ✨",
+     "projectUrl": "https://devpost.com/software/transforming-tpw",
+     "team": "Divya Agarwala, Thomas Manandhar-Richardson, Luis Espino, Nicolas G, Alex Berry"
+    },
+    {
+     "place": "Hack for Social Impact Prizes",
+     "project": "Next move",
+     "projectUrl": "https://devpost.com/software/next-move-w2lrhy",
+     "team": "Jaime Franco Jarava, Jameel Qureshi, Gints Turlajs"
+    },
+    {
+     "place": "Technology Credits",
+     "project": "Next move",
+     "projectUrl": "https://devpost.com/software/next-move-w2lrhy",
+     "team": "Jaime Franco Jarava, Jameel Qureshi, Gints Turlajs"
+    },
+    {
+     "place": "Hack for Social Impact Prizes",
+     "project": "ten Jeremy Bearimy's Later",
+     "projectUrl": "https://devpost.com/software/ten-jeremy-bearimy-s-later",
+     "team": "Nerissa Yiu, Sowmya Jujjuri, Johnson Koshy"
+    },
+    {
+     "place": "Technology Credits",
+     "project": "ten Jeremy Bearimy's Later",
+     "projectUrl": "https://devpost.com/software/ten-jeremy-bearimy-s-later",
+     "team": "Nerissa Yiu, Sowmya Jujjuri, Johnson Koshy"
+    },
+    {
+     "place": "Crowd Favorite",
+     "project": "Team Ladybug",
+     "projectUrl": "https://devpost.com/software/team-ladybug",
+     "team": "Harrison Nguyen, kyoimura Imura, Diksha Sadhwani"
+    }
    ],
+   "source": "devpost",
+   "sourceUrl": "https://hack-for-social-impact-sf-2026.devpost.com/project-gallery",
    "endDate": "2026-10-25T22:00:00.000Z",
-   "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack-insight-2026": {
    "winnersStatus": "not published",
@@ -1326,7 +2178,7 @@
    ],
    "endDate": "2026-10-21T18:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack-knowvy-1-2026": {
    "winnersStatus": "not published",
@@ -1336,7 +2188,7 @@
    ],
    "endDate": "2026-09-13T12:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack-like-w-cc-2026": {
    "winnersStatus": "published",
@@ -1392,7 +2244,7 @@
    ],
    "endDate": "2026-10-08T15:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack-the-city-2026": {
    "winnersStatus": "not published",
@@ -1402,7 +2254,7 @@
    ],
    "endDate": "2026-09-25T09:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack-the-weather-2026": {
    "winnersStatus": "not published",
@@ -1412,7 +2264,27 @@
    ],
    "endDate": "2026-09-25T20:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "hack-to-the-future-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-27T21:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "hack-with-karthik-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-11-01T11:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack2heal-2-0-global-healthcare-innovation-hackathon-2026": {
    "winnersStatus": "not published",
@@ -1422,7 +2294,7 @@
    ],
    "endDate": "2026-09-30T18:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack47-offgrid-2026": {
    "winnersStatus": "not published",
@@ -1432,7 +2304,7 @@
    ],
    "endDate": "2026-10-15T04:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hack4brahma-2-0-2026": {
    "winnersStatus": "not published",
@@ -1442,7 +2314,7 @@
    ],
    "endDate": "2026-09-27T05:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackbios-2k26-2026": {
    "winnersStatus": "not published",
@@ -1452,7 +2324,7 @@
    ],
    "endDate": "2026-10-10T05:40:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackfest-season-1-2026": {
    "winnersStatus": "not published",
@@ -1462,7 +2334,35 @@
    ],
    "endDate": "2026-10-18T16:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "hackfw-made-challenge-2026": {
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "1st",
+     "project": "kai-studio",
+     "projectUrl": "https://devpost.com/software/kai-studio",
+     "team": "fivedollarfridays Masterson"
+    },
+    {
+     "place": "2nd",
+     "project": "Forgepath Supplier Desk",
+     "projectUrl": "https://devpost.com/software/forgepath-supplier-desk",
+     "team": "Matthew Dickson"
+    },
+    {
+     "place": "3rd",
+     "project": "Sigilint Well Monitor",
+     "projectUrl": "https://devpost.com/software/sigilint-well-monitor-avold4",
+     "team": "Aaron Evans"
+    }
+   ],
+   "source": "devpost",
+   "sourceUrl": "https://hackfw.devpost.com/project-gallery",
+   "endDate": "2026-10-30T16:00:00.000Z",
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackharvard2026-hack-to-the-moon": {
    "winnersStatus": "not published",
@@ -1472,7 +2372,7 @@
    ],
    "endDate": "2026-10-18T14:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackify-3-0-2026": {
    "winnersStatus": "not published",
@@ -1482,7 +2382,7 @@
    ],
    "endDate": "2026-10-11T03:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackinverse-1-0-2026": {
    "winnersStatus": "not published",
@@ -1492,7 +2392,7 @@
    ],
    "endDate": "2026-10-11T12:22:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackit-2026": {
    "winnersStatus": "not published",
@@ -1502,7 +2402,7 @@
    ],
    "endDate": "2026-10-20T16:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackitsnova-2026": {
    "winnersStatus": "not published",
@@ -1512,7 +2412,7 @@
    ],
    "endDate": "2026-10-15T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackkentucky-2026": {
    "winnersStatus": "not published",
@@ -1522,7 +2422,7 @@
    ],
    "endDate": "2026-09-12T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackman-x-2026": {
    "winnersStatus": "not published",
@@ -1532,7 +2432,7 @@
    ],
    "endDate": "2026-10-27T05:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackmty-2026": {
    "winnersStatus": "not published",
@@ -1542,7 +2442,7 @@
    ],
    "endDate": "2026-09-13T14:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hacknex-season-2-2026": {
    "winnersStatus": "not published",
@@ -1552,7 +2452,7 @@
    ],
    "endDate": "2026-09-26T18:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hacknite-2026": {
    "winnersStatus": "not published",
@@ -1562,17 +2462,33 @@
    ],
    "endDate": "2026-09-27T12:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackoctober-mlh-x-tech4hack-2026": {
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "Certificate",
+     "project": "alphasource",
+     "projectUrl": "https://devpost.com/software/alphasource",
+     "team": "Santhosh P"
+    }
+   ],
+   "source": "devpost",
+   "sourceUrl": "https://hackoctober-mlh-x-tech4hack.devpost.com/project-gallery",
+   "endDate": "2026-10-22T11:30:00.000Z",
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "hackodisha-6-0-2026": {
    "winnersStatus": "not published",
    "winners": [],
    "checked": [
-    "devpost"
+    "devfolio"
    ],
-   "endDate": "2026-10-22T11:30:00.000Z",
-   "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "endDate": "2026-11-01T06:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackohi-o-2026": {
    "winnersStatus": "not published",
@@ -1582,7 +2498,7 @@
    ],
    "endDate": "2026-10-25T14:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackophobia-2026": {
    "winnersStatus": "not published",
@@ -1592,7 +2508,7 @@
    ],
    "endDate": "2026-09-17T11:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackphs-2026": {
    "winnersStatus": "not published",
@@ -1602,7 +2518,7 @@
    ],
    "endDate": "2026-10-11T14:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackrit-2026": {
    "winnersStatus": "not published",
@@ -1612,7 +2528,7 @@
    ],
    "endDate": "2026-09-12T07:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hacks-day-bhopal-2026": {
    "winnersStatus": "not published",
@@ -1632,7 +2548,7 @@
    ],
    "endDate": "2026-10-11T17:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackspire-26-2026": {
    "winnersStatus": "not published",
@@ -1642,7 +2558,7 @@
    ],
    "endDate": "2026-10-03T11:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hacktoberfest-hack-day-dhaka-2026": {
    "winnersStatus": "not published",
@@ -1652,7 +2568,7 @@
    ],
    "endDate": "2026-10-18T07:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hacktoberfest-hack-day-feni-2026": {
    "winnersStatus": "not published",
@@ -1662,7 +2578,7 @@
    ],
    "endDate": "2026-10-27T05:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hacktoberfest-hack-day-sheikhupura-2026": {
    "winnersStatus": "not published",
@@ -1672,7 +2588,7 @@
    ],
    "endDate": "2026-10-26T18:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hacktopus-fe-2026": {
    "winnersStatus": "not published",
@@ -1682,7 +2598,7 @@
    ],
    "endDate": "2026-10-16T10:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hacktually-hacktoberfest-hackmerced-2026": {
    "winnersStatus": "published",
@@ -1732,7 +2648,7 @@
    ],
    "endDate": "2026-10-11T14:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackucd-x-stripe-2026": {
    "winnersStatus": "not published",
@@ -1742,7 +2658,7 @@
    ],
    "endDate": "2026-10-10T15:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackverse-2026": {
    "winnersStatus": "not published",
@@ -1752,7 +2668,7 @@
    ],
    "endDate": "2026-10-06T14:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackverse-into-the-web-2026": {
    "winnersStatus": "not published",
@@ -1772,7 +2688,7 @@
    ],
    "endDate": "2026-09-27T17:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hackyard-build-2026-24-hour-hackathon-at-iit-guwahati": {
    "winnersStatus": "not published",
@@ -1782,7 +2698,17 @@
    ],
    "endDate": "2026-10-10T18:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "health-hackathon-3-0-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-31T04:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "healthlink-life-sciences-hackathon-2026": {
    "winnersStatus": "not published",
@@ -1792,7 +2718,7 @@
    ],
    "endDate": "2026-10-04T17:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hellohacks-2026": {
    "winnersStatus": "published",
@@ -1854,7 +2780,17 @@
    ],
    "endDate": "2026-10-25T18:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "htcj-proof-aviation-futures-challenge-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-28T00:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "human-ai-hackathon-1750-prize-pool-2026": {
    "winnersStatus": "not published",
@@ -1864,7 +2800,17 @@
    ],
    "endDate": "2026-10-15T03:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "hybrid-micro-mouse-challenge-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-29T10:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hyperbloom-october-ui-ux-and-web-design-2026": {
    "winnersStatus": "not published",
@@ -1874,7 +2820,7 @@
    ],
    "endDate": "2026-10-19T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "hyperfusion-2026": {
    "winnersStatus": "not published",
@@ -1894,7 +2840,7 @@
    ],
    "endDate": "2026-10-25T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ieee-hack-for-humanity-2026": {
    "winnersStatus": "not published",
@@ -1904,7 +2850,7 @@
    ],
    "endDate": "2026-10-24T18:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "indux-5-0-2026": {
    "winnersStatus": "not published",
@@ -1914,7 +2860,7 @@
    ],
    "endDate": "2026-10-20T16:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "innohacks-4-0-2026": {
    "winnersStatus": "not published",
@@ -1924,7 +2870,7 @@
    ],
    "endDate": "2026-10-11T06:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "innosprint2-0-2026": {
    "winnersStatus": "not published",
@@ -1934,7 +2880,7 @@
    ],
    "endDate": "2026-10-24T11:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "innovatela-x-dual-use-hackathon-2026": {
    "winnersStatus": "not published",
@@ -1944,7 +2890,7 @@
    ],
    "endDate": "2026-10-17T14:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "internal-hackathon-elevate-ecosystem-2026": {
    "winnersStatus": "not published",
@@ -1954,7 +2900,7 @@
    ],
    "endDate": "2026-09-12T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "internwell-hack-2-0-2026": {
    "winnersStatus": "not published",
@@ -1964,7 +2910,7 @@
    ],
    "endDate": "2026-10-20T11:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "internwell-hack2-0-2026": {
    "winnersStatus": "not published",
@@ -1974,7 +2920,7 @@
    ],
    "endDate": "2026-10-24T18:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "jagriti-hacks-2026": {
    "winnersStatus": "not published",
@@ -1984,7 +2930,7 @@
    ],
    "endDate": "2026-09-29T16:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "jewel-city-hacks-5-0-2026": {
    "winnersStatus": "not published",
@@ -1994,7 +2940,7 @@
    ],
    "endDate": "2026-09-27T01:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "joints-2026": {
    "winnersStatus": "not published",
@@ -2004,7 +2950,7 @@
    ],
    "endDate": "2026-10-27T05:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "kerfuffle-at-the-foobar-2026": {
    "winnersStatus": "not published",
@@ -2014,7 +2960,7 @@
    ],
    "endDate": "2026-09-24T19:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "kerfuffle-at-the-foobar-part-2-electric-boogaloo-2026": {
    "winnersStatus": "not published",
@@ -2024,7 +2970,7 @@
    ],
    "endDate": "2026-09-24T22:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "kjsse-csi-gemini-hackday-2026": {
    "winnersStatus": "not published",
@@ -2044,7 +2990,27 @@
    ],
    "endDate": "2026-10-03T12:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "lancerhacks-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-31T02:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "larphacks-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-11-01T23:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "latinos-x-ai-hackathon-nyc-2026": {
    "winnersStatus": "published",
@@ -2079,6 +3045,26 @@
    "endDate": "2026-10-10T20:00:00.000Z",
    "firstFoundAt": "2026-10-27T07:26:18.960Z",
    "checkedAt": "2026-10-27T07:26:18.960Z"
+  },
+  "learn-to-hack-matlab-edition-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-30T07:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "life-after-code-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-27T13:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "lifehack-2026": {
    "winnersStatus": "not published",
@@ -2132,7 +3118,7 @@
    ],
    "endDate": "2026-10-05T03:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "mac-athon-2026": {
    "winnersStatus": "not published",
@@ -2142,7 +3128,7 @@
    ],
    "endDate": "2026-09-13T02:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "make-her-hack-2026": {
    "winnersStatus": "not published",
@@ -2152,7 +3138,7 @@
    ],
    "endDate": "2026-10-24T02:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "mantisgrid-ai-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2162,7 +3148,7 @@
    ],
    "endDate": "2026-09-17T22:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "marina-hacks-6-0-2026": {
    "winnersStatus": "published",
@@ -2206,7 +3192,17 @@
    ],
    "endDate": "2026-10-03T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "mergetober-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-11-01T06:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "meta-connect-web-apps-creator-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2216,7 +3212,7 @@
    ],
    "endDate": "2026-09-23T22:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "metamorph-2-0-2026": {
    "winnersStatus": "published",
@@ -2278,7 +3274,17 @@
    ],
    "endDate": "2026-09-19T22:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "minearena-1-0-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-31T18:15:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "mistral-x-elastic-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2288,7 +3294,7 @@
    ],
    "endDate": "2026-10-08T00:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "mlai-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2298,7 +3304,7 @@
    ],
    "endDate": "2026-10-16T17:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "mlh-hacktoberfest-2026": {
    "winnersStatus": "not published",
@@ -2308,7 +3314,7 @@
    ],
    "endDate": "2026-10-16T18:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "mlh-hacktoberfest-hack-day-teens-delhi-x-elevenlabs-2026": {
    "winnersStatus": "not published",
@@ -2318,7 +3324,7 @@
    ],
    "endDate": "2026-10-17T09:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "mtc-x-grammarly-agents-in-action-2026": {
    "winnersStatus": "not published",
@@ -2328,7 +3334,7 @@
    ],
    "endDate": "2026-10-17T03:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "muba-blockchain-hackathon-2026": {
    "winnersStatus": "published",
@@ -2591,14 +3597,62 @@
    "checkedAt": "2026-10-27T07:26:18.960Z"
   },
   "multimodal-ai-hackathon-2026": {
-   "winnersStatus": "not published",
-   "winners": [],
-   "checked": [
-    "devpost"
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "1st prize - Track A",
+     "project": "CardioLens 3D: Coronary Risk on a Living Heart",
+     "projectUrl": "https://devpost.com/software/cardiolens-3d-coronary-risk-on-a-living-heart",
+     "team": "Ashwin Pareek, Edla Saiprasad Reddy, Vignesh Bajjuri, Sreeshank Rao"
+    },
+    {
+     "place": "1st prize - Track B",
+     "project": "Lifeline",
+     "projectUrl": "https://devpost.com/software/lifeline-8gubp3",
+     "team": "Dhiraj Kavuri"
+    },
+    {
+     "place": "1st prize - Track C",
+     "project": "Speechlens",
+     "projectUrl": "https://devpost.com/software/speechlens-bod4z0",
+     "team": "Prasad A M, RISHI NAVROOP, Aashrith M P"
+    },
+    {
+     "place": "1st prize - Track D",
+     "project": "Pramana",
+     "projectUrl": "https://devpost.com/software/pramana-v7si9t",
+     "team": "yi yu"
+    },
+    {
+     "place": "2nd prize - Track A",
+     "project": "MyoGraph 3D",
+     "projectUrl": "https://devpost.com/software/myograph-3d",
+     "team": "Swayam Bansal"
+    },
+    {
+     "place": "2nd prize - Track B",
+     "project": "WaterGuard: Flood Impact from Space",
+     "projectUrl": "https://devpost.com/software/waterguard-flood-impact-from-space",
+     "team": "Adil Mahajan, Tavishi Amla, gourav sharma"
+    },
+    {
+     "place": "2nd prize - Track C",
+     "project": "Resonance",
+     "projectUrl": "https://devpost.com/software/resonance-b9a06w",
+     "team": "Sai Charan Chitikela"
+    },
+    {
+     "place": "2nd prize - Track D",
+     "project": "Adigam AI",
+     "projectUrl": "https://devpost.com/software/adigam-ai",
+     "team": "AYUSH KUMAR"
+    }
    ],
+   "source": "devpost",
+   "sourceUrl": "https://multimodal-ai-hackathon-2026-7.devpost.com/project-gallery",
    "endDate": "2026-10-15T06:45:00.000Z",
-   "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "music-from-beatmind-2026": {
    "winnersStatus": "not published",
@@ -2608,7 +3662,7 @@
    ],
    "endDate": "2026-09-12T04:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "myhack-isna-2026": {
    "winnersStatus": "not published",
@@ -2618,7 +3672,7 @@
    ],
    "endDate": "2026-09-06T16:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "national-renaissance-hackathon-at-super-set-2026": {
    "winnersStatus": "not published",
@@ -2628,7 +3682,17 @@
    ],
    "endDate": "2026-10-23T00:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "nebius-x-nvidia-global-ai-hackathon-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-30T17:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "neighborhood-hacks-2026": {
    "winnersStatus": "not published",
@@ -2638,7 +3702,7 @@
    ],
    "endDate": "2026-10-24T05:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "nexhack-2-0-2026": {
    "winnersStatus": "not published",
@@ -2648,7 +3712,7 @@
    ],
    "endDate": "2026-09-26T12:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "next-byte-hacks-v4-2026": {
    "winnersStatus": "not published",
@@ -2658,17 +3722,45 @@
    ],
    "endDate": "2026-10-01T03:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
-  "next-founders-hackathon-2026": {
+  "next-byte-hacks-v5-2026": {
    "winnersStatus": "not published",
    "winners": [],
    "checked": [
     "devpost"
    ],
+   "endDate": "2026-10-31T21:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "next-founders-hackathon-2026": {
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "First Place",
+     "project": "YourThumb",
+     "projectUrl": "https://devpost.com/software/yourthumb-bqx4ht",
+     "team": "Sabari Duraisamy, Jaichandran Manikantan, Issac Abraham"
+    },
+    {
+     "place": "Second Place",
+     "project": "FixMyBlock",
+     "projectUrl": "https://devpost.com/software/fixmyblock",
+     "team": "תומר בן אברהם"
+    },
+    {
+     "place": "Third Place",
+     "project": "Business Brain",
+     "projectUrl": "https://devpost.com/software/business-brain-9g2b8p",
+     "team": "Rahma Shahbaz, Prajakta Sambare, Makada Castle, Nguyen Vo Duy Tuan"
+    }
+   ],
+   "source": "devpost",
+   "sourceUrl": "https://next-founders.devpost.com/project-gallery",
    "endDate": "2026-10-15T21:00:00.000Z",
-   "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "next-gen-hackathon-2026-bengaluru": {
    "winnersStatus": "not published",
@@ -2678,17 +3770,47 @@
    ],
    "endDate": "2026-10-23T11:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "nextspark-hacks-2026": {
-   "winnersStatus": "not published",
-   "winners": [],
-   "checked": [
-    "devpost"
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "1st Place Certificate — NextSpark Hacks Champion",
+     "project": "Unsent",
+     "projectUrl": "https://devpost.com/software/unsent-p7ohes",
+     "team": "Sahib Singh"
+    },
+    {
+     "place": "2nd Place Certificate",
+     "project": "NadiNet",
+     "projectUrl": "https://devpost.com/software/nadinet",
+     "team": "Waseka Mehrin"
+    },
+    {
+     "place": "3rd Place Certificate",
+     "project": "MySquishi",
+     "projectUrl": "https://devpost.com/software/mysquishi",
+     "team": "Jaden W"
+    },
+    {
+     "place": "4th Place Certificate",
+     "project": "Ember",
+     "projectUrl": "https://devpost.com/software/ember-gkjly3",
+     "team": "Michael Ayiam"
+    },
+    {
+     "place": "5th Place Certificate",
+     "project": "JimatMakan — What can I cook this week for RM50?",
+     "projectUrl": "https://devpost.com/software/jimatmakan-what-can-i-cook-this-week-for-rm50",
+     "team": "Shermaine Yap"
+    }
    ],
+   "source": "devpost",
+   "sourceUrl": "https://nextspark-hacks.devpost.com/project-gallery",
    "endDate": "2026-10-27T04:45:00.000Z",
-   "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "nexwin-internal-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2698,7 +3820,7 @@
    ],
    "endDate": "2026-10-23T18:29:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ntu-x-st-engineering-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2708,7 +3830,7 @@
    ],
    "endDate": "2026-10-18T16:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "oneaquahealth-ieee-global-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2718,7 +3840,7 @@
    ],
    "endDate": "2026-10-05T04:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "opencv-ai-competition-2026-powered-by-aws": {
    "winnersStatus": "not published",
@@ -2728,7 +3850,7 @@
    ],
    "endDate": "2026-10-27T06:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "origins-2026": {
    "winnersStatus": "not published",
@@ -2748,7 +3870,7 @@
    ],
    "endDate": "2026-10-24T22:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "ozge-test-2026": {
    "winnersStatus": "not published",
@@ -2758,7 +3880,7 @@
    ],
    "endDate": "2026-09-04T00:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "pec-hacks-4-0-2026": {
    "winnersStatus": "not published",
@@ -2778,7 +3900,7 @@
    ],
    "endDate": "2026-10-25T01:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "planet-resilience-innovation-for-sustainable-impact-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2788,7 +3910,7 @@
    ],
    "endDate": "2026-10-02T00:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "poly-tech-mini-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2798,7 +3920,7 @@
    ],
    "endDate": "2026-09-24T18:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "practice-submission-2026": {
    "winnersStatus": "not published",
@@ -2818,7 +3940,7 @@
    ],
    "endDate": "2026-09-20T06:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "prompt-wars-2026": {
    "winnersStatus": "not published",
@@ -2838,7 +3960,7 @@
    ],
    "endDate": "2026-10-09T06:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "protohacks-2026": {
    "winnersStatus": "not published",
@@ -2848,7 +3970,17 @@
    ],
    "endDate": "2026-10-25T01:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "qloo-agentic-hackathon-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-31T03:45:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "qmul-ai-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2858,7 +3990,7 @@
    ],
    "endDate": "2026-10-10T14:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "quanthacks-2026": {
    "winnersStatus": "not published",
@@ -2868,7 +4000,7 @@
    ],
    "endDate": "2026-10-24T14:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "recruit-holdings-hackathon-innovation-cup-2026": {
    "winnersStatus": "not published",
@@ -2878,7 +4010,7 @@
    ],
    "endDate": "2026-09-28T02:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "rect-solutions-hackathon-beyond-the-cv-2026": {
    "winnersStatus": "not published",
@@ -2888,7 +4020,7 @@
    ],
    "endDate": "2026-10-11T16:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "recursion-edition-ii-2026": {
    "winnersStatus": "not published",
@@ -2898,7 +4030,7 @@
    ],
    "endDate": "2026-09-04T09:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "recursive-2026": {
    "winnersStatus": "published",
@@ -2940,6 +4072,16 @@
    "firstFoundAt": "2026-10-27T07:26:18.960Z",
    "checkedAt": "2026-10-27T07:26:18.960Z"
   },
+  "renderjuice-blender-animation-and-programmatic-rendering-contest-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-11-01T00:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
   "replit-ug-hackathon-2026": {
    "winnersStatus": "not published",
    "winners": [],
@@ -2948,7 +4090,7 @@
    ],
    "endDate": "2026-10-25T23:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "respawn-2026": {
    "winnersStatus": "not published",
@@ -2958,7 +4100,7 @@
    ],
    "endDate": "2026-10-16T03:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "respira-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2968,7 +4110,7 @@
    ],
    "endDate": "2026-10-03T10:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "roadstar-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2978,7 +4120,7 @@
    ],
    "endDate": "2026-09-13T16:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "runway-to-reality-ai-fashion-hackathon-2026": {
    "winnersStatus": "not published",
@@ -2988,7 +4130,7 @@
    ],
    "endDate": "2026-09-12T19:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "rutgers-health-hack-2026": {
    "winnersStatus": "not published",
@@ -2998,7 +4140,7 @@
    ],
    "endDate": "2026-10-11T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "rutgers-x-elastic-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3008,7 +4150,7 @@
    ],
    "endDate": "2026-09-15T02:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "saugahacks-2026": {
    "winnersStatus": "not published",
@@ -3018,7 +4160,7 @@
    ],
    "endDate": "2026-09-13T00:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "scuffathon-2026": {
    "winnersStatus": "published",
@@ -3056,7 +4198,7 @@
    ],
    "endDate": "2026-10-19T05:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "seattle-givecamp-2026": {
    "winnersStatus": "not published",
@@ -3066,7 +4208,7 @@
    ],
    "endDate": "2026-10-18T19:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "sephacks-2026": {
    "winnersStatus": "not published",
@@ -3076,7 +4218,7 @@
    ],
    "endDate": "2026-10-17T21:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "sftechweek-decision-grade-ai-stanford-a-buildathon-on-llm-trust-2026": {
    "winnersStatus": "not published",
@@ -3086,7 +4228,7 @@
    ],
    "endDate": "2026-10-10T22:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "shared-os-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3096,7 +4238,7 @@
    ],
    "endDate": "2026-09-13T13:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "sherubtse-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3106,7 +4248,7 @@
    ],
    "endDate": "2026-09-27T10:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "shiva-tech-prompt-wars-2026": {
    "winnersStatus": "not published",
@@ -3116,7 +4258,7 @@
    ],
    "endDate": "2026-10-09T18:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "signal-labs-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3167,14 +4309,42 @@
    "checkedAt": "2026-10-27T07:26:18.960Z"
   },
   "society-of-software-engineers-2nd-annual-halloween-hackathon-2026": {
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "1st place trophy",
+     "project": "Fisch Scorer",
+     "projectUrl": "https://devpost.com/software/fisch-aqrxig",
+     "team": "Ryan Gustafson, Shaheer Ali, Jesus Ceballos, Ryan Sarmiento, Taylor Mcdougall, Edgar Hernandez"
+    },
+    {
+     "place": "2nd place trophy",
+     "project": "Better Food Pantry",
+     "projectUrl": "https://devpost.com/software/haxagon-project",
+     "team": "Andrew Garcia Leopold, Rachel Hanna, Daniel Ray, Evan Nguyen, Jose Beltran, Justin Scott"
+    },
+    {
+     "place": "3rd place trophy",
+     "project": "Spot",
+     "projectUrl": "https://devpost.com/software/tbd-6qjrhu",
+     "team": "muneeb kamal, Gor Petrosyaan, Duane Cabahug, Benjamin Martinez, Kyle Laguilles, Richard Phan"
+    }
+   ],
+   "source": "devpost",
+   "sourceUrl": "https://sose-halloween-hackathon-2.devpost.com/project-gallery",
+   "endDate": "2026-10-24T06:45:00.000Z",
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "solix-ai-hackathon-2026": {
    "winnersStatus": "not published",
    "winners": [],
    "checked": [
     "devpost"
    ],
-   "endDate": "2026-10-24T06:45:00.000Z",
-   "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "endDate": "2026-10-29T02:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "spu-hacks-2026": {
    "winnersStatus": "not published",
@@ -3184,7 +4354,7 @@
    ],
    "endDate": "2026-10-18T15:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "srijan-setu-2026": {
    "winnersStatus": "not published",
@@ -3194,7 +4364,7 @@
    ],
    "endDate": "2026-10-24T04:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "startup-speedrun-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3204,7 +4374,7 @@
    ],
    "endDate": "2026-09-28T23:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "sudo-hacktober-2026": {
    "winnersStatus": "not published",
@@ -3214,7 +4384,7 @@
    ],
    "endDate": "2026-10-11T03:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "summerdevs-2026": {
    "winnersStatus": "not published",
@@ -3236,6 +4406,26 @@
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
    "checkedAt": "2026-10-27T07:26:18.960Z"
   },
+  "surat-hack-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devfolio"
+   ],
+   "endDate": "2026-11-01T18:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "sustain-a-thon-2-0-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-28T11:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
   "svyca-youth-for-earth-y4e-hackathon-2026": {
    "winnersStatus": "not published",
    "winners": [],
@@ -3244,7 +4434,7 @@
    ],
    "endDate": "2026-10-23T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "sydney-mobile-ai-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3254,7 +4444,7 @@
    ],
    "endDate": "2026-10-25T03:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "syncs-hack-2026": {
    "winnersStatus": "published",
@@ -3328,7 +4518,7 @@
    ],
    "endDate": "2026-10-25T03:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "taskforge-2026": {
    "winnersStatus": "not published",
@@ -3338,7 +4528,7 @@
    ],
    "endDate": "2026-10-24T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "techx-rwanda-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3348,7 +4538,7 @@
    ],
    "endDate": "2026-09-04T08:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "test-flight-glasswing-ventures-ai-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3358,7 +4548,7 @@
    ],
    "endDate": "2026-09-27T18:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "test-rowdyhacks-2026": {
    "winnersStatus": "not published",
@@ -3378,7 +4568,7 @@
    ],
    "endDate": "2026-09-17T19:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "the-great-agent-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3388,7 +4578,7 @@
    ],
    "endDate": "2026-09-26T06:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "the-great-agent-hackathon-2026-2": {
    "winnersStatus": "not published",
@@ -3408,7 +4598,7 @@
    ],
    "endDate": "2026-09-26T21:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "the-top-500-uh-v2-2026": {
    "winnersStatus": "not published",
@@ -3418,7 +4608,7 @@
    ],
    "endDate": "2026-10-26T03:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "tokyo-agent-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3428,7 +4618,27 @@
    ],
    "endDate": "2026-10-17T07:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "trick-or-build-mel-prompt-anything-ai-builders-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-29T21:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "trmi-x-lovhack-multiplayer-everything-hackathon-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-11-01T20:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "trust-in-the-hiring-funnel-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3438,7 +4648,17 @@
    ],
    "endDate": "2026-09-19T20:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "tum-blockchain-and-ai-hackathon-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devfolio"
+   ],
+   "endDate": "2026-10-31T14:00:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "uf-gdg-devfest-2026": {
    "winnersStatus": "not published",
@@ -3448,7 +4668,7 @@
    ],
    "endDate": "2026-10-25T02:15:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "univabio-40-000-in-prizes-2026": {
    "winnersStatus": "not published",
@@ -3458,7 +4678,7 @@
    ],
    "endDate": "2026-10-21T03:45:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "uxperience-design-jam-sponsored-by-sunlife-2026": {
    "winnersStatus": "not published",
@@ -3468,17 +4688,47 @@
    ],
    "endDate": "2026-10-24T16:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "uxperience-waves-of-becoming-2026": {
-   "winnersStatus": "not published",
-   "winners": [],
-   "checked": [
-    "devpost"
+   "winnersStatus": "published",
+   "winners": [
+    {
+     "place": "Overall 1st Place",
+     "project": "Ithaca",
+     "projectUrl": "https://devpost.com/software/ithaca-krucs4",
+     "team": "Tanisi Kumar"
+    },
+    {
+     "place": "Overall 2nd Place",
+     "project": "afloat.",
+     "projectUrl": "https://devpost.com/software/in-progress-6cktj8",
+     "team": "Tamanna Khurana, Anvi Siddabhattuni, Anish Palankar, Tramanh Trinh"
+    },
+    {
+     "place": "Overall 3rd Place",
+     "project": "Harbor",
+     "projectUrl": "https://devpost.com/software/harbor-8payc6",
+     "team": "Aryan Nayyar, Vikram Samanthapudi, Het Jasani, Sai Varun Mallela"
+    },
+    {
+     "place": "BSWH 1st Place",
+     "project": "Care Compass",
+     "projectUrl": "https://devpost.com/software/care-compass-traxi9",
+     "team": "Jasmine Bontha, Scarlett M Alonso, Calvin Tran, Kaitlyn Kampschneider"
+    },
+    {
+     "place": "BSWH 2nd Place",
+     "project": "Bailey, your Care Companion",
+     "projectUrl": "https://devpost.com/software/mybsw-careguide-by-cjs",
+     "team": "Sandra Luo, Seulgi Kim, Joyce Dong"
+    }
    ],
+   "source": "devpost",
+   "sourceUrl": "https://uxperience-waves-of-becoming.devpost.com/project-gallery",
    "endDate": "2026-10-25T17:30:00.000Z",
-   "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "firstFoundAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "venture-26-2026": {
    "winnersStatus": "not published",
@@ -3488,7 +4738,7 @@
    ],
    "endDate": "2026-09-11T04:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "venturefix-2026": {
    "winnersStatus": "not published",
@@ -3498,7 +4748,7 @@
    ],
    "endDate": "2026-09-13T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "veteran-innovation-hackathon-2026": {
    "winnersStatus": "not published",
@@ -3518,7 +4768,7 @@
    ],
    "endDate": "2026-09-13T01:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "vortexa-3-0-2026": {
    "winnersStatus": "not published",
@@ -3528,7 +4778,7 @@
    ],
    "endDate": "2026-10-11T01:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "webcraft24-2026": {
    "winnersStatus": "not published",
@@ -3538,7 +4788,7 @@
    ],
    "endDate": "2026-09-26T01:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "wild-bugs-2026": {
    "winnersStatus": "not published",
@@ -3548,7 +4798,7 @@
    ],
    "endDate": "2026-10-15T18:29:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "women-s-hack-night-2026": {
    "winnersStatus": "not published",
@@ -3558,7 +4808,7 @@
    ],
    "endDate": "2026-10-03T02:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "worlds-london-2026": {
    "winnersStatus": "not published",
@@ -3568,7 +4818,7 @@
    ],
    "endDate": "2026-09-12T17:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "yc-fall-2026-x-moss-the-zero-latency-builder-sprint": {
    "winnersStatus": "not published",
@@ -3578,7 +4828,7 @@
    ],
    "endDate": "2026-09-23T06:30:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "zero-human-company-hackathon-at-whop-hq-by-terac-2026": {
    "winnersStatus": "not published",
@@ -3588,7 +4838,17 @@
    ],
    "endDate": "2026-10-24T21:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
+  },
+  "zoftware-hackathon-2026": {
+   "winnersStatus": "not published",
+   "winners": [],
+   "checked": [
+    "devpost"
+   ],
+   "endDate": "2026-10-31T15:30:00.000Z",
+   "firstCheckedAt": "2026-11-02T12:31:03.112Z",
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   },
   "zoftware-hireathon-2026": {
    "winnersStatus": "not published",
@@ -3598,7 +4858,7 @@
    ],
    "endDate": "2026-10-03T14:00:00.000Z",
    "firstCheckedAt": "2026-10-27T07:26:18.960Z",
-   "checkedAt": "2026-10-27T07:26:18.960Z"
+   "checkedAt": "2026-11-02T12:31:03.112Z"
   }
  }
 }

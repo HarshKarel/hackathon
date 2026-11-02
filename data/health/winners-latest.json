@@ -1,113 +1,86 @@
 {
-  "runId": "2026-10-27T07-26-18-960Z",
-  "startedAt": "2026-10-27T07:26:18.960Z",
-  "finishedAt": "2026-10-27T07:29:12.578Z",
+  "runId": "2026-11-02T12-31-03-112Z",
+  "startedAt": "2026-11-02T12:31:03.112Z",
+  "finishedAt": "2026-11-02T12:44:45.975Z",
   "windowDays": 60,
-  "candidates": 287,
-  "checked": 287,
-  "newlyPublished": 18,
-  "stillNotPublished": 269,
-  "couldNotCheck": 0,
-  "errors": [],
-  "errorCount": 0,
+  "candidates": 282,
+  "checked": 280,
+  "newlyPublished": 12,
+  "stillNotPublished": 268,
+  "couldNotCheck": 2,
+  "errors": [
+    "child-safety-in-ai-2026: devpost: HTTP 410 for https://child-safety-in-ai.devpost.com/project-gallery",
+    "test-rowdyhacks-2026: devpost: HTTP 410 for https://test-rowdyhacks.devpost.com/project-gallery"
+  ],
+  "errorCount": 2,
   "totals": {
-    "published": 18,
-    "notPublished": 269
+    "published": 30,
+    "notPublished": 293
   },
   "published": [
     {
-      "slug": "ascendance-foundry-s-hackathon-2026",
-      "source": "devpost",
-      "winners": 2
-    },
-    {
-      "slug": "boss-battle-2026",
-      "source": "devfolio",
-      "winners": 3
-    },
-    {
-      "slug": "citycamp-gainesville-hack-day-2026",
+      "slug": "305-hackshells-edition-september-2026-305hackathons-vercel-app",
       "source": "devpost",
       "winners": 4
     },
     {
-      "slug": "emberhacks-day-2026",
-      "source": "devpost",
-      "winners": 3
-    },
-    {
-      "slug": "girls-hoo-hack-2026",
-      "source": "devpost",
-      "winners": 12
-    },
-    {
-      "slug": "hack-like-w-cc-2026",
-      "source": "devpost",
-      "winners": 6
-    },
-    {
-      "slug": "hacktually-hacktoberfest-hackmerced-2026",
-      "source": "devpost",
-      "winners": 5
-    },
-    {
-      "slug": "hellohacks-2026",
-      "source": "devpost",
-      "winners": 7
-    },
-    {
-      "slug": "latinos-x-ai-hackathon-nyc-2026",
-      "source": "devpost",
-      "winners": 4
-    },
-    {
-      "slug": "localhost-2-0-2026",
-      "source": "devpost",
-      "winners": 4
-    },
-    {
-      "slug": "marina-hacks-6-0-2026",
-      "source": "devpost",
-      "winners": 4
-    },
-    {
-      "slug": "metamorph-2-0-2026",
-      "source": "devfolio",
-      "winners": 7
-    },
-    {
-      "slug": "mulehacks2026",
-      "source": "devpost",
-      "winners": 7
-    },
-    {
-      "slug": "scuffathon-2026",
-      "source": "devpost",
-      "winners": 3
-    },
-    {
-      "slug": "recursive-2026",
-      "source": "devfolio",
-      "winners": 5
-    },
-    {
-      "slug": "smu-lit-legal-tech-hackathon-2026",
-      "source": "devpost",
-      "winners": 3
-    },
-    {
-      "slug": "syncs-hack-2026",
+      "slug": "2026-international-codethecure-hackathon",
       "source": "devpost",
       "winners": 9
     },
     {
-      "slug": "muba-blockchain-hackathon-2026",
-      "source": "devfolio",
-      "winners": 33
+      "slug": "ai-in-healthcare-hackathon-2026",
+      "source": "devpost",
+      "winners": 3
+    },
+    {
+      "slug": "hack-for-social-impact-sf-2026",
+      "source": "devpost",
+      "winners": 11
+    },
+    {
+      "slug": "hackfw-made-challenge-2026",
+      "source": "devpost",
+      "winners": 3
+    },
+    {
+      "slug": "hackoctober-mlh-x-tech4hack-2026",
+      "source": "devpost",
+      "winners": 1
+    },
+    {
+      "slug": "cal-hacks-13-0-2026",
+      "source": "devpost",
+      "winners": 95
+    },
+    {
+      "slug": "next-founders-hackathon-2026",
+      "source": "devpost",
+      "winners": 3
+    },
+    {
+      "slug": "multimodal-ai-hackathon-2026",
+      "source": "devpost",
+      "winners": 8
+    },
+    {
+      "slug": "nextspark-hacks-2026",
+      "source": "devpost",
+      "winners": 5
+    },
+    {
+      "slug": "society-of-software-engineers-2nd-annual-halloween-hackathon-2026",
+      "source": "devpost",
+      "winners": 3
+    },
+    {
+      "slug": "uxperience-waves-of-becoming-2026",
+      "source": "devpost",
+      "winners": 5
     }
   ],
   "http": {
-    "requests": 644,
+    "requests": 655,
     "cacheHits": 0,
     "robotsBlocked": 0,
     "usedCache": false
