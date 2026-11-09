@@ -1,86 +1,139 @@
 {
-  "runId": "2026-11-02T12-31-03-112Z",
-  "startedAt": "2026-11-02T12:31:03.112Z",
-  "finishedAt": "2026-11-02T12:44:45.975Z",
+  "runId": "2026-11-09T12-56-49-734Z",
+  "startedAt": "2026-11-09T12:56:49.734Z",
+  "finishedAt": "2026-11-09T13:11:20.093Z",
   "windowDays": 60,
-  "candidates": 282,
-  "checked": 280,
-  "newlyPublished": 12,
-  "stillNotPublished": 268,
-  "couldNotCheck": 2,
+  "candidates": 291,
+  "checked": 286,
+  "newlyPublished": 22,
+  "stillNotPublished": 264,
+  "couldNotCheck": 5,
   "errors": [
+    "3rd-web-hack-2026: devpost: HTTP 410 for https://3rd-web-hack.devpost.com/project-gallery",
     "child-safety-in-ai-2026: devpost: HTTP 410 for https://child-safety-in-ai.devpost.com/project-gallery",
+    "redshifted-cortex-ai-built-by-high-schoolers-2026: devpost: HTTP 410 for https://redshifted-cortex.devpost.com/project-gallery",
+    "since-ai-2026: devpost: HTTP 410 for https://sinceai2026.devpost.com/project-gallery",
     "test-rowdyhacks-2026: devpost: HTTP 410 for https://test-rowdyhacks.devpost.com/project-gallery"
   ],
-  "errorCount": 2,
+  "errorCount": 5,
   "totals": {
-    "published": 30,
-    "notPublished": 293
+    "published": 52,
+    "notPublished": 302
   },
   "published": [
     {
-      "slug": "305-hackshells-edition-september-2026-305hackathons-vercel-app",
+      "slug": "2026-ai-for-good-hackathon",
       "source": "devpost",
       "winners": 4
     },
     {
-      "slug": "2026-international-codethecure-hackathon",
+      "slug": "aws-x-a10-hack-2026",
       "source": "devpost",
-      "winners": 9
+      "winners": 4
     },
     {
-      "slug": "ai-in-healthcare-hackathon-2026",
-      "source": "devpost",
-      "winners": 3
-    },
-    {
-      "slug": "hack-for-social-impact-sf-2026",
-      "source": "devpost",
-      "winners": 11
-    },
-    {
-      "slug": "hackfw-made-challenge-2026",
+      "slug": "build-with-ai-basics-2026",
       "source": "devpost",
       "winners": 3
     },
     {
-      "slug": "hackoctober-mlh-x-tech4hack-2026",
+      "slug": "buksi-site-stem-innovation-and-talent-expo-2026-only-for-bukit-sion-students",
+      "source": "devpost",
+      "winners": 14
+    },
+    {
+      "slug": "crownhacks-2026",
+      "source": "devpost",
+      "winners": 7
+    },
+    {
+      "slug": "future-innovators-hackothon-2026",
+      "source": "devpost",
+      "winners": 4
+    },
+    {
+      "slug": "eurekadev-2026",
+      "source": "devpost",
+      "winners": 17
+    },
+    {
+      "slug": "hack-to-the-future-2026",
       "source": "devpost",
       "winners": 1
     },
     {
-      "slug": "cal-hacks-13-0-2026",
-      "source": "devpost",
-      "winners": 95
-    },
-    {
-      "slug": "next-founders-hackathon-2026",
+      "slug": "hacktoberfest-hack-day-feni-2026",
       "source": "devpost",
       "winners": 3
     },
     {
-      "slug": "multimodal-ai-hackathon-2026",
+      "slug": "hyperbloom-october-ui-ux-and-web-design-2026",
       "source": "devpost",
-      "winners": 8
+      "winners": 4
     },
     {
-      "slug": "nextspark-hacks-2026",
+      "slug": "hackharvard2026-hack-to-the-moon",
+      "source": "devpost",
+      "winners": 29
+    },
+    {
+      "slug": "hackrpi-2026",
+      "source": "devpost",
+      "winners": 30
+    },
+    {
+      "slug": "intermountain-quantum-competition-2026",
+      "source": "devpost",
+      "winners": 6
+    },
+    {
+      "slug": "jewel-city-hacks-5-0-2026",
       "source": "devpost",
       "winners": 5
     },
     {
-      "slug": "society-of-software-engineers-2nd-annual-halloween-hackathon-2026",
+      "slug": "make-her-hack-2026",
       "source": "devpost",
       "winners": 3
     },
     {
-      "slug": "uxperience-waves-of-becoming-2026",
+      "slug": "next-byte-hacks-v4-2026",
+      "source": "devpost",
+      "winners": 3
+    },
+    {
+      "slug": "oneaquahealth-ieee-global-hackathon-2026",
       "source": "devpost",
       "winners": 5
+    },
+    {
+      "slug": "neighborhood-hacks-2026",
+      "source": "devpost",
+      "winners": 24
+    },
+    {
+      "slug": "qloo-agentic-hackathon-2026",
+      "source": "devpost",
+      "winners": 3
+    },
+    {
+      "slug": "sheridan-datathon-2026",
+      "source": "devpost",
+      "winners": 16
+    },
+    {
+      "slug": "tum-blockchain-and-ai-hackathon-2026",
+      "source": "devfolio",
+      "winners": 12
+    },
+    {
+      "slug": "uxdc-designathon-2026",
+      "source": "devpost",
+      "winners": 2
     }
   ],
   "http": {
-    "requests": 655,
+    "requests": 711,
     "cacheHits": 0,
     "robotsBlocked": 0,
     "usedCache": false
