@@ -1,129 +1,60 @@
 {
-  "runId": "2026-11-16T12-49-58-654Z",
-  "startedAt": "2026-11-16T12:49:58.654Z",
-  "finishedAt": "2026-11-16T13:04:21.988Z",
+  "runId": "2026-11-23T14-46-21-832Z",
+  "startedAt": "2026-11-23T14:46:21.832Z",
+  "finishedAt": "2026-11-23T14:57:11.084Z",
   "windowDays": 60,
-  "candidates": 278,
-  "checked": 273,
-  "newlyPublished": 20,
-  "stillNotPublished": 253,
-  "couldNotCheck": 5,
+  "candidates": 251,
+  "checked": 245,
+  "newlyPublished": 6,
+  "stillNotPublished": 239,
+  "couldNotCheck": 6,
   "errors": [
     "3rd-web-hack-2026: devpost: HTTP 410 for https://3rd-web-hack.devpost.com/project-gallery",
     "child-safety-in-ai-2026: devpost: HTTP 410 for https://child-safety-in-ai.devpost.com/project-gallery",
     "redshifted-cortex-ai-built-by-high-schoolers-2026: devpost: HTTP 410 for https://redshifted-cortex.devpost.com/project-gallery",
+    "scale-forge-ai-hackathon-2026: devpost: HTTP 410 for https://scale-forge-ai-hackathon.devpost.com/project-gallery",
     "since-ai-2026: devpost: HTTP 410 for https://sinceai2026.devpost.com/project-gallery",
     "test-rowdyhacks-2026: devpost: HTTP 410 for https://test-rowdyhacks.devpost.com/project-gallery"
   ],
-  "errorCount": 5,
+  "errorCount": 6,
   "totals": {
-    "published": 72,
-    "notPublished": 315
+    "published": 78,
+    "notPublished": 327
   },
   "published": [
     {
-      "slug": "code-clash-2026",
+      "slug": "aws-communication-developer-services-cds-agentic-ai-partner-hackathon-2026",
       "source": "devpost",
       "winners": 4
     },
     {
-      "slug": "codex-x-twitchcon-hackathon-2026",
+      "slug": "central-hacks-2026",
       "source": "devpost",
-      "winners": 5
+      "winners": 8
     },
     {
-      "slug": "communihacks-2026",
+      "slug": "hackphs-2026",
+      "source": "devpost",
+      "winners": 12
+    },
+    {
+      "slug": "ieee-climatechain-global-hackathon-2026",
+      "source": "devpost",
+      "winners": 4
+    },
+    {
+      "slug": "life-after-code-2026",
       "source": "devpost",
       "winners": 10
     },
     {
-      "slug": "devfest-hackathon-2026",
-      "source": "devpost",
-      "winners": 9
-    },
-    {
-      "slug": "girls-who-code-hhs-hackathon-2026",
+      "slug": "sand-hacks-2026",
       "source": "devpost",
       "winners": 13
-    },
-    {
-      "slug": "hack-the-weather-2026",
-      "source": "devpost",
-      "winners": 3
-    },
-    {
-      "slug": "hack-the-change-2026",
-      "source": "devpost",
-      "winners": 11
-    },
-    {
-      "slug": "hackcamp-2026",
-      "source": "devpost",
-      "winners": 26
-    },
-    {
-      "slug": "ktphacks-2-2026",
-      "source": "devpost",
-      "winners": 3
-    },
-    {
-      "slug": "makeuc-2026",
-      "source": "devpost",
-      "winners": 14
-    },
-    {
-      "slug": "neural-storm-2026",
-      "source": "devpost",
-      "winners": 4
-    },
-    {
-      "slug": "onhacks-2026",
-      "source": "devpost",
-      "winners": 5
-    },
-    {
-      "slug": "ocsefhacks-3-2026",
-      "source": "devpost",
-      "winners": 18
-    },
-    {
-      "slug": "protohacks-2026",
-      "source": "devpost",
-      "winners": 5
-    },
-    {
-      "slug": "ostad-presents-yunet-aignite-buildathon-2026",
-      "source": "devpost",
-      "winners": 20
-    },
-    {
-      "slug": "searchhack-build-the-next-layer-of-ai-search-2026",
-      "source": "devpost",
-      "winners": 3
-    },
-    {
-      "slug": "system-public-challenge-2026",
-      "source": "devpost",
-      "winners": 6
-    },
-    {
-      "slug": "syntax-error-2026",
-      "source": "devfolio",
-      "winners": 20
-    },
-    {
-      "slug": "wwu-social-justice-hackathon-2026",
-      "source": "devpost",
-      "winners": 3
-    },
-    {
-      "slug": "univabio-40-000-in-prizes-2026",
-      "source": "devpost",
-      "winners": 104
     }
   ],
   "http": {
-    "requests": 785,
+    "requests": 514,
     "cacheHits": 0,
     "robotsBlocked": 0,
     "usedCache": false
